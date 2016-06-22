@@ -1,8 +1,6 @@
-Nurse Connect - project breakdown
-#
+# Nurse Connect - project breakdown
 
-svgs
-###
+## svgs
 
  300px wide. close crop, icons should be in consistent ratio containers where possible. all #213d55 (Regal Blue) expanded properly (check with kgosi, peter, chris, or jw if your not sure how):
 
@@ -28,8 +26,7 @@ svgs
 ... think thats all of them
 
 
-colors:
-###
+## colors:
 
 - blue-tranquil: #dae8eb
     background 1st lvl
@@ -46,37 +43,36 @@ colors:
 - grey-light-slate: #7e93a0 (ci third level importance) == 50% opacity of blue-regal
     descriptive text, radio labels, nested background state
 
-components:
-###
+## components:
 
 - logo
 - navigation
 - breadcrumb
 - listing view:
-    results or catagory,  articles list (h2, desc, image/icon)
-    catagories/sub-catagories (just h2 and icon)
-        with subcatagories
+  - results or catagory,  articles list (h2, desc, image/icon)
+  - catagories/sub-catagories (just h2 and icon)
+  - with subcatagories
 -detail view:
-    create group
+  - create group
 
 - form-fields
-    input field
-    input field
-    pill input with icon
-    radio buttons
-    dropdowns/selectbox
-    checkbox (as a toggle icon)
+  - input field
+  - input field
+  - pill input with icon
+  - radio buttons
+  - dropdowns/selectbox
+  - checkbox (as a toggle icon)
 - pill button
 - progress bar
 - dashboard
-    large number
-    medium number
-    graph over months
+  - large number
+  - medium number
+  - graph over months
 - square img/icon
 - content sections:
     background 1/2/3
 - blocks:
-    well (white with round corners)
-    list block
-    image block
-    text block
+  - well (white with round corners)
+  - list block
+  - image block
+  - text block
