@@ -49,30 +49,30 @@
 - navigation
 - breadcrumb
 - listing view:
-    results or catagory,  articles list (h2, desc, image/icon)
-    catagories/sub-catagories (just h2 and icon)
-        with subcatagories
+  - results or catagory,  articles list (h2, desc, image/icon)
+  - catagories/sub-catagories (just h2 and icon)
+  - with subcatagories
 -detail view:
-    create group
+  - create group
 
 - form-fields
-    input field
-    input field
-    pill input with icon
-    radio buttons
-    dropdowns/selectbox
-    checkbox (as a toggle icon)
+  - input field
+  - input field
+  - pill input with icon
+  - radio buttons
+  - dropdowns/selectbox
+  - checkbox (as a toggle icon)
 - pill button
 - progress bar
 - dashboard
-    large number
-    medium number
-    graph over months
+  - large number
+  - medium number
+  - graph over months
 - square img/icon
 - content sections:
     background 1/2/3
 - blocks:
-    well (white with round corners)
-    list block
-    image block
-    text block
+  - well (white with round corners)
+  - list block
+  - image block
+  - text block
