@@ -1,8 +1,6 @@
-Nurse Connect - project breakdown
-#
+# Nurse Connect - project breakdown
 
-svgs
-###
+## svgs
 
  300px wide. close crop, icons should be in consistent ratio containers where possible. all #213d55 (Regal Blue) expanded properly (check with kgosi, peter, chris, or jw if your not sure how):
 
@@ -28,8 +26,7 @@ svgs
 ... think thats all of them
 
 
-colors:
-###
+## colors:
 
 - blue-tranquil: #dae8eb
     background 1st lvl
@@ -46,8 +43,7 @@ colors:
 - grey-light-slate: #7e93a0 (ci third level importance) == 50% opacity of blue-regal
     descriptive text, radio labels, nested background state
 
-components:
-###
+## components:
 
 - logo
 - navigation
