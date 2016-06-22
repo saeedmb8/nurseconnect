@@ -4,6 +4,7 @@
   "description": "frontend templates for NurseConnect project",
   "main": " ",
   "scripts": {
+    "gulp": "gulp --",  
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
