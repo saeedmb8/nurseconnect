@@ -49,7 +49,8 @@ gulp.task('clean-css', function() {
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: "./templates/index.html"
+            baseDir: "./templates/"
+
         }
     });
 
