@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "backstop-ref": "cd node_modules/backstopjs && npm run reference -- --configPath=../../backstop_tests/all.js",
     "backstop-clear": "rm -rf backstop_data/bitmaps_test",
-    "backstop-test": "cd node_modules/backstopjs && npm run test -- --configPath=../../backstop_tests/all.js"
+    "backstop-test": "cd node_modules/backstopjs && npm run test -- --configPath=../../backstop_tests/all.js",
+    "backstop-report": "cd node_modules/backstopjs && npm run openReport -- --configPath=../../backstop_tests/all.js"
   },
   "repository": {
     "type": "git",
