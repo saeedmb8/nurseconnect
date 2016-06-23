@@ -1,5 +1,3 @@
-'use strict';
-
 var gulp            = require('gulp');
 var argv            = require('yargs').argv;
 var autoprefixer    = require('gulp-autoprefixer');
@@ -12,6 +10,7 @@ var pixRem          = require('gulp-pixrem');
 var plumber         = require('gulp-plumber');
 var runSequence     = require('run-sequence');
 var sass            = require('gulp-sass');
+var sassLint        = require('gulp-sass-lint');
 var watch           = require('gulp-watch');
 
 /* =================================== */
@@ -25,7 +24,7 @@ var production = argv.production >= 1;
 /* =================================== */
 /* *** SASS *** */
 
-gulp.task('styles',['clean-css'] ,function () {
+gulp.task('styles', ['clean-css', 'lint-sass'], function () {
     return gulp.src(srcPath + '/sass/**/*.s+(a|c)ss')
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
@@ -41,6 +40,13 @@ gulp.task('clean-css', function() {
     return del(distPath + '/css');
 });
 
+gulp.task('lint-sass', function() {
+    return gulp.src(srcPath + '/**/*.s+(a|c)ss')
+        .pipe(sassLint())
+        .pipe(sassLint.format())
+        .pipe(sassLint.failOnError());
+});
+
 /* =================================== */
 /* *** sync browser *** */
 
@@ -49,12 +55,12 @@ gulp.task('clean-css', function() {
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: ['./','./templates']
+            baseDir: ['./', './templates']
         }
     });
 
     gulp.watch(srcPath + '/**/*.s+(a|c)ss', ['styles']);
-    gulp.watch("/*.html").on('change', browserSync.reload);
+    gulp.watch('/*.html').on('change', browserSync.reload);
 });
 
 /* =================================== */
@@ -62,5 +68,5 @@ gulp.task('browser-sync', function() {
 
 
 gulp.task('default', ['clean-css'], function() {
-  runSequence('styles', 'browser-sync');
+    runSequence('styles', 'browser-sync');
 });

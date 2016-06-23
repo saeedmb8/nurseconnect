@@ -4,8 +4,11 @@
   "description": "frontend templates for NurseConnect project",
   "main": " ",
   "scripts": {
-    "gulp": "gulp --",  
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp --",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backstop-ref": "cd node_modules/backstopjs && npm run reference -- --configPath=../../backstop_tests/all.js",
+    "backstop-clear": "rm -rf backstop_data/bitmaps_test",
+    "backstop-test": "cd node_modules/backstopjs && npm run test -- --configPath=../../backstop_tests/all.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,7 @@
     "gulp-pixrem": "^1.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
+    "gulp-sass-lint": "^1.2.0",
     "gulp-watch": "^4.3.8",
     "run-sequence": "^1.2.1",
     "yargs": "^4.7.1"
