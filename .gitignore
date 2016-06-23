@@ -1,4 +1,6 @@
 *.DS_Store
-.sass-cache/
 node_modules/
 bower_components/
+.sass-cache/
+npm-debug.log
+backstop_data
