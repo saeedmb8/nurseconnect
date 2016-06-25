@@ -1,0 +1,23 @@
+@import url("../../node_modules/sanitize.css/sanitize.css");
+
+:root,
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+body {
+  background-color: #dae8eb;
+  color: #213d55;
+}
+
+.clear {
+  clear: both;
+}
+
+button,
+a,
+input {
+  cursor: pointer;
+}

@@ -30,6 +30,7 @@
     "gulp-sass-lint": "^1.2.0",
     "gulp-watch": "^4.3.8",
     "run-sequence": "^1.2.1",
+    "sanitize.css": "^4.0.0",
     "yargs": "^4.7.1"
   }
 }
