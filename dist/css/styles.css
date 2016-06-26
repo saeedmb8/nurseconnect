@@ -2,7 +2,7 @@
 
 :root,
 html {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "light", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.2em;
 }
@@ -19,5 +19,51 @@ body {
 button,
 a,
 input {
+  text-decoration: none;
   cursor: pointer;
+}
+
+.Link {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #2d9ec5;
+  font-family: "medium", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.PillButton {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  -webkit-border-radius: 2rem;
+     -moz-border-radius: 2rem;
+          border-radius: 2rem;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.PillButton--blue {
+  background-color: #2d9ec5;
+}
+
+.PillButton--blue:hover,
+.PillButton--blue:active {
+  background-color: #247d9b;
+}
+
+.PillButton--orange {
+  background-color: #ff6655;
+}
+
+.PillButton--orange:hover,
+.PillButton--orange:active {
+  background-color: #ff3822;
 }

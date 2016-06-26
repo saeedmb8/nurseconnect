@@ -14,34 +14,9 @@
 
 :root,
 html {
-    font-family: $base-font-family;
+    font-family: $font-light;
     font-size: $base-font-size;
     line-height: $base-line-height;
-
-    //@include breakpoint($bp-iota) {
-    //    font-size: 16px;
-    //}
-    //
-    //@include breakpoint($bp-zeta) {
-    //    font-size: 18px;
-    //}
-    //
-    //@include breakpoint($bp-eta) {
-    //    font-size: 20px;
-    //}
-    //
-    //@include breakpoint($bp-omega) {
-    //    font-size: 22px;
-    //}
-
-    //// LazySizes noscript normalisation.
-    //&.no-js {
-    //    img {
-    //        &.lazyload {
-    //            display: none;
-    //        }
-    //    }
-    //}
 }
 
 body {
@@ -54,6 +29,8 @@ body {
 //     max-width: 100%;
 // }
 
+
+
 .clear {
     clear: both;
 }
@@ -61,5 +38,6 @@ body {
 button,
 a,
 input {
+    text-decoration: none;
     cursor: pointer;
 }

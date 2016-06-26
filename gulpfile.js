@@ -18,6 +18,7 @@ var watch           = require('gulp-watch');
 
 var srcPath = 'src';
 var distPath = 'dist';
+var templatesPath = 'templates';
 
 var production = argv.production >= 1;
 
@@ -67,7 +68,7 @@ gulp.task('browser-sync', function() {
     });
 
     gulp.watch(srcPath + '/**/*.s+(a|c)ss', ['styles']);
-    gulp.watch('/*.html').on('change', browserSync.reload);
+    gulp.watch(templatesPath + '/**/*.html').on('change', browserSync.reload);
 });
 
 /* =================================== */
