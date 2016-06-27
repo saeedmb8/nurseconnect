@@ -79,8 +79,8 @@ input {
 }
 
 .FormField-input {
-  text-align: inherit;
   width: 100%;
+  text-align: inherit;
 }
 
 .FormField-input::-webkit-input-placeholder {

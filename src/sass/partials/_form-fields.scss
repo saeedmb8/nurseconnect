@@ -8,11 +8,11 @@
     text-align: center;
 
     &-input {
-        text-align: inherit;
-        width: 100%;
-
         @include placeholder {
-                color: $color-blue-pelorous;
-            }
+            color: $color-blue-pelorous;
+        }
+
+        width: 100%;
+        text-align: inherit;
     }
 }
