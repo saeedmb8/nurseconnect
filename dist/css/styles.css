@@ -2,7 +2,7 @@
 
 :root,
 html {
-  font-family: "light", Helvetica, Arial, sans-serif;
+  font-family: "light",Helvetica,Arial,sans-serif;
   font-size: 16px;
   line-height: 1.2em;
 }
@@ -29,7 +29,7 @@ input {
   margin-top: 1rem;
   margin-bottom: 1rem;
   color: #2d9ec5;
-  font-family: "medium", Helvetica, Arial, sans-serif;
+  font-family: "medium",Helvetica,Arial,sans-serif;
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
@@ -45,7 +45,7 @@ input {
   -webkit-border-radius: 2rem;
      -moz-border-radius: 2rem;
           border-radius: 2rem;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   text-transform: uppercase;
 }
@@ -60,10 +60,41 @@ input {
 }
 
 .PillButton--orange {
-  background-color: #ff6655;
+  background-color: #f65;
 }
 
 .PillButton--orange:hover,
 .PillButton--orange:active {
   background-color: #ff3822;
+}
+
+.FormField {
+  display: block;
+  width: 100%;
+  padding: .75rem;
+  border-bottom: 1px solid #fff;
+  color: #2d9ec5;
+  font-weight: 100;
+  text-align: center;
+}
+
+.FormField-input {
+  text-align: inherit;
+  width: 100%;
+}
+
+.FormField-input::-webkit-input-placeholder {
+  color: #2d9ec5;
+}
+
+.FormField-input::-moz-placeholder {
+  color: #2d9ec5;
+}
+
+.FormField-input:-moz-placeholder {
+  color: #2d9ec5;
+}
+
+.FormField-input:-ms-input-placeholder {
+  color: #2d9ec5;
 }

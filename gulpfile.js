@@ -12,6 +12,7 @@ var runSequence     = require('run-sequence');
 var sass            = require('gulp-sass');
 var sassLint        = require('gulp-sass-lint');
 var watch           = require('gulp-watch');
+var bourbon         = require('bourbon').includePaths;
 
 /* =================================== */
 /* *** constants *** */
@@ -28,7 +29,10 @@ var production = argv.production >= 1;
 gulp.task('styles', ['clean-css', 'lint-sass'], function () {
     return gulp.src(srcPath + '/sass/**/*.s+(a|c)ss')
     .pipe(plumber())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: [].concat(bourbon),
+        outputStyle: 'compressed'
+    }).on('error', sass.logError))
     .pipe(bless())
     .pipe(autoprefixer({
         browsers: [

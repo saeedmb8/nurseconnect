@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "backstopjs": "^1.2.1",
+    "bourbon": "^4.2.7",
     "browser-sync": "^2.13.0",
     "del": "^2.2.1",
     "gulp": "^3.9.1",

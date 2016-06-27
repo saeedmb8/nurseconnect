@@ -1,0 +1,18 @@
+.FormField {
+    display: block;
+    width: 100%;
+    padding: .75rem;
+    border-bottom: 1px solid $color-white;
+    color: $color-blue-pelorous;
+    font-weight: 100; //TODO: fix when fonts are updated
+    text-align: center;
+
+    &-input {
+        text-align: inherit;
+        width: 100%;
+
+        @include placeholder {
+                color: $color-blue-pelorous;
+            }
+    }
+}
