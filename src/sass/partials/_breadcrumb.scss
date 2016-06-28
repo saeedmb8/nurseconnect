@@ -1,0 +1,32 @@
+.Breadcrumb {
+    // @TODO: Refactor this to use the @at-root directive as soon
+    // as a fix becomes available.
+    $scoped-block-name: unquote("#{&}");
+
+    display: block;
+    padding-top: .75rem;
+    padding-right: .5rem;
+    padding-bottom: .75rem;
+    padding-left: .5rem;
+    background-color: $color-white;
+    font-size: .75rem;
+    list-style: none;
+
+    &-item {
+        display: inline-block;
+    }
+
+    &-link {
+        color: inherit;
+    }
+
+    &-nextIcon {
+        padding-right: .1rem;
+        padding-left: .2rem;
+    }
+
+    &-item--active {
+        color: $color-blue-pelorous;
+    }
+
+}
