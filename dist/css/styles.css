@@ -1,5 +1,11 @@
 @import url("../../node_modules/sanitize.css/sanitize.css");
 
+.u-screenReaderText {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
 :root,
 html {
   font-family: "light",Helvetica,Arial,sans-serif;
@@ -160,6 +166,49 @@ input {
   font-size: 14px;
   font-weight: 100;
   resize: none;
+}
+
+.Icons {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.Navbar {
+  padding: .5rem;
+}
+
+.Navbar-logo {
+  display: inline-block;
+  width: 40%;
+}
+
+.Navbar-logoIcon {
+  display: block;
+  width: 100%;
+  padding-bottom: 30%;
+}
+
+.Navbar-item {
+  display: inline-block;
+}
+
+.Navbar-navigation {
+  float: right;
+}
+
+.Navbar-linkList {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.Navbar-link {
+  display: inline-block;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 .5rem;
+  pointer: cursor;
 }
 
 .Radio {

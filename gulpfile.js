@@ -81,9 +81,15 @@ gulp.task('crush-svgs', ['clean-generated-icons'], function () {
 
 gulp.task('icons', ['clean-icons', 'crush-svgs'], function (done) {
     var icons = glob.sync(srcPath + '/images/generated-icons/*.*');
-    var options = {};
+    var options = {
+        dynamicColorOnly: true,
+        colors: {
+            orangeBittersweet: '#ff6655',
+            blueRegal: '#213d55'
+        }
+    };
 
-    var iconsTask = new grunticon(icons, distPath + '/icons');
+    var iconsTask = new grunticon(icons, distPath + '/icons', options);
 
     iconsTask.process(done);
 });
