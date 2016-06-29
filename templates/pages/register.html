@@ -24,20 +24,40 @@
 
                 <div class="FormGroup FormGroup--padded">
                     <div class="FormField FormField--center FormField--bordered">
+                        <input class="FormField-input" type="text" name="firstname" value="" placeholder="Name">
+                    </div>
+                    <div class="FormField FormField--center FormField--bordered">
+                        <input class="FormField-input" type="text" name="surname" value="" placeholder="Surname">
+                    </div>
+                    <div class="FormField FormField--center FormField--bordered">
                         <input class="FormField-input" type="text" name="username" value="" placeholder="Username">
+                    </div>
+                    <div class="FormField FormField--vanilla FormField--center">
+                        <div class="SelectBox-wrapper">
+                            <select class="SelectBox-select" name="position">
+                                <option>Option One</option>
+                                <option>Option Two</option>
+                                <option>Option Three</option>
+                                <option value="manager">Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="FormField FormField--center FormField--bordered">
+                        <input class="FormField-input" type="text" name="staffnumber" value="" placeholder="Staff number" disabled>
+                    </div>
+                    <div class="FormField FormField--center FormField--bordered">
+                        <input class="FormField-input" type="text" name="facilitycode" value="" placeholder="Facility code">
                     </div>
                     <div class="FormField FormField--center FormField--bordered">
                         <input class="FormField-input" type="password" name="password" value="" placeholder="Password">
                     </div>
+                    <div class="FormField FormField--center FormField--bordered">
+                        <input class="FormField-input" type="password" name="confirmpassword" value="" placeholder="Confirm password">
+                    </div>
                 </div><!--/FormGroup-->
 
                 <div class="FormGroup FormGroup--padded">
-                    <button type="submit" class="PillButton PillButton--blue">log in</button>
-                    <a class="Link" href="/pages/login-issues.html">Having trouble logging in?</a>
-                </div><!--/FormGroup-->
-
-                <div class="FormGroup FormGroup--padded FormGroup--bordered">
-                    <a class="PillButton PillButton--orange" href="/pages/register.html">sign up</a>
+                    <button type="button" class="PillButton PillButton--orange">sign up</button>
                 </div><!--/FormGroup-->
 
             </form><!--/Auth-->

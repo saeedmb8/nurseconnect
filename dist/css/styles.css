@@ -23,7 +23,7 @@ input {
   cursor: pointer;
 }
 
-.Logo--login {
+.Logo--auth {
   display: inline-block;
   width: 280px;
   height: 79px;
@@ -123,6 +123,11 @@ input {
   padding-left: .5rem;
 }
 
+.FormField--vanilla {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .FormField--center {
   text-align: center;
   padding-top: .75rem;
@@ -180,6 +185,26 @@ input {
   font-size: 14px;
   font-weight: 100;
   resize: none;
+}
+
+.FormField [disabled]::-webkit-input-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]:-moz-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]::-moz-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]:-ms-input-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]::placeholder {
+  color: #7e93a0;
 }
 
 .Radio {
@@ -259,6 +284,10 @@ input {
   font-size: 14px;
 }
 
+.SelectBox--centered {
+  text-align: center;
+}
+
 .ListView {
   list-style: none;
 }
@@ -291,7 +320,7 @@ input {
   font-size: .75rem;
 }
 
-.Login {
+.Auth {
   padding-top: 48px;
   padding-bottom: 48px;
   text-align: center;
