@@ -96,6 +96,15 @@ input {
   background-color: #ff3822;
 }
 
+.FormGroup--padded {
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.FormGroup--bordered {
+  border-top: 1px solid #fff;
+}
+
 .FormField {
   display: block;
   width: 100%;
@@ -286,13 +295,4 @@ input {
      -moz-background-size: 100%;
        -o-background-size: 100%;
           background-size: 100%;
-}
-
-.Login .FormGroup--padded {
-  padding-right: 24px;
-  padding-left: 24px;
-}
-
-.Login .FormGroup--bordered {
-  border-top: 1px solid #fff;
 }
