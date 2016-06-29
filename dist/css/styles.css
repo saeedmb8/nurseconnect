@@ -23,6 +23,17 @@ input {
   cursor: pointer;
 }
 
+.Logo--auth {
+  display: inline-block;
+  width: 280px;
+  height: 79px;
+  margin-bottom: 24px;
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+}
+
 .Breadcrumb {
   display: block;
   padding-top: .75rem;
@@ -96,11 +107,25 @@ input {
   background-color: #ff3822;
 }
 
+.FormGroup--padded {
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.FormGroup--bordered {
+  border-top: 1px solid #fff;
+}
+
 .FormField {
   display: block;
   width: 100%;
   padding-right: .5rem;
   padding-left: .5rem;
+}
+
+.FormField--vanilla {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .FormField--center {
@@ -160,6 +185,26 @@ input {
   font-size: 14px;
   font-weight: 100;
   resize: none;
+}
+
+.FormField [disabled]::-webkit-input-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]:-moz-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]::-moz-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]:-ms-input-placeholder {
+  color: #7e93a0;
+}
+
+.FormField [disabled]::placeholder {
+  color: #7e93a0;
 }
 
 .Radio {
@@ -239,6 +284,10 @@ input {
   font-size: 14px;
 }
 
+.SelectBox--centered {
+  text-align: center;
+}
+
 .ListView {
   list-style: none;
 }
@@ -269,4 +318,10 @@ input {
 .ListItem-desc {
   color: #7e93a0;
   font-size: .75rem;
+}
+
+.Auth {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  text-align: center;
 }
