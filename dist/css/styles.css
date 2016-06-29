@@ -238,3 +238,35 @@ input {
   background: transparent;
   font-size: 14px;
 }
+
+.ListView {
+  list-style: none;
+}
+
+.ListItem {
+  display: block;
+  padding-top: .75rem;
+  padding-right: .5rem;
+  padding-bottom: .75rem;
+  padding-left: .5rem;
+  border-bottom: 1px solid #fff;
+}
+
+.ListItem--withImage {
+  margin-right: 3rem;
+}
+
+.ListItem-title {
+  color: #2d9ec5;
+}
+
+.ListItem-subtitle {
+  color: #f65;
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+.ListItem-desc {
+  color: #7e93a0;
+  font-size: .75rem;
+}

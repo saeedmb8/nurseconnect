@@ -1,0 +1,40 @@
+.ListView {
+    // @TODO: Refactor this to use the @at-root directive as soon
+    // as a fix becomes available.
+    $scoped-block-name: unquote("#{&}");
+
+    list-style: none;
+}
+
+.ListItem {
+    // @TODO: Refactor this to use the @at-root directive as soon
+    // as a fix becomes available.
+    $scoped-block-name: unquote("#{&}");
+
+    display: block;
+    padding-top: .75rem;
+    padding-right: .5rem;
+    padding-bottom: .75rem;
+    padding-left: .5rem;
+    border-bottom: 1px solid $color-white;
+
+
+    &--withImage {
+        margin-right: 3rem;
+    }
+
+    &-title {
+        color: $color-blue-pelorous;
+    }
+
+    &-subtitle {
+        color: $color-orange-bittersweet;
+        font-size: .75rem;
+        text-transform: uppercase;
+    }
+
+    &-desc {
+        color: $color-grey-light-slate;
+        font-size: .75rem;
+    }
+}
