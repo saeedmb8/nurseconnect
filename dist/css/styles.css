@@ -270,3 +270,29 @@ input {
   color: #7e93a0;
   font-size: .75rem;
 }
+
+.Login {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  text-align: center;
+}
+
+.Login .icon-logo {
+  width: 280px;
+  height: 79px;
+  display: inline-block;
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+  margin-bottom: 24px;
+}
+
+.Login .FormGroup--padded {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.Login .FormGroup--bordered {
+  border-top: 1px solid #fff;
+}
