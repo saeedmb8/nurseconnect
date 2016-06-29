@@ -49,5 +49,6 @@ module.exports = {
         'compare_data': '../../backstop_data/bitmaps_test/compare.json'
     },
     'engine': 'phantomjs',
-    'report': ['CLI']
+    'report': ['browser', 'CLI'],
+    'port': 3005
 };
