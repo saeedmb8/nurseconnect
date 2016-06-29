@@ -278,19 +278,19 @@ input {
 }
 
 .Login .icon-logo {
+  display: inline-block;
   width: 280px;
   height: 79px;
-  display: inline-block;
+  margin-bottom: 24px;
   -webkit-background-size: 100% 100%;
      -moz-background-size: 100%;
        -o-background-size: 100%;
           background-size: 100%;
-  margin-bottom: 24px;
 }
 
 .Login .FormGroup--padded {
-  padding-left: 24px;
   padding-right: 24px;
+  padding-left: 24px;
 }
 
 .Login .FormGroup--bordered {

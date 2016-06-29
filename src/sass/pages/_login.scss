@@ -4,18 +4,18 @@
     text-align: center;
 
     .icon-logo {
+        display: inline-block;
         width: 280px;
         height: 79px;
-        display: inline-block;
-        background-size: 100%;
         margin-bottom: $global-padding;
+        background-size: 100%;
     }
 
     .FormGroup {
 
         &--padded {
-            padding-left: $global-padding;
             padding-right: $global-padding;
+            padding-left: $global-padding;
         }
 
         &--bordered {
