@@ -5,7 +5,10 @@ var bless           = require('gulp-bless');
 var browserSync     = require('browser-sync').create();
 var cssNano         = require('gulp-cssnano');
 var del             = require('del');
+var glob            = require('glob');
 var gulpif          = require('gulp-if');
+var svgmin          = require('gulp-svgmin');
+var grunticon       = require('grunticon-lib');
 var pixRem          = require('gulp-pixrem');
 var plumber         = require('gulp-plumber');
 var runSequence     = require('run-sequence');
@@ -59,6 +62,31 @@ gulp.task('lint-sass', function() {
         .pipe(sassLint.failOnError());
 });
 
+/* =================================== */
+/* *** generate iconset *** */
+
+gulp.task('clean-generated-icons', function() {
+    return del(srcPath + '/images/generated-icons');
+});
+
+gulp.task('clean-icons', function() {
+    return del(distPath + '/icons');
+});
+
+gulp.task('crush-svgs', ['clean-generated-icons'], function () {
+    return gulp.src(srcPath + '/images/svgs/*.svg')
+        .pipe(svgmin())
+        .pipe(gulp.dest(srcPath + '/images/generated-icons'));
+});
+
+gulp.task('icons', ['clean-icons', 'crush-svgs'], function (done) {
+    var icons = glob.sync(srcPath + '/images/generated-icons/*.*');
+    var options = {};
+
+    var iconsTask = new grunticon(icons, distPath + '/icons');
+
+    iconsTask.process(done);
+});
 /* =================================== */
 /* *** sync browser *** */
 
