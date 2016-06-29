@@ -23,6 +23,17 @@ input {
   cursor: pointer;
 }
 
+.Logo--login {
+  display: inline-block;
+  width: 280px;
+  height: 79px;
+  margin-bottom: 24px;
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+}
+
 .Breadcrumb {
   display: block;
   padding-top: .75rem;
@@ -284,15 +295,4 @@ input {
   padding-top: 48px;
   padding-bottom: 48px;
   text-align: center;
-}
-
-.Login .icon-logo {
-  display: inline-block;
-  width: 280px;
-  height: 79px;
-  margin-bottom: 24px;
-  -webkit-background-size: 100% 100%;
-     -moz-background-size: 100%;
-       -o-background-size: 100%;
-          background-size: 100%;
 }
