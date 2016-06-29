@@ -2,9 +2,15 @@
 @import "partials/base";
 
 // Partials
-@import "partials/reset";
+@import "partials/root";
 @import "partials/typography";
-// add new componet partials here
+// add new component partials here
+@import "partials/breadcrumb";
+@import "partials/buttons";
+@import "partials/form-fields";
+@import "partials/radio";
+@import "partials/select-box";
+@import "partials/list-view";
 
 // ...
 

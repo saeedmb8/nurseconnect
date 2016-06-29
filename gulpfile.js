@@ -5,19 +5,24 @@ var bless           = require('gulp-bless');
 var browserSync     = require('browser-sync').create();
 var cssNano         = require('gulp-cssnano');
 var del             = require('del');
+var glob            = require('glob');
 var gulpif          = require('gulp-if');
+var svgmin          = require('gulp-svgmin');
+var grunticon       = require('grunticon-lib');
 var pixRem          = require('gulp-pixrem');
 var plumber         = require('gulp-plumber');
 var runSequence     = require('run-sequence');
 var sass            = require('gulp-sass');
 var sassLint        = require('gulp-sass-lint');
 var watch           = require('gulp-watch');
+var bourbon         = require('bourbon').includePaths;
 
 /* =================================== */
 /* *** constants *** */
 
 var srcPath = 'src';
 var distPath = 'dist';
+var templatesPath = 'templates';
 
 var production = argv.production >= 1;
 
@@ -27,9 +32,19 @@ var production = argv.production >= 1;
 gulp.task('styles', ['clean-css', 'lint-sass'], function () {
     return gulp.src(srcPath + '/sass/**/*.s+(a|c)ss')
     .pipe(plumber())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+        includePaths: [].concat(bourbon),
+        outputStyle: 'compressed'
+    }).on('error', sass.logError))
     .pipe(bless())
-    .pipe(autoprefixer())
+    .pipe(autoprefixer({
+        browsers: [
+            'ie >= 8',
+            'android >= 2.3',
+            'iOS >= 6',
+            '> 0%'
+        ]
+    }))
     .pipe(gulpif(production, cssNano()))
     .pipe(plumber.stop())
     .pipe(gulp.dest(distPath + '/css'))
@@ -48,6 +63,31 @@ gulp.task('lint-sass', function() {
 });
 
 /* =================================== */
+/* *** generate iconset *** */
+
+gulp.task('clean-generated-icons', function() {
+    return del(srcPath + '/images/generated-icons');
+});
+
+gulp.task('clean-icons', function() {
+    return del(distPath + '/icons');
+});
+
+gulp.task('crush-svgs', ['clean-generated-icons'], function () {
+    return gulp.src(srcPath + '/images/svgs/*.svg')
+        .pipe(svgmin())
+        .pipe(gulp.dest(srcPath + '/images/generated-icons'));
+});
+
+gulp.task('icons', ['clean-icons', 'crush-svgs'], function (done) {
+    var icons = glob.sync(srcPath + '/images/generated-icons/*.*');
+    var options = {};
+
+    var iconsTask = new grunticon(icons, distPath + '/icons');
+
+    iconsTask.process(done);
+});
+/* =================================== */
 /* *** sync browser *** */
 
 
@@ -60,7 +100,7 @@ gulp.task('browser-sync', function() {
     });
 
     gulp.watch(srcPath + '/**/*.s+(a|c)ss', ['styles']);
-    gulp.watch('/*.html').on('change', browserSync.reload);
+    gulp.watch(templatesPath + '/**/*.html').on('change', browserSync.reload);
 });
 
 /* =================================== */
