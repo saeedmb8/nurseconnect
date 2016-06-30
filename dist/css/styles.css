@@ -8,7 +8,7 @@
 
 :root,
 html {
-  font-family: "light",Helvetica,Arial,sans-serif;
+  font-family: "light", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.2em;
 }
@@ -35,7 +35,7 @@ input {
   padding-right: .5rem;
   padding-bottom: .75rem;
   padding-left: .5rem;
-  background-color: #fff;
+  background-color: #ffffff;
   font-size: .75rem;
   list-style: none;
 }
@@ -63,7 +63,7 @@ input {
   margin-top: 1rem;
   margin-bottom: 1rem;
   color: #2d9ec5;
-  font-family: "medium",Helvetica,Arial,sans-serif;
+  font-family: "medium", Helvetica, Arial, sans-serif;
   font-weight: 600;
   text-align: center;
   text-transform: uppercase;
@@ -79,7 +79,7 @@ input {
   -webkit-border-radius: 2rem;
      -moz-border-radius: 2rem;
           border-radius: 2rem;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   text-transform: uppercase;
 }
@@ -94,7 +94,7 @@ input {
 }
 
 .PillButton--orange {
-  background-color: #f65;
+  background-color: #ff6655;
 }
 
 .PillButton--orange:hover,
@@ -121,7 +121,7 @@ input {
 }
 
 .FormField--bordered {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
 }
 
 .FormField-label {
@@ -161,7 +161,7 @@ input {
   max-width: 100%;
   min-height: 1.5rem;
   margin-top: .75rem;
-  background: #fff;
+  background: #ffffff;
   color: #2d9ec5;
   font-size: 14px;
   font-weight: 100;
@@ -180,13 +180,30 @@ input {
 
 .Navbar-logo {
   display: inline-block;
-  width: 40%;
+  position: relative;
+  width: 35%;
+  height: 2.75rem;
+  max-width: 9.5rem;
+  max-height: 2.75rem;
+  padding: .5rem 0;
+}
+
+@media (min-width: 20em) {
+  .Navbar-logo {
+    width: 50%;
+    padding: .5rem;
+  }
 }
 
 .Navbar-logoIcon {
   display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 100%;
-  padding-bottom: 30%;
+  height: 0;
+  margin: auto 0;
+  padding-bottom: 28.33333333%;
 }
 
 .Navbar-item {
@@ -199,8 +216,8 @@ input {
 
 .Navbar-linkList {
   display: inline-block;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .Navbar-link {
@@ -246,7 +263,7 @@ input {
   opacity: 0;
 }
 
-.Radio-input:checked+.Radio-label .Radio-radioBox .Radio-ticked {
+.Radio-input:checked + .Radio-label .Radio-radioBox .Radio-ticked {
   display: block;
   position: absolute;
   top: 0;
@@ -272,7 +289,7 @@ input {
 .SelectBox-wrapper {
   display: block;
   width: 100%;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
   background: url("http://i62.tinypic.com/2e3ybe1.jpg") no-repeat 98.5% center;
   background: url("http://i62.tinypic.com/2e3ybe1.jpg") no-repeat right 0.5rem center;
   color: #2d9ec5;
@@ -297,7 +314,7 @@ input {
   padding-right: .5rem;
   padding-bottom: .75rem;
   padding-left: .5rem;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #ffffff;
 }
 
 .ListItem--withImage {
@@ -309,7 +326,7 @@ input {
 }
 
 .ListItem-subtitle {
-  color: #f65;
+  color: #ff6655;
   font-size: .75rem;
   text-transform: uppercase;
 }

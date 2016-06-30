@@ -45,4 +45,16 @@ $font-bold: ("bold", unquote("#{$sans-serif}"));
 // Layout:
 $global-border-box: true;
 
+
+//breakpoints
+$bp-smart: 20em;
+$bp-phablet: 30em;
+$bp-tablet: 48em;
+$bp-desktop: 62em;
+$bp-large: 75em;
+$bp-xlarge: 120em; // Over 1920px
+$bp-xxlarge: 160em; // 2580px
+$bp-fourk: 210em; // 3360k
+$bp-site-static: 90.0625em;
+
 @import "modules/all";

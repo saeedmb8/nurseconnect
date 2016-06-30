@@ -26,16 +26,21 @@ var templatesPath = 'templates';
 
 var production = argv.production >= 1;
 
+var sassConfig = {
+    includePaths: [
+        'node_modules/breakpoint-sass/stylesheets/',
+      // 'node_modules/modularscale-sass/stylesheets',
+    ].concat(bourbon),
+    // outputStyle: 'compressed'
+};
+
 /* =================================== */
 /* *** SASS *** */
 
 gulp.task('styles', ['clean-css', 'lint-sass'], function () {
     return gulp.src(srcPath + '/sass/**/*.s+(a|c)ss')
     .pipe(plumber())
-    .pipe(sass({
-        includePaths: [].concat(bourbon),
-        outputStyle: 'compressed'
-    }).on('error', sass.logError))
+    .pipe(sass(sassConfig).on('error', sass.logError))
     .pipe(bless())
     .pipe(autoprefixer({
         browsers: [
