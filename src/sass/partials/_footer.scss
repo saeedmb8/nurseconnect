@@ -1,0 +1,23 @@
+footer {
+    font-size: .8rem;
+    padding-left: $global-padding;
+    padding-right: $global-padding;
+    border-top: 1px solid $color-grey-light-slate;
+
+    a {
+        color: $color-grey-light-slate;
+        border-bottom: 1px solid $color-grey-light-slate;
+    }
+
+    p {
+        color: $color-grey-light-slate;
+
+        &:first-child {
+            margin-bottom: .5rem;
+        }
+
+        &:last-child {
+            margin-top: .5rem;
+        }
+    }
+}
