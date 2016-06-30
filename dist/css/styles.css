@@ -42,11 +42,16 @@ input {
 
 .Breadcrumb {
   display: block;
+  padding-top: 12px;
   padding-top: .75rem;
+  padding-right: 8px;
   padding-right: .5rem;
+  padding-bottom: 12px;
   padding-bottom: .75rem;
+  padding-left: 8px;
   padding-left: .5rem;
   background-color: #ffffff;
+  font-size: 12px;
   font-size: .75rem;
   list-style: none;
 }
@@ -60,7 +65,9 @@ input {
 }
 
 .Breadcrumb-nextIcon {
+  padding-right: 1.6px;
   padding-right: .1rem;
+  padding-left: 3.2px;
   padding-left: .2rem;
 }
 
@@ -71,7 +78,9 @@ input {
 .Link {
   display: block;
   width: 100%;
+  margin-top: 16px;
   margin-top: 1rem;
+  margin-bottom: 16px;
   margin-bottom: 1rem;
   color: #2d9ec5;
   font-family: "medium", Helvetica, Arial, sans-serif;
@@ -83,9 +92,13 @@ input {
 .PillButton {
   display: block;
   width: 100%;
+  margin-top: 16px;
   margin-top: 1rem;
+  margin-bottom: 16px;
   margin-bottom: 1rem;
+  padding-top: 16px;
   padding-top: 1rem;
+  padding-bottom: 16px;
   padding-bottom: 1rem;
   -webkit-border-radius: 2rem;
      -moz-border-radius: 2rem;
@@ -125,7 +138,9 @@ input {
 .FormField {
   display: block;
   width: 100%;
+  padding-right: 8px;
   padding-right: .5rem;
+  padding-left: 8px;
   padding-left: .5rem;
 }
 
@@ -136,12 +151,16 @@ input {
 
 .FormField--center {
   text-align: center;
+  padding-top: 12px;
   padding-top: .75rem;
+  padding-bottom: 12px;
   padding-bottom: .75rem;
 }
 
 .FormField--left {
+  padding-top: 6.4px;
   padding-top: .4rem;
+  padding-bottom: 6.4px;
   padding-bottom: .4rem;
 }
 
@@ -151,7 +170,9 @@ input {
 
 .FormField-label {
   display: block;
+  margin-top: 6.4px;
   margin-top: .4rem;
+  font-size: 20px;
   font-size: 1.25rem;
   text-align: inherit;
 }
@@ -184,7 +205,9 @@ input {
 .FormField-textarea {
   display: block;
   max-width: 100%;
+  min-height: 24px;
   min-height: 1.5rem;
+  margin-top: 12px;
   margin-top: .75rem;
   background: #ffffff;
   color: #2d9ec5;
@@ -220,6 +243,7 @@ input {
 }
 
 .Navbar {
+  padding: 8px;
   padding: .5rem;
 }
 
@@ -227,9 +251,13 @@ input {
   display: inline-block;
   position: relative;
   width: 35%;
+  height: 44px;
   height: 2.75rem;
+  max-width: 152px;
   max-width: 9.5rem;
+  max-height: 44px;
   max-height: 2.75rem;
+  padding: 8px 0;
   padding: .5rem 0;
 }
 
@@ -267,20 +295,25 @@ input {
 
 .Navbar-link {
   display: inline-block;
+  width: 44px;
   width: 2.75rem;
+  height: 44px;
   height: 2.75rem;
+  padding: 8px;
   padding: .5rem;
 }
 
 .Radio {
   display: block;
   width: 100%;
+  margin-top: 12px;
   margin-top: .75rem;
 }
 
 .Radio-label {
   display: block;
   position: relative;
+  margin-top: 6.4px;
   margin-top: .4rem;
   color: #7e93a0;
   font-weight: 100;
@@ -292,9 +325,12 @@ input {
   top: 0;
   bottom: 0;
   left: 0;
+  width: 20px;
   width: 1.25rem;
+  height: 20px;
   height: 1.25rem;
   margin: auto;
+  margin-left: 8px;
   margin-left: .5rem;
   border: 1px solid #213d55;
   -webkit-border-radius: 50%;
@@ -303,6 +339,7 @@ input {
 }
 
 .Radio-input {
+  width: 40px;
   width: 2.5rem;
   float: left;
   opacity: 0;
@@ -314,7 +351,9 @@ input {
   top: 0;
   bottom: 0;
   left: 15%;
+  width: 12px;
   width: .75rem;
+  height: 12px;
   height: .75rem;
   margin: auto;
   -webkit-border-radius: 50%;
@@ -326,8 +365,11 @@ input {
 .SelectBox-label {
   display: block;
   width: 100%;
+  margin-left: 8px;
   margin-left: .5rem;
+  padding-top: 8px;
   padding-top: .5rem;
+  font-size: 20px;
   font-size: 1.25rem;
 }
 
@@ -336,6 +378,7 @@ input {
   width: 100%;
   border-bottom: 1px solid #ffffff;
   background: url("http://i62.tinypic.com/2e3ybe1.jpg") no-repeat 98.5% center;
+  background: url("http://i62.tinypic.com/2e3ybe1.jpg") no-repeat right 8px center;
   background: url("http://i62.tinypic.com/2e3ybe1.jpg") no-repeat right 0.5rem center;
   color: #2d9ec5;
   overflow: hidden;
@@ -343,6 +386,7 @@ input {
 
 .SelectBox-select {
   width: 115%;
+  height: 32px;
   height: 2rem;
   border: 0;
   background: transparent;
@@ -355,34 +399,69 @@ input {
 
 .ListView {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .ListItem {
   display: block;
-  padding-top: .75rem;
+  position: relative;
+  padding-top: 16px;
+  padding-top: 1rem;
+  padding-right: 8px;
   padding-right: .5rem;
-  padding-bottom: .75rem;
+  padding-bottom: 16px;
+  padding-bottom: 1rem;
+  padding-left: 8px;
   padding-left: .5rem;
   border-bottom: 1px solid #ffffff;
 }
 
 .ListItem--withImage {
-  margin-right: 3rem;
+  padding-right: 80px;
+  padding-right: 5rem;
 }
 
 .ListItem-title {
+  margin: 0;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
   color: #2d9ec5;
 }
 
 .ListItem-subtitle {
+  margin-bottom: 0;
+  margin-top: 4px;
+  margin-top: .25rem;
   color: #ff6655;
+  font-size: 12px;
   font-size: .75rem;
   text-transform: uppercase;
 }
 
 .ListItem-desc {
+  margin: 0;
   color: #7e93a0;
+  font-size: 12px;
   font-size: .75rem;
+}
+
+.ListItem-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  padding: 0;
+  right: 16px;
+  right: 1rem;
+  width: 48px;
+  width: 3rem;
+  height: 48px;
+  height: 3rem;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
 }
 
 .Auth {

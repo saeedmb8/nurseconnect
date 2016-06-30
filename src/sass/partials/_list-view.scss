@@ -4,6 +4,8 @@
     $scoped-block-name: unquote("#{&}");
 
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .ListItem {
@@ -12,29 +14,48 @@
     $scoped-block-name: unquote("#{&}");
 
     display: block;
-    padding-top: .75rem;
+    position: relative;
+    padding-top: 1rem;
     padding-right: .5rem;
-    padding-bottom: .75rem;
+    padding-bottom: 1rem;
     padding-left: .5rem;
     border-bottom: 1px solid $color-white;
 
 
     &--withImage {
-        margin-right: 3rem;
+        padding-right: 5rem;
     }
 
     &-title {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 400;
         color: $color-blue-pelorous;
     }
 
     &-subtitle {
+        margin-bottom: 0;
+        margin-top: .25rem;
         color: $color-orange-bittersweet;
         font-size: .75rem;
         text-transform: uppercase;
     }
 
     &-desc {
+        margin: 0;
         color: $color-grey-light-slate;
         font-size: .75rem;
+    }
+
+    &-image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        padding: 0;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 5px;
     }
 }

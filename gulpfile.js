@@ -9,7 +9,7 @@ var glob            = require('glob');
 var gulpif          = require('gulp-if');
 var svgmin          = require('gulp-svgmin');
 var grunticon       = require('grunticon-lib');
-var pixRem          = require('gulp-pixrem');
+var pixrem          = require('gulp-pixrem');
 var plumber         = require('gulp-plumber');
 var runSequence     = require('run-sequence');
 var sass            = require('gulp-sass');
@@ -50,6 +50,7 @@ gulp.task('styles', ['clean-css', 'lint-sass'], function () {
             '> 0%'
         ]
     }))
+    .pipe(pixrem())
     .pipe(gulpif(production, cssNano()))
     .pipe(plumber.stop())
     .pipe(gulp.dest(distPath + '/css'))
