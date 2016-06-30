@@ -412,9 +412,23 @@ input {
   padding-right: .5rem;
   padding-bottom: 16px;
   padding-bottom: 1rem;
-  padding-left: 8px;
-  padding-left: .5rem;
+  padding-left: 16px;
+  padding-left: 1rem;
   border-bottom: 1px solid #ffffff;
+}
+
+.ListItem--leftIcon {
+  padding-top: 20px;
+  padding-top: 1.25rem;
+  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
+  padding-left: 60px;
+  padding-left: 3.75rem;
+}
+
+.ListItem--rightIcon {
+  padding-right: 60px;
+  padding-right: 3.75rem;
 }
 
 .ListItem--withImage {
@@ -423,6 +437,7 @@ input {
 }
 
 .ListItem-title {
+  display: inline-block;
   margin: 0;
   font-size: 20px;
   font-size: 1.25rem;
@@ -432,8 +447,21 @@ input {
 
 .ListItem-subtitle {
   margin-bottom: 0;
+  padding-right: 12px;
+  padding-right: .75rem;
   margin-top: 4px;
   margin-top: .25rem;
+  color: #ff6655;
+  font-size: 12px;
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+.ListItem-timeStamp {
+  float: left;
+  margin: 0;
+  padding-right: 12px;
+  padding-right: .75rem;
   color: #ff6655;
   font-size: 12px;
   font-size: .75rem;
@@ -445,6 +473,13 @@ input {
   color: #7e93a0;
   font-size: 12px;
   font-size: .75rem;
+}
+
+.ListItem-desc--oneLine {
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .ListItem-image {
@@ -462,6 +497,31 @@ input {
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
+}
+
+.ListItem-iconRight,
+.ListItem-iconLeft {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  width: 1.75rem;
+  height: 28px;
+  height: 1.75rem;
+  margin: auto 0;
+  padding: 0;
+}
+
+.ListItem-iconLeft {
+  width: 24px;
+  width: 1.5rem;
+  left: 16px;
+  left: 1rem;
+}
+
+.ListItem-iconRight {
+  right: 16px;
+  right: 1rem;
 }
 
 .Auth {

@@ -91,6 +91,7 @@ gulp.task('icons', ['clean-icons', 'crush-svgs'], function (done) {
         dynamicColorOnly: true,
         colors: {
             orangeBittersweet: '#ff6655',
+            bluePelorous: '#2d9ec5',
             blueRegal: '#213d55'
         }
     };

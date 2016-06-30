@@ -18,15 +18,25 @@
     padding-top: 1rem;
     padding-right: .5rem;
     padding-bottom: 1rem;
-    padding-left: .5rem;
+    padding-left: 1rem;
     border-bottom: 1px solid $color-white;
 
+    &--leftIcon {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+        padding-left: 3.75rem;
+    }
+
+    &--rightIcon {
+        padding-right: 3.75rem;
+    }
 
     &--withImage {
         padding-right: 5rem;
     }
 
     &-title {
+        display: inline-block;
         margin: 0;
         font-size: 1.25rem;
         font-weight: 400;
@@ -35,7 +45,17 @@
 
     &-subtitle {
         margin-bottom: 0;
+        padding-right: .75rem;
         margin-top: .25rem;
+        color: $color-orange-bittersweet;
+        font-size: .75rem;
+        text-transform: uppercase;
+    }
+
+    &-timeStamp {
+        float: left;
+        margin: 0;
+        padding-right: .75rem;
         color: $color-orange-bittersweet;
         font-size: .75rem;
         text-transform: uppercase;
@@ -45,6 +65,12 @@
         margin: 0;
         color: $color-grey-light-slate;
         font-size: .75rem;
+
+        &--oneLine {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
     }
 
     &-image {
@@ -58,4 +84,25 @@
         height: 3rem;
         border-radius: 5px;
     }
+
+    &-iconRight,
+    &-iconLeft {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 1.75rem;
+        height: 1.75rem;
+        margin: auto 0;
+        padding: 0;
+    }
+
+    &-iconLeft {
+        width: 1.5rem;
+        left: 1rem;
+    }
+
+    &-iconRight {
+        right: 1rem;
+    }
+
 }
