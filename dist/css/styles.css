@@ -584,6 +584,27 @@ input {
   line-height: 2rem;
 }
 
+.ArticleActions {
+  padding-top: 12px;
+  padding-right: 24px;
+  padding-bottom: 12px;
+  padding-left: 24px;
+  background-color: #c0d6dd;
+}
+
+.ArticleActions-title {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  margin-top: 1rem;
+  margin-bottom: 16px;
+  margin-bottom: 1rem;
+  color: #ff6655;
+  font-family: "medium", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 .Quote {
   color: #ff6655;
 }
