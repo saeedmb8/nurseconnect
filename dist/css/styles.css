@@ -363,14 +363,63 @@ input {
 }
 
 .Profile {
+  margin: 16px;
+  margin: 1rem;
   padding: 16px;
   padding: 1rem;
+  -webkit-border-radius: .25rem;
+     -moz-border-radius: .25rem;
+          border-radius: .25rem;
+  background-color: #ffffff;
 }
 
-.Profile-number {
-  font-size: 32px;
-  font-size: 2rem;
-  weight: 600;
+.Profile-imageWrapper {
+  display: inline-block;
+  width: 25%;
+}
+
+.Profile-imageContainer {
+  display: block;
+  position: relative;
+  height: 0;
+  padding-bottom: 100%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  overflow: hidden;
+}
+
+.Profile-imageContainer .Profile-image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.Profile-msg {
+  width: 75%;
+  padding-left: 16px;
+  padding-left: 1rem;
+  float: right;
+}
+
+.Profile-title {
+  display: block;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.Profile-progressLink {
+  display: block;
+  margin-top: 4px;
+  margin-top: .25rem;
+  color: #2d9ec5;
+  font-size: 12px;
+  font-size: .75rem;
 }
 
 .SelectBox-label {
@@ -572,7 +621,7 @@ input {
   overflow: hidden;
 }
 
-.Article-fullWidthImage img {
+.Article-fullWidthImage .Article-image {
   position: absolute;
   top: 0;
   left: 0;
