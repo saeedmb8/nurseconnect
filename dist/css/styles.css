@@ -6,6 +6,10 @@
   left: -9999px;
 }
 
+.u-quote {
+  color: #ff6655;
+}
+
 :root,
 html {
   font-family: "light", Helvetica, Arial, sans-serif;
@@ -27,6 +31,48 @@ a,
 input {
   text-decoration: none;
   cursor: pointer;
+}
+
+h1 {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 32px;
+  line-height: 2rem;
+}
+
+h2 {
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 28.8px;
+  line-height: 1.8rem;
+}
+
+h3 {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 25.6px;
+  line-height: 1.6rem;
+}
+
+h4 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 22.4px;
+  line-height: 1.4rem;
+}
+
+h5 {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 19.2px;
+  line-height: 1.2rem;
+}
+
+h6 {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 16px;
+  line-height: 1rem;
 }
 
 .Logo--auth {
@@ -552,6 +598,18 @@ input {
 .ListItem-iconRight {
   right: 16px;
   right: 1rem;
+}
+
+.Article-fullWidthImage {
+  width: 100%;
+  display: block;
+}
+
+.Article-body {
+  padding-top: 12px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-bottom: 12px;
 }
 
 .Auth {
