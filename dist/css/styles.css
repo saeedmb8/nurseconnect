@@ -584,7 +584,7 @@ input {
   line-height: 2rem;
 }
 
-.Article-actions {
+.ArticleActions {
   padding-top: 12px;
   padding-right: 24px;
   padding-bottom: 12px;
@@ -592,7 +592,7 @@ input {
   background-color: #c0d6dd;
 }
 
-.Article-actions-title {
+.ArticleActions-title {
   display: block;
   width: 100%;
   margin-top: 16px;
