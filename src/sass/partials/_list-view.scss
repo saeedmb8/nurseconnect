@@ -8,6 +8,30 @@
     margin: 0;
 }
 
+.ListTitle {
+    display: block;
+    position: relative;
+    padding-top: 1rem;
+    padding-right: .5rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    border-bottom: 1px solid $color-white;
+
+    &-name {
+        margin: 0;
+        color: $color-orange-bittersweet;
+        font-size: .75rem;
+        text-transform: uppercase;
+    }
+
+    &-grouping {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: $color-blue-regal;
+    }
+}
+
 .ListItem {
     // @TODO: Refactor this to use the @at-root directive as soon
     // as a fix becomes available.
