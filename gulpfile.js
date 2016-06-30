@@ -9,7 +9,7 @@ var glob            = require('glob');
 var gulpif          = require('gulp-if');
 var svgmin          = require('gulp-svgmin');
 var grunticon       = require('grunticon-lib');
-var pixRem          = require('gulp-pixrem');
+var pixrem          = require('gulp-pixrem');
 var plumber         = require('gulp-plumber');
 var runSequence     = require('run-sequence');
 var sass            = require('gulp-sass');
@@ -26,16 +26,21 @@ var templatesPath = 'templates';
 
 var production = argv.production >= 1;
 
+var sassConfig = {
+    includePaths: [
+        'node_modules/breakpoint-sass/stylesheets/',
+      // 'node_modules/modularscale-sass/stylesheets',
+    ].concat(bourbon),
+    // outputStyle: 'compressed'
+};
+
 /* =================================== */
 /* *** SASS *** */
 
 gulp.task('styles', ['clean-css', 'lint-sass'], function () {
     return gulp.src(srcPath + '/sass/**/*.s+(a|c)ss')
     .pipe(plumber())
-    .pipe(sass({
-        includePaths: [].concat(bourbon),
-        outputStyle: 'compressed'
-    }).on('error', sass.logError))
+    .pipe(sass(sassConfig).on('error', sass.logError))
     .pipe(bless())
     .pipe(autoprefixer({
         browsers: [
@@ -45,6 +50,7 @@ gulp.task('styles', ['clean-css', 'lint-sass'], function () {
             '> 0%'
         ]
     }))
+    .pipe(pixrem())
     .pipe(gulpif(production, cssNano()))
     .pipe(plumber.stop())
     .pipe(gulp.dest(distPath + '/css'))
@@ -81,9 +87,16 @@ gulp.task('crush-svgs', ['clean-generated-icons'], function () {
 
 gulp.task('icons', ['clean-icons', 'crush-svgs'], function (done) {
     var icons = glob.sync(srcPath + '/images/generated-icons/*.*');
-    var options = {};
+    var options = {
+        dynamicColorOnly: true,
+        colors: {
+            orangeBittersweet: '#ff6655',
+            bluePelorous: '#2d9ec5',
+            blueRegal: '#213d55'
+        }
+    };
 
-    var iconsTask = new grunticon(icons, distPath + '/icons');
+    var iconsTask = new grunticon(icons, distPath + '/icons', options);
 
     iconsTask.process(done);
 });
