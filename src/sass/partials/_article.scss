@@ -1,15 +1,15 @@
 .Article {
 
     &-fullWidthImage {
-        width: 100%;
         display: block;
+        width: 100%;
     }
 
     &-body {
         padding-top: $global-padding / 2;
         padding-right: $global-padding;
-        padding-left: $global-padding;
         padding-bottom: $global-padding / 2;
+        padding-left: $global-padding;
     }
 
 }

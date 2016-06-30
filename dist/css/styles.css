@@ -70,7 +70,7 @@ h5 {
 
 h6 {
   font-size: 12px;
-  font-size: 0.75rem;
+  font-size: .75rem;
   line-height: 16px;
   line-height: 1rem;
 }
@@ -601,15 +601,15 @@ h6 {
 }
 
 .Article-fullWidthImage {
-  width: 100%;
   display: block;
+  width: 100%;
 }
 
 .Article-body {
   padding-top: 12px;
   padding-right: 24px;
-  padding-left: 24px;
   padding-bottom: 12px;
+  padding-left: 24px;
 }
 
 .Auth {
