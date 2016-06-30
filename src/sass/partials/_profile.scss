@@ -1,9 +1,11 @@
-.Icons {
+.Profile {
     // @TODO: Refactor this to use the @at-root directive as soon
     // as a fix becomes available.
     $scoped-block-name: unquote("#{&}");
 
-    display: inline-block;
-    width: 100%;
-    padding-bottom: 100%;
+    padding: 1rem;
+    &-number {
+        font-size: 2rem;
+        weight: 600;
+    }
 }

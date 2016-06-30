@@ -362,6 +362,17 @@ input {
   background-color: #213d55;
 }
 
+.Profile {
+  padding: 16px;
+  padding: 1rem;
+}
+
+.Profile-number {
+  font-size: 32px;
+  font-size: 2rem;
+  weight: 600;
+}
+
 .SelectBox-label {
   display: block;
   width: 100%;
