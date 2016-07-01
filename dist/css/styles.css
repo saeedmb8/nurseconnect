@@ -375,9 +375,16 @@ input {
   background-color: #ffffff;
 }
 
+.Profile::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
 .Profile-imageWrapper {
   display: inline-block;
   width: 25%;
+  max-width: 150px;
 }
 
 .Profile-imageContainer {
@@ -394,27 +401,27 @@ input {
 .Profile-imageContainer .Profile-image {
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 .Profile-msg {
-  width: 73%;
-  padding-left: 16px;
+  width: 75%;
+  padding-top: 8px;
+  padding-top: .5rem;
+  padding-top: 5%;
   padding-left: 16px;
   padding-left: 1rem;
   float: right;
-  left: 27%;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-     -moz-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-       -o-transform: translateY(-50%);
-          transform: translateY(-50%);
+}
+
+@media (min-width: 20em) {
+  .Profile-msg {
+    padding-right: 1rem;
+  }
 }
 
 .Profile-title {
