@@ -5,4 +5,29 @@
     padding-left: $global-padding;
     background-color: $color-blue-spindle; 
 
+
+    &-button{
+	    display: block;
+	    width: 100%;
+	    margin-top: 1rem;
+	    margin-bottom: 1rem;
+	    padding-top: 1rem;
+	    padding-bottom: 1rem;
+	    border-radius: 2rem;
+	    background-color: $color-white;
+    }
+
+    input[type=text]:focus {
+    	width: 100%;
+	}
+
+	&-link {
+        display: inline-block;
+        width: 1.75rem;
+        height: 1.75rem;
+  	    float: right;   
+    }
+	
+  
+
  }
