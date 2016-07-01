@@ -30,7 +30,13 @@
         font-size: 1.25rem;
         font-weight: 400;
     }
+
+    &--highlight {
+        background-color: $color-blue-spindle;
+    }
 }
+
+
 
 .ListItem {
     // @TODO: Refactor this to use the @at-root directive as soon
@@ -43,7 +49,10 @@
     padding-right: .5rem;
     padding-bottom: 1rem;
     padding-left: 1rem;
-    border-bottom: 1px solid $color-white;
+
+    & + & {
+        border-top: 1px solid $color-white;
+    }
 
     &--leftIcon {
         padding-top: 1.25rem;
@@ -57,6 +66,14 @@
 
     &--withImage {
         padding-right: 5rem;
+    }
+
+    &--withImageLarge {
+        padding-right: 7rem;
+    }
+
+    &--highlight {
+        background-color: $color-blue-spindle;
     }
 
     &-title {
@@ -113,6 +130,16 @@
         padding: 0;
     }
 
+    &-statsItem {
+        display: inline-block;
+        padding-right: .5rem;
+        color: $color-grey-light-slate;
+        font-size: .75rem;
+    }
+    &-statsIcon {
+        width: 1rem;
+        height: 1rem;
+    }
 
     &-image {
         position: absolute;
@@ -124,6 +151,11 @@
         margin: auto 0;
         padding: 0;
         border-radius: 5px;
+
+        &--large {
+            width: 5rem;
+            height: 5rem;
+        }
     }
 
     &-iconRight,
