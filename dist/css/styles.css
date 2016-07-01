@@ -42,6 +42,7 @@ input {
 
 .Breadcrumb {
   display: block;
+  margin: 0;
   padding-top: 12px;
   padding-top: .75rem;
   padding-right: 8px;
