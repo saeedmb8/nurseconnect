@@ -98,14 +98,16 @@ input {
   margin-top: 1rem;
   margin-bottom: 16px;
   margin-bottom: 1rem;
-  padding-top: 16px;
-  padding-top: 1rem;
-  padding-bottom: 16px;
-  padding-bottom: 1rem;
+  padding-top: 12px;
+  padding-top: .75rem;
+  padding-bottom: 12px;
+  padding-bottom: .75rem;
   -webkit-border-radius: 2rem;
      -moz-border-radius: 2rem;
           border-radius: 2rem;
   color: #ffffff;
+  font-size: 12px;
+  font-size: .75rem;
   text-align: center;
   text-transform: uppercase;
 }
@@ -486,6 +488,10 @@ input {
   list-style: none;
 }
 
+.ListView--menu {
+  background-color: #ffffff;
+}
+
 .ListTitle {
   display: block;
   position: relative;
@@ -516,21 +522,28 @@ input {
   font-weight: 400;
 }
 
+.ListTitle--menu {
+  padding-bottom: 0;
+  background-color: #ffffff;
+}
+
 .ListTitle--highlight {
   background-color: #c0d6dd;
+}
+
+.ListItemWrapper + .ListItemWrapper {
+  border-top: 1px solid #ffffff;
+}
+
+.ListItemWrapper--menu + .ListItemWrapper--menu {
+  border-top: 1px solid #dae8eb;
 }
 
 .ListItem {
   display: block;
   position: relative;
-  padding-top: 16px;
-  padding-top: 1rem;
-  padding-right: 8px;
-  padding-right: .5rem;
-  padding-bottom: 16px;
-  padding-bottom: 1rem;
-  padding-left: 16px;
-  padding-left: 1rem;
+  padding: 16px;
+  padding: 1rem;
 }
 
 .ListItem + .ListItem {

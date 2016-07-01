@@ -6,6 +6,10 @@
     margin: 0;
     padding: 0;
     list-style: none;
+
+    &--menu {
+        background-color: $color-white;
+    }
 }
 
 .ListTitle {
@@ -31,12 +35,25 @@
         font-weight: 400;
     }
 
+    &--menu {
+        padding-bottom: 0;
+        background-color: $color-white;
+    }
+
     &--highlight {
         background-color: $color-blue-spindle;
     }
 }
 
+.ListItemWrapper {
+    & + & {
+        border-top: 1px solid $color-white;
+    }
 
+    &--menu + &--menu {
+        border-top: 1px solid $color-blue-tranquil;
+    }
+}
 
 .ListItem {
     // @TODO: Refactor this to use the @at-root directive as soon
@@ -45,10 +62,7 @@
 
     display: block;
     position: relative;
-    padding-top: 1rem;
-    padding-right: .5rem;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
+    padding: 1rem;
 
     & + & {
         border-top: 1px solid $color-white;
