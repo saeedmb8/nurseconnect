@@ -609,6 +609,33 @@ input {
   color: #ff6655;
 }
 
+.Footer {
+  font-size: 12.8px;
+  font-size: .8rem;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-top: 1px solid #7e93a0;
+}
+
+.Footer-link {
+  color: #7e93a0;
+  border-bottom: 1px solid #7e93a0;
+}
+
+.Footer-paragraph {
+  color: #7e93a0;
+}
+
+.Footer-paragraph:first-child {
+  margin-bottom: 8px;
+  margin-bottom: .5rem;
+}
+
+.Footer-paragraph:last-child {
+  margin-top: 8px;
+  margin-top: .5rem;
+}
+
 .Auth {
   padding-top: 48px;
   padding-bottom: 48px;
