@@ -609,7 +609,7 @@ input {
   color: #ff6655;
 }
 
-footer {
+.Footer {
   font-size: 12.8px;
   font-size: .8rem;
   padding-left: 24px;
@@ -617,21 +617,21 @@ footer {
   border-top: 1px solid #7e93a0;
 }
 
-footer a {
+.Footer-link {
   color: #7e93a0;
   border-bottom: 1px solid #7e93a0;
 }
 
-footer p {
+.Footer-paragraph {
   color: #7e93a0;
 }
 
-footer p:first-child {
+.Footer-paragraph:first-child {
   margin-bottom: 8px;
   margin-bottom: .5rem;
 }
 
-footer p:last-child {
+.Footer-paragraph:last-child {
   margin-top: 8px;
   margin-top: .5rem;
 }

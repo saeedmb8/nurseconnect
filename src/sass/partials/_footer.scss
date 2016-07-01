@@ -1,15 +1,15 @@
-footer {
+.Footer {
     font-size: .8rem;
     padding-left: $global-padding;
     padding-right: $global-padding;
     border-top: 1px solid $color-grey-light-slate;
 
-    a {
+    &-link {
         color: $color-grey-light-slate;
         border-bottom: 1px solid $color-grey-light-slate;
     }
 
-    p {
+    &-paragraph {
         color: $color-grey-light-slate;
 
         &:first-child {
