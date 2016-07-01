@@ -82,6 +82,10 @@
         color: $color-blue-pelorous;
         font-size: 1.25rem;
         font-weight: 400;
+
+        &--bold {
+            font-weight: 600;
+        }
     }
 
     &-subtitle {
@@ -132,13 +136,20 @@
 
     &-statsItem {
         display: inline-block;
+        padding-top: .5rem;
         padding-right: .5rem;
-        color: $color-grey-light-slate;
-        font-size: .75rem;
     }
+
     &-statsIcon {
         width: 1rem;
         height: 1rem;
+    }
+
+    &-statsNumber {
+        display: inline-block;
+        color: $color-grey-light-slate;
+        font-size: .75rem;
+        vertical-align: top;
     }
 
     &-image {
