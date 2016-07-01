@@ -3,6 +3,7 @@
     // as a fix becomes available.
     $scoped-block-name: unquote("#{&}");
 
+    position: relative;
     margin: 1rem;
     padding: 1rem;
     border-radius: .25rem;
@@ -33,9 +34,14 @@
     }
 
     &-msg {
-        width: 75%;
+        width: 73%;
+        padding-left: 16px;
         padding-left: 1rem;
         float: right;
+        left: 27%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     &-title {

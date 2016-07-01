@@ -363,6 +363,7 @@ input {
 }
 
 .Profile {
+  position: relative;
   margin: 16px;
   margin: 1rem;
   padding: 16px;
@@ -400,10 +401,19 @@ input {
 }
 
 .Profile-msg {
-  width: 75%;
+  width: 73%;
+  padding-left: 16px;
   padding-left: 16px;
   padding-left: 1rem;
   float: right;
+  left: 27%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .Profile-title {
