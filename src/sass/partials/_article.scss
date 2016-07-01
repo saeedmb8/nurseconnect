@@ -2,8 +2,8 @@
 
     &-fullWidthImage {
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 ratio */
         height: 0;
+        padding-bottom: 56.25%; // 16:9 ratio
         overflow: hidden;
 
         img {
