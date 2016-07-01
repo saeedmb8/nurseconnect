@@ -363,6 +363,83 @@ input {
   background-color: #213d55;
 }
 
+.Profile {
+  position: relative;
+  margin: 16px;
+  margin: 1rem;
+  padding: 16px;
+  padding: 1rem;
+  -webkit-border-radius: .25rem;
+     -moz-border-radius: .25rem;
+          border-radius: .25rem;
+  background-color: #ffffff;
+}
+
+.Profile::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.Profile-imageWrapper {
+  display: inline-block;
+  width: 25%;
+  max-width: 150px;
+}
+
+.Profile-imageContainer {
+  display: block;
+  position: relative;
+  height: 0;
+  padding-bottom: 100%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  overflow: hidden;
+}
+
+.Profile-imageContainer .Profile-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Profile-msg {
+  width: 75%;
+  padding-top: 8px;
+  padding-top: .5rem;
+  padding-top: 5%;
+  padding-left: 16px;
+  padding-left: 1rem;
+  float: right;
+}
+
+@media (min-width: 20em) {
+  .Profile-msg {
+    padding-right: 1rem;
+  }
+}
+
+.Profile-title {
+  display: block;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.Profile-progressLink {
+  display: block;
+  margin-top: 4px;
+  margin-top: .25rem;
+  color: #2d9ec5;
+  font-size: 12px;
+  font-size: .75rem;
+}
+
 .SelectBox-label {
   display: block;
   width: 100%;
@@ -562,7 +639,7 @@ input {
   overflow: hidden;
 }
 
-.Article-fullWidthImage img {
+.Article-fullWidthImage .Article-image {
   position: absolute;
   top: 0;
   left: 0;

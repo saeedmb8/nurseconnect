@@ -1,4 +1,7 @@
 .Article {
+    // @TODO: Refactor this to use the @at-root directive as soon
+    // as a fix becomes available.
+    $scoped-block-name: unquote("#{&}");
 
     &-fullWidthImage {
         position: relative;
@@ -6,7 +9,7 @@
         padding-bottom: 56.25%; // 16:9 ratio
         overflow: hidden;
 
-        img {
+        #{$scoped-block-name}-image {
             position: absolute;
             top: 0;
             left: 0;
