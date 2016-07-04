@@ -611,6 +611,21 @@ input {
   padding-bottom: 12px;
   padding-left: 24px;
   background-color: #c0d6dd;
+  /*img {
+    	//display: block;
+    	//float: right;
+    	margin: 0;
+    	padding: 0;
+    	width: 2rem;
+        height: 2rem;
+        border-radius: 0rem 2rem 2rem 0rem;
+        background-color: $color-blue-pelorous;
+    }*/
+  /*padding-top: 1rem;
+	    padding-bottom: 1rem;
+	    padding-left: 1rem;
+	    padding-right: 4rem;  
+    	border-radius: 0rem 2rem 2rem 0rem;*/
 }
 
 .ArticleSearch-button {
@@ -624,23 +639,36 @@ input {
   padding-top: 1rem;
   padding-bottom: 16px;
   padding-bottom: 1rem;
+  padding-left: 16px;
+  padding-left: 1rem;
+  padding-right: 128px;
+  padding-right: 8rem;
   -webkit-border-radius: 2rem;
      -moz-border-radius: 2rem;
           border-radius: 2rem;
-  background-color: #c0d6dd;
+  background-color: #ffffff;
 }
 
 .ArticleSearch input[type=text]:focus {
   width: 100%;
 }
 
-.ArticleSearch-link {
-  display: inline-block;
-  width: 28px;
-  width: 1.75rem;
-  height: 28px;
-  height: 1.75rem;
-  float: right;
+.ArticleSearch .icon-search-white {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  width: 2rem;
+  height: 32px;
+  height: 2rem;
+  -webkit-border-radius: 0rem 2rem 2rem 0rem;
+     -moz-border-radius: 0rem 2rem 2rem 0rem;
+          border-radius: 0rem 2rem 2rem 0rem;
+  background-color: #2d9ec5;
 }
 
 .Quote {

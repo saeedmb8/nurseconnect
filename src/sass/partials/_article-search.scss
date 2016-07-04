@@ -6,27 +6,68 @@
     background-color: $color-blue-spindle; 
 
 
-    &-button{
+    &-button {
 	    display: block;
 	    width: 100%;
 	    margin-top: 1rem;
 	    margin-bottom: 1rem;
 	    padding-top: 1rem;
 	    padding-bottom: 1rem;
+	    padding-left: 1rem;
+	    padding-right: 8rem;
 	    border-radius: 2rem;
-	    background-color: $color-blue-spindle;
+	    background-color: $color-white;
     }
 
     input[type=text]:focus {
     	width: 100%;
 	}
 
-	&-link {
-        display: inline-block;
-        width: 1.75rem;
-        height: 1.75rem;
-  	    float: right;   
+	//&-link {
+	//		display: block;
+   //   width: 2rem;
+   //     height: 2rem;
+  //	  loat: right;  
+  	    //overflow: hidden;
+  //	  border-radius: 0rem 2rem 2rem 0rem;
+  //	  background-color: $color-blue-pelorous;
+  	    //color: $color-blue-pelorous;
+  	      
+   // }
+
+    .icon-search-white{
+    	display: flex;
+    	margin: 0;
+    	padding: 0;
+   		width: 2rem;
+		height: 2rem;
+		//float: right;
+		//overflow: hidden;
+		border-radius: 0rem 2rem 2rem 0rem;
+        background-color: $color-blue-pelorous;
     }
+    
+    /*img {
+    	//display: block;
+    	//float: right;
+    	margin: 0;
+    	padding: 0;
+    	width: 2rem;
+        height: 2rem;
+        border-radius: 0rem 2rem 2rem 0rem;
+        background-color: $color-blue-pelorous;
+    }*/
+
+   //&-buttonBackground {
+    	/*padding-top: 1rem;
+	    padding-bottom: 1rem;
+	    padding-left: 1rem;
+	    padding-right: 4rem;  
+    	border-radius: 0rem 2rem 2rem 0rem;*/
+   	//	width: 2rem;
+    //   height: 2rem;
+    	
+    //} 
 	
   
 
