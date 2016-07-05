@@ -1,5 +1,5 @@
 .OnOffSwitch {
-    position: relative; width: 62px;
+    position: relative; width: 60px;
     user-select: none;
 
    &-checkbox {
@@ -32,7 +32,7 @@
         display: block; width: 31px; margin: -0.5px;
         background: #2D9EC5;
         position: absolute; top: 0; bottom: 0;
-        right: 32px;
+        right: 30px;
         border: 2px solid #2D9EC5; border-radius: 20px;
         transition: all 0.3s ease-in 0s; 
     }

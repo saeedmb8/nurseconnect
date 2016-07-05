@@ -701,6 +701,48 @@ input {
   right: 1rem;
 }
 
+.ListItem-onOffSwitchRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  width: 1.75rem;
+  height: 28px;
+  height: 1.75rem;
+  margin: auto 0;
+  padding: 0;
+  right: 40px;
+  right: 2.5rem;
+}
+
+.ListItem-number {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 160px;
+  width: 10rem;
+  height: 48px;
+  height: 3rem;
+  margin: auto 0;
+  padding: 0;
+  right: 16px;
+  right: 1rem;
+}
+
+.ListItem-password {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 160px;
+  width: 10rem;
+  height: 48px;
+  height: 3rem;
+  margin: auto 0;
+  padding: 0;
+  right: 16px;
+  right: 1rem;
+}
+
 .Article-fullWidthImage {
   position: relative;
   height: 0;
@@ -850,7 +892,7 @@ input {
 
 .OnOffSwitch {
   position: relative;
-  width: 62px;
+  width: 60px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -917,7 +959,7 @@ input {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 32px;
+  right: 30px;
   border: 2px solid #2D9EC5;
   -webkit-border-radius: 20px;
      -moz-border-radius: 20px;
