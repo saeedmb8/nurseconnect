@@ -211,31 +211,18 @@
         height: 1.75rem;
         margin: auto 0;
         padding: 0;
-        right: 2.5rem;  
+        right: 2.5rem;
     }
 
-    &-number {
+    &-userDetailsText {
         position: absolute;
         top: 0;
         bottom: 0;
         width: 10rem;
-        height: 3rem;
-        margin: auto 0;
         padding: 0;
         right: 1rem;
-    }
-
-    &-password {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 10rem;
-        height: 3rem;
-        margin: auto 0;
-        padding: 0;
-        right: 1rem;
+        color: $color-grey-light-slate;
     }
 
 
 }
-

@@ -746,32 +746,16 @@ input {
   right: 2.5rem;
 }
 
-.ListItem-number {
+.ListItem-userDetailsText {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 160px;
   width: 10rem;
-  height: 48px;
-  height: 3rem;
-  margin: auto 0;
   padding: 0;
   right: 16px;
   right: 1rem;
-}
-
-.ListItem-password {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 160px;
-  width: 10rem;
-  height: 48px;
-  height: 3rem;
-  margin: auto 0;
-  padding: 0;
-  right: 16px;
-  right: 1rem;
+  color: #7e93a0;
 }
 
 .Article-fullWidthImage {
