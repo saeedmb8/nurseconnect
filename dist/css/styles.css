@@ -73,12 +73,17 @@ input {
   padding-left: .2rem;
 }
 
-.Breadcrumb-backIcon {
-  background-color: #ffffff;
-  padding-right: 1.6px;
-  padding-right: .1rem;
-  padding-left: 3.2px;
-  padding-left: .2rem;
+.Breadcrumb-back {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  position: relative;
+  padding: 16px;
+  padding: 1rem;
+  border-top: 1px solid #ffffff;
+  background-color: #dae8eb;
+  color: #2d9ec5;
 }
 
 .Breadcrumb-item--active {
