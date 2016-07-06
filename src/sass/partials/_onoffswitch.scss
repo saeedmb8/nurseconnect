@@ -1,5 +1,4 @@
 .OnOffSwitch {
-<<<<<<< HEAD
     position: relative;
     width: 60px;
     user-select: none;
@@ -20,7 +19,7 @@
         display: block;
         width: 200%;
         margin-left: -100%;
-        transition: margin .3s ease-in 0s;
+        transition: margin 0.3s ease-in 0s;
     }
 
     &-inner:before, &-inner:after {
@@ -55,75 +54,19 @@
         right: 30px;
         bottom: 0;
         width: 31px;
-        margin: -.5px;
-        transition: all .3s ease-in 0s;
+        margin: -0.5px;
+        transition: all 0.3s ease-in 0s;
         border: 2px solid #2d9ec5;
         border-radius: 20px;
         background: #2d9ec5;
     }
 
-    &-checkbox:checked + &-label {
-        margin-left: 0;
-    }
-
-    &-inner {
-        margin-left: 0;
-    }
-
-    &-checkbox:checked + &-label {
-        right: 0;
-    }
-
-    &-switch {
-        right: 0;
-=======
-    position: relative; width: 60px;
-    user-select: none;
-
-   &-checkbox {
-    display: none;
-    }
-    &-label {
-        display: block; overflow: hidden; cursor: pointer;
-        border: 2px solid #FFFFFF; border-radius: 20px;
-    }
-    &-inner {
-        display: block; width: 200%; margin-left: -100%;
-        transition: margin 0.3s ease-in 0s;
-    }
-    &-inner:before, &-inner:after {
-        display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
-        box-sizing: border-box;
-    }
-    &-inner:before {
-        content: "";
-        padding-left: 0px;
-        background-color: #FFFFFF; color: #FFFFFF;
-    }
-    &-inner:after {
-        content: "";
-        padding-right: 0px;
-        background-color: #FFFFFF; color: #FFFFFF;
-        text-align: right;
-    }
-    &-switch {
-        display: block; width: 31px; margin: -0.5px;
-        background: #2D9EC5;
-        position: absolute; top: 0; bottom: 0;
-        right: 30px;
-        border: 2px solid #2D9EC5; border-radius: 20px;
-        transition: all 0.3s ease-in 0s; 
-    }
     &-checkbox:checked + &-label &-inner {
         margin-left: 0;
     }
+
     &-checkbox:checked + &-label &-switch {
-        right: 0px; 
->>>>>>> feature/list-view
+        right: 0;
     }
-
-
-
-
 
 }
