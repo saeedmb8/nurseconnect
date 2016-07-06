@@ -73,6 +73,14 @@ input {
   padding-left: .2rem;
 }
 
+.Breadcrumb-backIcon {
+  background-color: #ffffff;
+  padding-right: 1.6px;
+  padding-right: .1rem;
+  padding-left: 3.2px;
+  padding-left: .2rem;
+}
+
 .Breadcrumb-item--active {
   color: #2d9ec5;
 }
@@ -778,7 +786,8 @@ input {
   font-size: .8rem;
   padding-left: 24px;
   padding-right: 24px;
-  border-top: 1px solid #7e93a0;
+  border-top: 1px solid #dae8eb;
+  background-color: #ffffff;
 }
 
 .Footer-link {

@@ -25,6 +25,11 @@
         padding-right: .1rem;
         padding-left: .2rem;
     }
+    &-backIcon {
+        background-color: $color-white;
+        padding-right: .1rem;
+        padding-left: .2rem;
+    }
 
     &-item--active {
         color: $color-blue-pelorous;
