@@ -505,6 +505,13 @@ input {
   background-color: #ffffff;
 }
 
+.ListViewProfile {
+  background-color: #c0d6dd;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .ListTitle {
   display: block;
   position: relative;
