@@ -2,7 +2,9 @@
     font-size: .8rem;
     padding-left: $global-padding;
     padding-right: $global-padding;
-    border-top: 1px solid $color-grey-light-slate;
+    padding-bottom: 1rem;
+    border-top: 1px solid $color-blue-tranquil;
+    background-color: $color-white;
 
     &-link {
         color: $color-grey-light-slate;
@@ -11,13 +13,14 @@
 
     &-paragraph {
         color: $color-grey-light-slate;
-
         &:first-child {
             margin-bottom: .5rem;
         }
 
         &:last-child {
             margin-top: .5rem;
+            margin-bottom: 0;
         }
     }
+
 }
