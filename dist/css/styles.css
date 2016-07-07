@@ -884,6 +884,8 @@ input {
   font-size: .8rem;
   padding-left: 24px;
   padding-right: 24px;
+  padding-bottom: 16px;
+  padding-bottom: 1rem;
   border-top: 1px solid #dae8eb;
   background-color: #ffffff;
 }
@@ -905,6 +907,7 @@ input {
 .Footer-paragraph:last-child {
   margin-top: 8px;
   margin-top: .5rem;
+  margin-bottom: 0;
 }
 
 .OnOffSwitch {
