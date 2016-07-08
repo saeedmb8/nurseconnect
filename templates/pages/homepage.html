@@ -18,6 +18,7 @@
     </head>
     <body>
         <main role="main">
+
             <header class="Navbar">
                 <a href="#" class="Navbar-logo">
                     <span class="Navbar-logoIcon Icons icon-logo" aria-hidden="true"></span>
@@ -47,50 +48,117 @@
                 </nav>
             </header><!--/Header-->
 
-            <ul class="Breadcrumb">
-                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/pages/homepages.html">Home
-                    <span class="Breadcrumb-nextIcon">></span>
-                </a></li>
-                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/pages/categories.html">Category 2<span class="Breadcrumb-nextIcon">></span></a>
-                </li>
-                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/pages/subcategories.html">Subcategory 5<span class="Breadcrumb-nextIcon">></span></a>
-                </li>
-                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/pages/article-listing.html">Articles<span class="Breadcrumb-nextIcon">></span></a>
-                </li>
-                <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link" href="#">Why study further?</a>
-                </li>
-            </ul><!--/Breadcrumb-->
-
-            <div class="Article">
-                <div class="Article-fullWidthImage">
-                    <img class="Article-image" src="/dist/images/article.jpg" />
+            <div class="Profile">
+                <div class="Profile-imageWrapper">
+                    <div class="Profile-imageContainer">
+                        <img class="Profile-image" src="http://placehold.it/150x150" alt="" />
+                    </div>
                 </div>
-                <div class="Article-body">
-                    <h1 class="Article-title">Why study further?</h1>
-                    <p class="Quote">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac vehicula ex, at mollis purus. Proin eu venenatis metus, varius condimentum velit ac vehul”</p>
-                    <p>Nam nec eros orci. <strong>Mauris ut tellus non sapien dignissim blandit.</strong> Duis maximus ullamcorper justo. Nam non iaculis enim. Praesent et interdum magna. Sed id maximus est. Nunc aliquet faucibus diam quis commodo. In semper orci non ante <em>hendrerit, sed fringilla nunc commodo.</em> Vestibulum lobortis, libero ut rutrum mollis, mauris nulla vulputate dui, eget porta nulla augue ut elit.</p>
-                    <p>Nam nec eros orci. Mauris ut tellus non sapien dignissim blandit. Duis maximus ullamcorper justo. Nam non iaculis enim. Praesent et interdum magna. Sed id maximus est. Nunc aliquet faucibus diam quis commodo. In semper orci non ante hendrerit, sed fringilla nunc commodo. Vestibulum lobortis, libero ut rutrum mollis, mauris nulla vulputate dui, eget porta nulla augue ut elit.</p>
-                    <ul>
-                        <li>Nam nec eros orci</li>
-                        <li>Nam nec eros orci</li>
-                        <li>Nam nec eros orci</li>
-                    </ul>
-                    <ol>
-                        <li>Nam nec eros orci</li>
-                        <li>Nam nec eros orci</li>
-                        <li>Nam nec eros orci</li>
-                    </ol>
+                <div class="Profile-msg">
+                    <span class="Profile-title">You're doing great Busi!</span>
+                    <a href="#" class="Profile-progressLink" href="#">View your progress</a>
                 </div>
-            </div><!--/Article-->
+            </div><!--/Profile-->
 
-            <div class="ArticleActions">
-                <a class="ArticleActions-title" href="#">Share</a>
-                <a class="PillButton PillButton--blue" href="#">Share on WhatsApp</a>
-                <a class="PillButton PillButton--blue" href="#">Share on Facebook</a>
-                <a class="ArticleActions-title" href="#">Save</a>
-                <a class="PillButton PillButton--blue" href="#">Download as PDF</a>
-                <a class="PillButton PillButton--blue" href="#">Bookmark this Page</a>
-            </div><!--/ArticleActions-->
+            <div class="ListTitle ListTitle--highlight">
+                <h2 class="ListTitle-name">Topic of the day</h2>
+            </div>
+            <ul class="ListView">
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImageLarge ListItem--highlight">
+                        <h3 class="ListItem-title">Children's Health</h3>
+                        <p class="ListItem-desc">Children represent the future, adn ensuring therehealthy Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            <div class="ListItem-statsItem">
+                                    <span class="ListItem-statsIcon Icons icon-users-blueRegal"></span>
+                                    <span class="u-screenReaderText">People</span>
+                                    <span class="ListItem-statsNumber">100</span>
+                            </div>
+                            <div class="ListItem-statsItem">
+                                    <span class="ListItem-statsIcon Icons icon-comments-blueRegal"></span>
+                                    <span class="u-screenReaderText">Comments</span>
+                                    <span class="ListItem-statsNumber">24</span>
+                            </div>
+                            <div class="ListItem-statsItem">
+                                    <span class="ListItem-statsIcon Icons icon-star-blueRegal"></span>
+                                    <span class="u-screenReaderText">Stars</span>
+                                    <span class="ListItem-statsNumber">34</span>
+                            </div>
+                        <img class="ListItem-image ListItem-image--large" src="http://placehold.it/100x100" alt="" />
+                    </a>
+                </li>
+            </ul><!--/Topic Of the day-->
+
+            <div class="ListTitle">
+                <h1 class="ListTitle-name">new groups</h1>
+            </div>
+            <ul class="ListView">
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImage">
+                        <h3 class="ListItem-title">Medical advice</h3>
+                        <p class="ListItem-desc ListItem-desc--icon"><span class="ListItem-descIcon Icons icon-location-blueRegal"></span>44 Stanely, Milpark, Johannesburg</p>
+                        <span class="ListItem-image Icons icon-pillsicon-blueRegal"></span>
+                    </a>
+                </li>
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImage">
+                        <h3 class="ListItem-title">Doornpoort Clinic</h3>
+                        <p class="ListItem-desc ListItem-desc--icon"><span class="ListItem-descIcon Icons icon-location-blueRegal"></span>c/o Van der Merwe and Cottonwood Street Pretoria</p>
+                        <span class="ListItem-image Icons icon-clinic-blueRegal"></span>
+                    </a>
+                </li>
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImage">
+                        <h3 class="ListItem-title">New medicine</h3>
+                        <p class="ListItem-desc ListItem-desc--icon"><span class="ListItem-descIcon Icons icon-location-blueRegal"></span>44 Stanely, Milpark, Johannesburg</p>
+                        <img class="ListItem-image " src="http://placehold.it/100x100" alt="" />
+                    </a>
+                </li>
+            </ul><!--/new groups-->
+
+            <div class="ListTitle ListTitle--highlight">
+                <h2 class="ListTitle-name">helpdesk</h2>
+            </div>
+            <ul class="ListView">
+                <li class="ListItem ListItem--highlight">
+                    <h3 class="ListItem-title">New software</h3>
+                    <p class="ListItem-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+                    <a href="#" class="PillButton PillButton--blue" href="#">sign up now</a>
+                </li>
+            </ul><!--/help desk-->
+
+            <div class="ListTitle">
+                <h1 class="ListTitle-name">study</h1>
+            </div>
+            <ul class="ListView">
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImage">
+                        <h3 class="ListItem-title">Behavioral Sciences and studies</h3>
+                        <p class="ListItem-desc">A short description about the material and lorem ipsum</p>
+                        <span class="ListItem-image Icons icon-clipboard-blueRegal"></span>
+                    </a>
+                </li>
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImage">
+                        <h3 class="ListItem-title">Microbiology</h3>
+                        <p class="ListItem-desc">A short description</p>
+                        <span class="ListItem-image Icons icon-clinic-blueRegal"></span>
+                    </a>
+                </li>
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImage">
+                        <h3 class="ListItem-title">Maternal Health</h3>
+                        <p class="ListItem-desc">A short description about the material</p>
+                        <span class="ListItem-image Icons icon-baby-blueRegal"></span>
+                    </a>
+                </li>
+                <li class="ListItemWrapper">
+                    <a href="#" class="ListItem ListItem--withImage">
+                        <h3 class="ListItem-title">Health Sciences</h3>
+                        <p class="ListItem-desc">A short description about the material</p>
+                        <span class="ListItem-image Icons icon-fruit-blueRegal"></span>
+                    </a>
+                </li>
+            </ul><!--/study-->
 
             <div class="ArticleSearch" id ="search">
                 <form action="/pages/keywordsearch.html">
@@ -103,7 +171,7 @@
                     </div>
                 </form>
             </div><!--search-->
-
+            
             <div class="ListTitle ListTitle--menu" id="menu">
                 <h1 class="ListTitle-name">Menu</h1>
             </div>
@@ -155,6 +223,7 @@
                 <p class="Footer-paragraph"><a href="#" class="Footer-link">Privacy Policy</a> &nbsp; <a href="#" class="Footer-link">Terms of Use</a></p>
                 <p class="Footer-paragraph">&copy; 2016 Copyright National Department of Health</p>
             </footer><!--/Footer-->
+
         </main><!--/MAIN-->
     </body>
 </html>
