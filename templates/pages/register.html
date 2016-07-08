@@ -16,6 +16,7 @@
         </script>
         <noscript><link href="/dist/icons/icons.fallback.css" rel="stylesheet"></noscript>
         <script type="text/javascript">
+            //Checks if manager option is selected: If true-> undisables staffNumber field, otherwise remains disabled.
             function undisableBtn() {
                 var selectValue = document.getElementById("selectBox").value;
                 if (selectValue == "manager") {
