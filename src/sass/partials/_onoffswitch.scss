@@ -22,7 +22,8 @@
         transition: margin 0.3s ease-in 0s;
     }
 
-    &-inner:before, &-inner:after {
+    &-inner:before,
+    &-inner:after {
         display: block;
         width: 50%;
         height: 25px;

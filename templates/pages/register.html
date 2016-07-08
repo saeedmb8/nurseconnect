@@ -15,6 +15,16 @@
             grunticon(["/dist/icons/icons.data.svg.css", "/dist/icons/icons.data.png.css", "/dist/icons/icons.fallback.css"], grunticon.svgLoadedCallback);
         </script>
         <noscript><link href="/dist/icons/icons.fallback.css" rel="stylesheet"></noscript>
+        <script type="text/javascript">
+            function undisableBtn() {
+                var selectValue = document.getElementById("selectBox").value;
+                if (selectValue == "manager") {
+                    document.getElementById("staffNumber").disabled = false;
+                } else {
+                    document.getElementById("staffNumber").disabled = true;
+                }
+            }
+        </script>
     </head>
     <body>
         <main role="main">
@@ -34,15 +44,17 @@
                     </div>
                     <div class="FormField FormField--vanilla FormField--center">
                         <div class="SelectBox-wrapper Icons icon-chevron_down-bluePelorous">
-                            <select class="SelectBox-select" name="selectbox1">
-                                <option>Option One</option>
-                                <option>Option Two</option>
-                                <option>Option Three</option>
+                            <select class="SelectBox-select" name="selectbox1" id="selectBox" onchange="undisableBtn()">
+                                <option value="">Option One</option>
+                                <option value="">Option Two</option>
+                                <option value="">Option Three</option>
+                                <option value="manager">Manager</option>
                             </select>
+                            
                         </div>
                     </div>
                     <div class="FormField FormField--center FormField--bordered">
-                        <input class="FormField-input" type="text" name="staffnumber" value="" placeholder="Staff number" disabled>
+                        <input class="FormField-input" type="text" name="staffnumber" value="" placeholder="Staff number" id="staffNumber" disabled>
                     </div>
                     <div class="FormField FormField--center FormField--bordered">
                         <input class="FormField-input" type="text" name="facilitycode" value="" placeholder="Facility code">

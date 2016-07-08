@@ -21,26 +21,26 @@
     <body>
         <main role="main">
             <header class="Navbar">
-                <a class="Navbar-logo" href="">
+                <a href="#" class="Navbar-logo" href="">
                     <span class="Navbar-logoIcon Icons icon-logo" aria-hidden="true"></span>
                     <span class="u-screenReaderText">Nurse Connect Logo</span>
                 </a>
                 <nav class="Navbar-navigation">
                     <ul class="Navbar-linkList">
                         <li class="Navbar-item">
-                            <a class="Navbar-link" href="#">
+                            <a href="#search" class="Navbar-link">
                                 <span class="Icons icon-search-orangeBittersweet"></span>
                                 <span class="u-screenReaderText">Search</span>
                             </a>
                         </li>
                         <li class="Navbar-item">
-                            <a class="Navbar-link" href="#">
+                            <a href="/pages/profile.html" class="Navbar-link">
                                 <span class="Icons icon-profile-orangeBittersweet"></span>
                                 <span class="u-screenReaderText">Profile</span>
                             </a>
                         </li>
                         <li class="Navbar-item">
-                            <a class="Navbar-link" href="#">
+                            <a href="#menu" class="Navbar-link">
                                 <span class="Icons icon-burger-orangeBittersweet"></span>
                                 <span class="u-screenReaderText">Menu</span>
                             </a>
@@ -50,16 +50,16 @@
             </header><!--/Header-->
 
             <ul class="Breadcrumb">
-                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="#">Home
+                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/pages/homepage.html">Home
                     <span class="Breadcrumb-nextIcon">></span>
                 </a></li>
-                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="#">Category 2
+                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/pages/categories.html">Category 2
                     <span class="Breadcrumb-nextIcon">></span>
                 </a></li>
-                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="#">Subcategory 5
+                <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/pages/subcategories.html">Subcategory 5
                     <span class="Breadcrumb-nextIcon">></span>
                 </a></li>
-                <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link" href="#">Articles</a>
+                <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link" href="/pages/article-listing.html">Articles</a>
                 </li>
             </ul><!--/Breadcrumb-->
             <div class="ListTitle">
@@ -67,7 +67,7 @@
             </div>
             <ul class="ListView">
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--withImage">
+                    <a class="ListItem ListItem--withImage" href="/pages/article.html">
                         <h3 class="ListItem-title">Article 1</h3>
                         <h4 class="ListItem-subtitle">Study</h4>
                         <p class="ListItem-desc">A short description over two lines</p>
@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--withImage">
+                    <a class="ListItem ListItem--withImage" href="/pages/article.html">
                         <h3 class="ListItem-title">Article 2</h3>
                         <h4 class="ListItem-subtitle">Groups</h4>
                         <p class="ListItem-desc">A short description over two lines</p>
@@ -83,7 +83,7 @@
                     </a>
                 </li>
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--withImage">
+                    <a class="ListItem ListItem--withImage" href="/pages/article.html">
                         <h3 class="ListItem-title">Article 3</h3>
                         <h4 class="ListItem-subtitle">Facility Dashboard</h4>
                         <p class="ListItem-desc">A short description over two lines</p>
@@ -91,7 +91,7 @@
                     </a>
                 </li>
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--withImage">
+                    <a class="ListItem ListItem--withImage" href="/pages/article.html">
                         <h3 class="ListItem-title">Article 4</h3>
                         <h4 class="ListItem-subtitle">Study</h4>
                         <p class="ListItem-desc">A short description over two lines</p>
@@ -99,7 +99,7 @@
                     </a>
                 </li>
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--withImage">
+                    <a class="ListItem ListItem--withImage" href="/pages/article.html">
                         <h3 class="ListItem-title">Article 5</h3>
                         <h4 class="ListItem-subtitle">Group</h4>
                         <p class="ListItem-desc">A short description over two lines</p>
@@ -112,12 +112,12 @@
                 <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="#">
                     <span class="Breadcrumb-backIcon"><</span>
                 </a></li>
-                <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link" href="#">back</a>
+                <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link" href="/pages/subcategories.html">back</a>
                 </li>
             </ul><!--back-->
         
-            <div class="ArticleSearch">
-                <form>
+            <div class="ArticleSearch" id ="search">
+                <form action="/pages/keywordsearch.html">
                     <div class="ArticleSearch-fieldgroup">
                         <input class="ArticleSearch-field" type="text" name="search" placeholder="Search here...">
                         <button type="submit" class="ArticleSearch-button">
@@ -127,19 +127,19 @@
                     </div>
                 </form>
             </div><!--search-->
-           
-            <div class="ListTitle ListTitle--menu">
+
+            <div class="ListTitle ListTitle--menu" id="menu">
                 <h1 class="ListTitle-name">Menu</h1>
             </div>
             <ul class="ListView ListView--menu">
                 <li class="ListItemWrapper--menu">
-                    <a href="#" class="ListItem ListItem--rightIcon ">
+                    <a href="/pages/homepage.html" class="ListItem ListItem--rightIcon ">
                         <h3 class="ListItem-title">Home</h3>
                         <span class="ListItem-iconRight Icons icon-chevron_right-bluePelorous"></span>
                     </a>
                 </li>
                 <li class="ListItemWrapper--menu">
-                    <a href="#" class="ListItem ListItem--rightIcon ">
+                    <a href="/pages/categories.html" class="ListItem ListItem--rightIcon ">
                         <h3 class="ListItem-title">Categories</h3>
                         <p class="ListItem-desc">A short description about this heading</p>
                         <span class="ListItem-iconRight Icons icon-chevron_right-bluePelorous"></span>
