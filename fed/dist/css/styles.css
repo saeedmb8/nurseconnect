@@ -938,8 +938,8 @@ input {
   width: 200%;
   margin-left: -100%;
   -webkit-transition: margin 0.3s ease-in 0s;
-  -moz-transition: margin 0.3s ease-in 0s;
   -o-transition: margin 0.3s ease-in 0s;
+  -moz-transition: margin 0.3s ease-in 0s;
   transition: margin 0.3s ease-in 0s;
 }
 
@@ -980,8 +980,8 @@ input {
   width: 31px;
   margin: -0.5px;
   -webkit-transition: all 0.3s ease-in 0s;
-  -moz-transition: all 0.3s ease-in 0s;
   -o-transition: all 0.3s ease-in 0s;
+  -moz-transition: all 0.3s ease-in 0s;
   transition: all 0.3s ease-in 0s;
   border: 2px solid #2d9ec5;
   -webkit-border-radius: 20px;
