@@ -44,3 +44,4 @@ docs/_build
 .DS_Store
 .ruby-version
 .idea/
+/media/

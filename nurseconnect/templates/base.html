@@ -91,34 +91,67 @@
 
 
         <div class="logo">
-        {% if languages %}
-          {% if settings.core.SiteSettings.logo %}
-            {% image settings.core.SiteSettings.logo height-30 %}
-          {% endif %}
-
-          {% trans "Site Language:" %}
-          {% get_current_language as LANGUAGE_CODE %}
-          {% for language in languages %}
-            <a href="{% url 'locale_set' language.locale %}?next={{request.path}}?{{ request.GET.urlencode }}" {% if LANGUAGE_CODE == language.locale %} class="active" {% endif %}>{{language.locale|language_name_local}}</a>
-          {% endfor %}
-        {% endif %}
+{#        {% if languages %}#}
+{#          {% if settings.core.SiteSettings.logo %}#}
+{#            {% image settings.core.SiteSettings.logo height-30 %}#}
+{#          {% endif %}#}
+{##}
+{#          {% trans "Site Language:" %}#}
+{#          {% get_current_language as LANGUAGE_CODE %}#}
+{#          {% for language in languages %}#}
+{#            <a href="{% url 'locale_set' language.locale %}?next={{request.path}}?{{ request.GET.urlencode }}" {% if LANGUAGE_CODE == language.locale %} class="active" {% endif %}>{{language.locale|language_name_local}}</a>#}
+{#          {% endfor %}#}
+{#        {% endif %}#}
         </div>
 
         {% breadcrumbs %}
+         <header class="Navbar">
+            <a class="Navbar-logo" href="">
+                <span class="Navbar-logoIcon Icons icon-logo" aria-hidden="true"></span>
+                <span class="u-screenReaderText">Nurse Connect Logo</span>
+            </a>
+            <nav class="Navbar-navigation">
+                <ul class="Navbar-linkList">
+                    <li class="Navbar-item">
+                        <a class="Navbar-link" href="#">
+                            <span class="Icons icon-search-orangeBittersweet"></span>
+                            <span class="u-screenReaderText">Search</span>
+                        </a>
+                    </li>
+                    <li class="Navbar-item">
+                        <a class="Navbar-link" href="#">
+                            <span class="Icons icon-profile-orangeBittersweet"></span>
+                            <span class="u-screenReaderText">Profile</span>
+                        </a>
+                    </li>
+                    <li class="Navbar-item">
+                        <a class="Navbar-link" href="#">
+                            <span class="Icons icon-burger-orangeBittersweet"></span>
+                            <span class="u-screenReaderText">Menu</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        {% block content %}
 
-        {% block content %}{% endblock %}
+        {% endblock %}
 
         {% block extra_js %}
         {% endblock %}
 
-        {% block search %}
-          {% if languages %}
-            {% include "search/search_block.html" %}
-          {% endif %}
-        {% endblock %}
+{#        {% block search %}#}
+{#          {% if languages %}#}
+{#            {% include "search/search_block.html" %}#}
+{#          {% endif %}#}
+{#        {% endblock %}#}
 
         {% block footer %}
-          {% footer_page %}
+{#          {% footer_page %}#}
+            <footer class="Footer" role="contentinfo">
+                <p class="Footer-paragraph"><a href="#" class="Footer-link">Privacy Policy</a> &nbsp; <a href="#" class="Footer-link">Terms of Use</a></p>
+                <p class="Footer-paragraph">&copy; 2016 Copyright National Department of Health</p>
+            </footer><!--/Footer-->
         {% endblock %}
 
     </body>
