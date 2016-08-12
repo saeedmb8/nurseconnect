@@ -75,6 +75,7 @@ INSTALLED_APPS = [
 
     'mptt',
     'djcelery',
+    'molo.profiles',
 
     'raven.contrib.django.raven_compat',
     'django_cas_ng',
