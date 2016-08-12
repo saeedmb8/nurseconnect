@@ -1,10 +1,14 @@
 
 {% load i18n %}
 
-<div>
+<div class="ArticleSearch" id ="search">
   <form action="{% url 'search' %}">
-    <input placeholder="{% trans "Looking for something?" %}" name="q" type="text" value="{{search_query}}">
-    <input type="submit" value="{% trans "SEARCH"%}">
+      <div class="ArticleSearch-fieldgroup">
+          <input class="ArticleSearch-field" type="text" name="search" value="{{search_query}}" placeholder="{% trans "Looking for something?" %}">
+          <button type="submit" class="ArticleSearch-button" value="{% trans "SEARCH"%}">
+              <span class="Icons icon-search-white"></span>
+              <span class="u-screenReaderText">Search</span>
+          </button>
+      </div>
   </form>
 </div>
-
