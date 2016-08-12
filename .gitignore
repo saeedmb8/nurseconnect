@@ -6,7 +6,7 @@
 # Packages
 *.egg
 *.egg-info
-dist
+/dist
 build
 eggs
 parts
@@ -45,3 +45,5 @@ docs/_build
 .ruby-version
 .idea/
 /media/
+
+node_modules
