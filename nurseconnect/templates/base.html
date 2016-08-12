@@ -76,9 +76,9 @@
         </script>
 
         <!-- this section should always be last in the head -->
-        {% compress css file enhanced %}
+        <!-- {% compress css file enhanced %}
           <link rel="stylesheet" type="text/x-scss" href="{% static 'css/enhanced.scss' %}">
-        {% endcompress %}
+        {% endcompress %} -->
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -142,7 +142,7 @@
             </header>
 
             {% breadcrumbs %}
-            
+
             {% block content %}
 
             {% endblock %}

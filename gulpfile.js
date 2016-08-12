@@ -20,16 +20,15 @@ var bourbon         = require('bourbon').includePaths;
 /* =================================== */
 /* *** constants *** */
 
-var srcPath = 'static/src';
-var distPath = 'static/dist';
-var templatesPath = 'templates';
+var srcPath = 'nurseconnect/static/src';
+var distPath = 'nurseconnect/static/dist';
+var templatesPath = 'nurseconnect/templates';
 
 var production = argv.production >= 1;
 
 var sassConfig = {
     includePaths: [
-        'node_modules/breakpoint-sass/stylesheets/',
-      // 'node_modules/modularscale-sass/stylesheets',
+        'node_modules/breakpoint-sass/stylesheets/'
     ].concat(bourbon),
     // outputStyle: 'compressed'
 };
