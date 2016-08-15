@@ -41,6 +41,7 @@ urlpatterns += patterns(
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
     url(r'search/$', search, name='search'),
+    url(r'sections/$', include(wagtail_urls)),
 
     url(r'', include('molo.core.urls')),
     url('^', include('django.contrib.auth.urls')),
