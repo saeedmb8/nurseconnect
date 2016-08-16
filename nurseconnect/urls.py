@@ -31,13 +31,13 @@ urlpatterns += patterns(
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(
-            r'^profiles/register/done/',
-            login_required(RegistrationDone.as_view(
-                template_name="profiles/done.html",
-                form_class=DateOfBirthForm
-            )),
-            name='registration_done'
-        ),
+        r'^profiles/register/done/',
+        login_required(RegistrationDone.as_view(
+            template_name="profiles/done.html",
+            form_class=DateOfBirthForm
+        )),
+        name='registration_done'
+    ),
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
     url(r'search/$', search, name='search'),
