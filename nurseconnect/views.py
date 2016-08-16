@@ -1,10 +1,18 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
+from django.views.generic import View
 
 from molo.core.utils import get_locale_code
 from molo.core.models import ArticlePage
 from wagtail.wagtailsearch.models import Query
+
+
+# class HomePageView(LoginRequiredMixin, View):
+#     login_url = '/profiles/login/'
+#     redirect_field_name = 'redirect_to'
 
 
 def search(request, results_per_page=10):

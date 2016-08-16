@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 from molo.profiles.forms import DateOfBirthForm
 from molo.profiles.views import RegistrationDone
 
@@ -42,6 +43,7 @@ urlpatterns += patterns(
                                namespace='molo.profiles')),
     url(r'search/$', search, name='search'),
     url(r'sections/$', include(wagtail_urls)),
+    # url(r'$', HomePageView, name='index'),
 
     url(r'', include('molo.core.urls')),
     url('^', include('django.contrib.auth.urls')),
