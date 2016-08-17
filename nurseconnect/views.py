@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
+from django.views.generic import TemplateView
 from django.views.generic import View
 
 from molo.core.utils import get_locale_code
@@ -10,9 +11,25 @@ from molo.core.models import ArticlePage
 from wagtail.wagtailsearch.models import Query
 
 
-# class HomePageView(LoginRequiredMixin, View):
-#     login_url = '/profiles/login/'
-#     redirect_field_name = 'redirect_to'
+class HomeView(TemplateView):
+    template_name = 'core/main.html'
+
+    def render_to_response(self, context, **response_kwargs):
+        # username = self.request.GET.get('user')
+        # token = self.request.GET.get('token')
+
+        # if not username or not token:
+        #     return HttpResponseForbidden()
+        print "============="
+        if not self.request.user.is_authenticated():
+            print "HELP"
+            template_name = 'core/home_page_before_login.html'
+        # context['form'].initial.update({
+        #     'username': username,
+        #     'token': token
+        # })
+
+        return render(self.request, self.template_name, context)
 
 
 def search(request, results_per_page=10):

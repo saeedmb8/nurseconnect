@@ -264,7 +264,7 @@ COMPRESS_PRECOMPILERS = [
 
 
 # Wagtail settings
-LOGIN_URL = 'wagtailadmin_login'
+LOGIN_URL = 'molo.profiles:user_auth'
 LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 WAGTAIL_SITE_NAME = "base"

@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="profiles">
-  <form method="post" action="{% url "molo.profiles:user_register" %}" class="auth">
+  <form method="post" action="{% url "molo.profiles:user_register" %}">
   {% csrf_token %}
     <div class="Logo--auth icon-logo"></div>
     <div class="FormGroup FormGroup--padded">
@@ -73,11 +73,9 @@
 {#        </div>#}
 
         </div>
-        <div class="FormGroup FormGroup--padded">
-            <button type="button" class="PillButton PillButton--orange">sign up</button>
-        </div>
-{#    <input type="submit" value="{% trans "Register" %}"/>#}
-{#    <input type="hidden" name="next" value="{% url "molo.profiles:registration_done" %}"/>#}
+        <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}' />
+            <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
+            <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>
   </form>
 </div>
 {% endblock %}

@@ -13,7 +13,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
-from .views import search
+from . import views
 
 # implement CAS URLs in a production setting
 if settings.ENABLE_SSO:
@@ -41,9 +41,12 @@ urlpatterns += patterns(
     ),
     url(r'^profiles/', include('molo.profiles.urls',
                                namespace='molo.profiles')),
-    url(r'search/$', search, name='search'),
+    url(r'search/$', views.search, name='search'),
     url(r'sections/$', include(wagtail_urls)),
-    # url(r'$', HomePageView, name='index'),
+    # url(r'$', views.index, name='index'),
+    # url(
+    #     r"^$", views.HomeView.as_view(), name="home"
+    # ),
 
     url(r'', include('molo.core.urls')),
     url('^', include('django.contrib.auth.urls')),
