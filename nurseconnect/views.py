@@ -1,13 +1,14 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
 from django.views.generic import TemplateView
-from django.views.generic import View
 
 from molo.core.utils import get_locale_code
 from molo.core.models import ArticlePage
+from molo.profiles.views import RegistrationView
 from wagtail.wagtailsearch.models import Query
 
 
@@ -30,6 +31,25 @@ class HomeView(TemplateView):
         # })
 
         return render(self.request, self.template_name, context)
+
+
+class NurseConnectRegistrationView(RegistrationView):
+    form_class = NurseConnectRegistrationForm
+
+    def form_valid(self, form):
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        mobile_number = form.cleaned_data['mobile_number']
+        user = User.objects.create_user(username=username, password=password)
+        user.profile.mobile_number = mobile_number
+        if form.cleaned_data['email']:
+            user.email = form.cleaned_data['email']
+            user.save()
+        user.profile.save()
+
+        authed_user = authenticate(username=username, password=password)
+        login(self.request, authed_user)
+        return HttpResponseRedirect(form.cleaned_data.get('next', '/'))
 
 
 def search(request, results_per_page=10):

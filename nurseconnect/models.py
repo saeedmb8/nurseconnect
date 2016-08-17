@@ -4,7 +4,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from nurseconnect import constants
+from nurseconnect.constants import GENDERS
 from molo.commenting.models import MoloComment
 from wagtail.contrib.settings.models import BaseSetting
 from wagtail.contrib.settings.registry import register_setting
@@ -19,7 +19,7 @@ class NurseConnectUserProfile(models.Model):
     )
     gender = models.CharField(
         max_length=1,
-        choices=constants.GENDERS,
+        choices=GENDERS,
         blank=True,
         null=True
     )
