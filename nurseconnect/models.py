@@ -23,14 +23,15 @@ class NurseConnectUserProfile(models.Model):
         blank=True,
         null=True
     )
-    mobile_number = models.CharField(
-        max_length=15
-    )
     staff_number = models.CharField(
-        max_length=15
+        max_length=30,
+        blank=True,
+        null=True
     )
     facility_code = models.CharField(
-        max_length=15
+        max_length=30,
+        blank=True,
+        null=True
     )
     security_question_1_answer = models.CharField(
         max_length=128,
@@ -41,8 +42,8 @@ class NurseConnectUserProfile(models.Model):
         null=True
     )
 
-    # based on django.contrib.auth.models.AbstractBaseUser set_password &
-    # check_password functions (takes plain text, generates hash for database)
+    # Based on django.contrib.auth.models.AbstractBaseUser set_password &
+    # check_password functions (takes plain text, generates hash for database).
     def set_security_question_1_answer(self, raw_answer):
         self.security_question_1_answer = make_password(
             raw_answer.strip().lower()
