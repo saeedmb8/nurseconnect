@@ -1,16 +1,14 @@
 
 {% load i18n %}
 
-{% if user.is_authenticated %}
-    <div class="ArticleSearch" id ="search">
-      <form action="{% url 'search' %}">
-          <div class="ArticleSearch-fieldgroup">
-              <input class="ArticleSearch-field" type="text" name="search" value="{{search_query}}" placeholder="{% trans "Looking for something?" %}">
-              <button type="submit" class="ArticleSearch-button" value="{% trans "SEARCH"%}">
-                  <span class="Icons icon-search-white"></span>
-                  <span class="u-screenReaderText">Search</span>
-              </button>
-          </div>
-      </form>
-    </div>
-{% endif %}
+<div class="ArticleSearch" id ="search">
+  <form action="{% url 'search' %}">
+      <div class="ArticleSearch-fieldgroup">
+          <input class="ArticleSearch-field" type="text" name="search" value="{{search_query}}" placeholder="{% trans "Looking for something?" %}">
+          <button type="submit" class="ArticleSearch-button" value="{% trans "SEARCH"%}">
+              <span class="Icons icon-search-white"></span>
+              <span class="u-screenReaderText">Search</span>
+          </button>
+      </div>
+  </form>
+</div>

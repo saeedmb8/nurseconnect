@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from molo.profiles.forms import DateOfBirthForm
 from molo.profiles.views import RegistrationDone
+from nurseconnect.views import NurseConnectRegistrationView, NurseConnectForgotPasswordView, \
+    NurseConnectResetPasswordView, NurseConnectResetPasswordSuccessView, NurseConnectEditProfileView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls

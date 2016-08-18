@@ -4,11 +4,14 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
+from django.views.generic import FormView
 from django.views.generic import TemplateView
 
 from molo.core.utils import get_locale_code
 from molo.core.models import ArticlePage
-from molo.profiles.views import RegistrationView
+from molo.profiles.views import RegistrationView, MyProfileEdit
+from nurseconnect.forms import NurseConnectRegistrationForm, NurseConnectForgotPasswordForm, \
+    NurseConnectResetPasswordForm, NurseConnectEditProfileForm
 from wagtail.wagtailsearch.models import Query
 
 
@@ -21,10 +24,7 @@ class HomeView(TemplateView):
 
         # if not username or not token:
         #     return HttpResponseForbidden()
-        print "============="
-        if not self.request.user.is_authenticated():
-            print "HELP"
-            template_name = 'core/home_page_before_login.html'
+        #     template_name = 'core/home_page_before_login.html'
         # context['form'].initial.update({
         #     'username': username,
         #     'token': token
@@ -50,6 +50,24 @@ class NurseConnectRegistrationView(RegistrationView):
         authed_user = authenticate(username=username, password=password)
         login(self.request, authed_user)
         return HttpResponseRedirect(form.cleaned_data.get('next', '/'))
+
+
+class NurseConnectForgotPasswordView(FormView):
+    form_class = NurseConnectForgotPasswordForm
+    template_name = 'forgot_password.html'
+
+
+class NurseConnectResetPasswordView(FormView):
+    form_class = NurseConnectResetPasswordForm
+    template_name = 'reset_password.html'
+
+
+class NurseConnectResetPasswordSuccessView(TemplateView):
+    template_name = "reset_password_success.html"
+
+
+class NurseConnectEditProfileView(MyProfileEdit):
+    form_class = NurseConnectEditProfileForm
 
 
 def search(request, results_per_page=10):
