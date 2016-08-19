@@ -10,59 +10,60 @@
             <div class="FormGroup FormGroup--padded">
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="id_first_name">{% trans "Name" %}</label>
-                    {{ form.first_name.errors}}
+                    {{ form.first_name.errors }}
                     {{ form.first_name }}
                 </div>
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="id_last_name">{% trans "Surname" %}</label>
-                    {{ form.last_name.errors}}
+                    {{ form.last_name.errors }}
                     {{ form.last_name }}
                 </div>
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="id_username">{% trans "Username" %}</label>
-                    {{ form.username.errors}}
+                    {{ form.username.errors }}
                     {{ form.username }}
                 </div>
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="id_gender">{% trans "I identify my gender as" %}</label>
-                    {{ form.gender.errors}}
+                    {{ form.gender.errors }}
                     {{ form.gender }}
                 </div>
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="id_staff_number" disabled>{% trans "Staff number" %}</label>
-                    {{ form.staff_number.errors}}
+                    {{ form.staff_number.errors }}
                     {{ form.staff_number }}
                 </div>
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="id_facility_code">{% trans "Facility code" %}</label>
-                    {{ form.facility_code.errors}}
+                    {{ form.facility_code.errors }}
                     {{ form.facility_code }}
                 </div>
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="id_password">{% trans "Password" %}</label>
-                    {{ form.password.errors}}
+                    {{ form.password.errors }}
                     {{ form.password }}
                 </div>
                 <div class="FormField FormField--center FormField--bordered">
                     <label class="FormField-input" for="mobile_number">{% trans "Cellphone Number" %}</label>
-                    {{ form.mobile_number.errors}}
+                    {{ form.mobile_number.errors }}
                     {{ form.mobile_number }}
                 </div>
 
                 {% if form.terms_and_conditions.errors %}
-                   <span class="error">
+                    <span class="error">
                        {% trans "Please accept the T&amp;Cs in order to complete the registration" %}
                    </span>
                 {% endif %}
                 <div class="FormField FormField--center FormField--bordered">
                     {{ form.terms_and_conditions }}
-                    <label for="id_terms_and_conditions" class="profiles__terms">{% trans "I accept the Terms and Conditions" %}</label>
+                    <label for="id_terms_and_conditions"
+                           class="profiles__terms">{% trans "I accept the Terms and Conditions" %}</label>
                 </div>
 
-                </div>
-                <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}' />
-                <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}" />
-                <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>
+            </div>
+            <input type="submit" class="registerSubmit" value='{% trans "JOIN" %}'/>
+            <input type="hidden" name="next" value="{% url 'molo.profiles:registration_done' %}"/>
+            <a href="{% url 'molo.profiles:auth_login' %}" class="button inverted">{% trans "already joined?" %}</a>
         </form>
     </div>
 {% endblock %}
