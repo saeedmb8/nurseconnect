@@ -1,4 +1,3 @@
-
 {% load wagtailcore_tags compress static wagtailuserbar core_tags i18n %}
 {% load wagtailsettings_tags wagtailimages_tags %}
 {% get_settings %}
@@ -27,9 +26,17 @@
   <meta property="og:image:url" content="{% if self.social_media_image %}{{request.site.root_url}}{{ tmp_photo.url }}{% endif %}"/>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  {% compress css %}
-      <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
-  {% endcompress %}
+
+  <link rel="stylesheet" href="{% static 'dist/css/styles.css' %}">
+
+  <script>
+      /*! grunt-grunticon Stylesheet Loader - v2.1.6 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
+
+    !function(){function e(e,n,t){"use strict";var o=window.document.createElement("link"),a=n||window.document.getElementsByTagName("script")[0],i=window.document.styleSheets;return o.rel="stylesheet",o.href=e,o.media="only x",a.parentNode.insertBefore(o,a),o.onloadcssdefined=function(e){for(var n,t=0;t<i.length;t++)i[t].href&&i[t].href===o.href&&(n=!0);n?e():setTimeout(function(){o.onloadcssdefined(e)})},o.onloadcssdefined(function(){o.media=t||"all"}),o}function n(e,n){e.onload=function(){e.onload=null,n&&n.call(e)},"isApplicationInstalled"in navigator&&"onloadcssdefined"in e&&e.onloadcssdefined(n)}!function(t){var o=function(a,i){"use strict";if(a&&3===a.length){var r=t.navigator,d=t.document,s=t.Image,c=!(!d.createElementNS||!d.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!d.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||t.opera&&r.userAgent.indexOf("Chrome")===-1||r.userAgent.indexOf("Series40")!==-1),l=new s;l.onerror=function(){o.method="png",o.href=a[2],e(a[2])},l.onload=function(){var t=1===l.width&&1===l.height,r=a[t&&c?0:t?1:2];t&&c?o.method="svg":t?o.method="datapng":o.method="png",o.href=r,n(e(r),i)},l.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",d.documentElement.className+=" grunticon"}};o.loadCSS=e,o.onloadCSS=n,t.grunticon=o}(this)}();
+
+    grunticon(["{% static 'dist/icons/icons.data.svg.css' %}", "{% static 'dist/icons/icons.data.png.css' %}", "{% static 'dist/icons/icons.fallback.css' %}"], grunticon.svgLoadedCallback);
+  </script>
+  <noscript><link href="{% static 'dist/icons/icons.fallback.css' %}" rel="stylesheet"></noscript>
 
   {% block extra_css %}
   {% endblock %}
@@ -67,11 +74,6 @@
           loadJS( "{% static 'js/main.js' %}" );
         }
         </script>
-
-        <!-- this section should always be last in the head -->
-        {% compress css file enhanced %}
-          <link rel="stylesheet" type="text/x-scss" href="{% static 'css/enhanced.scss' %}">
-        {% endcompress %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -90,38 +92,28 @@
 
         {% wagtailuserbar %}
 
+        <main role="main">
+            {% include "core/header.html" %}
+            {% breadcrumbs %}
+            {% block content %}
+            {% endblock %}
 
-        <div class="logo">
-        {% if languages %}
-          {% if settings.core.SiteSettings.logo %}
-            {% image settings.core.SiteSettings.logo height-30 %}
-          {% endif %}
+            {% block extra_js %}
+            {% endblock %}
 
-          {% trans "Site Language:" %}
-          {% get_current_language as LANGUAGE_CODE %}
-          {% for language in languages %}
-            <a href="{% url 'locale_set' language.locale %}?next={{request.path}}?{{ request.GET.urlencode }}" {% if LANGUAGE_CODE == language.locale %} class="active" {% endif %}>{{language.locale|language_name_local}}</a>
-          {% endfor %}
-        {% endif %}
-        </div>
+            {% block search %}
+                {% include "core/social_media.html" %}
+                {% if languages %}
+                    {% include "search/search_block.html" %}
+                {% endif %}
+            {% endblock %}
 
-        {% breadcrumbs %}
-
-        {% block content %}{% endblock %}
-
-        {% block extra_js %}
-        {% endblock %}
-
-        {% block search %}
-          {% if languages %}
-            {% include "search/search_block.html" %}
-          {% endif %}
-        {% endblock %}
-
-        {% block footer %}
-          {% footer_page %}
-        {% endblock %}
-
+            {% block footer %}
+                <footer class="Footer" role="contentinfo">
+                    {% footer_page %}
+                    <p class="Footer-paragraph">&copy; 2016  {% trans "Copyright National Department of Health" %}</p>
+                </footer>
+            {% endblock %}
+        </main>
     </body>
 </html>
-

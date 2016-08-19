@@ -1,4 +1,4 @@
-@import url("../../node_modules/sanitize.css/sanitize.css");
+@import url(../../node_modules/sanitize.css/sanitize.css);
 
 .u-screenReaderText {
   position: absolute;
@@ -839,8 +839,8 @@ input {
   width: 80%;
   height: 48px;
   height: 3rem;
-  padding: 16px 128px 16px 16px;
-  padding: 1rem 8rem 1rem 1rem;
+  padding: 16px 16px 16px 16px;
+  padding: 1rem 1rem 1rem 1rem;
   float: left;
   -webkit-border-radius: 2rem 0 0 2rem;
      -moz-border-radius: 2rem 0 0 2rem;
@@ -938,8 +938,8 @@ input {
   width: 200%;
   margin-left: -100%;
   -webkit-transition: margin 0.3s ease-in 0s;
-  -moz-transition: margin 0.3s ease-in 0s;
   -o-transition: margin 0.3s ease-in 0s;
+  -moz-transition: margin 0.3s ease-in 0s;
   transition: margin 0.3s ease-in 0s;
 }
 
@@ -980,8 +980,8 @@ input {
   width: 31px;
   margin: -0.5px;
   -webkit-transition: all 0.3s ease-in 0s;
-  -moz-transition: all 0.3s ease-in 0s;
   -o-transition: all 0.3s ease-in 0s;
+  -moz-transition: all 0.3s ease-in 0s;
   transition: all 0.3s ease-in 0s;
   border: 2px solid #2d9ec5;
   -webkit-border-radius: 20px;

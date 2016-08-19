@@ -16,11 +16,11 @@ from django.utils.translation import ugettext_lazy as _
 import dj_database_url
 import djcelery
 from celery.schedules import crontab
+
 djcelery.setup_loader()
 
 # Absolute filesystem path to the Django project directory:
 PROJECT_ROOT = dirname(dirname(dirname(abspath(__file__))))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -33,12 +33,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Base URL to use when referring to full URLs within the Wagtail admin
 # backend - e.g. in notification emails. Don't include '/admin' or
 # a trailing slash
 BASE_URL = 'http://example.com'
-
 
 # Application definition
 
@@ -51,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django_extensions',
+    'django_comments',
 
     'taggit',
     'modelcluster',
@@ -120,7 +119,6 @@ TEMPLATES = [
 
 ROOT_URLCONF = 'nurseconnect.urls'
 WSGI_APPLICATION = 'nurseconnect.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -233,7 +231,6 @@ EXTRA_LANG_INFO = {
 
 locale.LANG_INFO = dict(locale.LANG_INFO.items() + EXTRA_LANG_INFO.items())
 
-
 LOCALE_PATHS = [
     join(PROJECT_ROOT, "locale"),
 ]
@@ -253,18 +250,12 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
 
-
 # Django compressor settings
 # http://django-compressor.readthedocs.org/en/latest/settings/
 
 COMPRESS_PRECOMPILERS = [
     ('text/x-scss', 'django_libsass.SassCompiler'),
 ]
-
-
-# Wagtail settings
-LOGIN_URL = 'wagtailadmin_login'
-LOGIN_REDIRECT_URL = 'wagtailadmin_home'
 
 WAGTAIL_SITE_NAME = "base"
 

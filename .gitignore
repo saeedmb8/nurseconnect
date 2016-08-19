@@ -6,7 +6,7 @@
 # Packages
 *.egg
 *.egg-info
-dist
+/dist
 build
 eggs
 parts
@@ -43,3 +43,7 @@ db.sqlite3
 docs/_build
 .DS_Store
 .ruby-version
+.idea/
+/media/
+
+node_modules
