@@ -25,7 +25,6 @@ class NurseConnectRegistrationView(RegistrationView):
     form_class = forms.NurseConnectRegistrationForm
 
     def form_valid(self, form):
-        import pdb; pdb.set_trace()
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
 
