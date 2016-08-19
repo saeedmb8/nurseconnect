@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_extensions',
 
+
     'taggit',
     'modelcluster',
 
