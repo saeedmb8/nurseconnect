@@ -1,66 +1,17 @@
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
-from django.views.generic import FormView
 from django.views.generic import TemplateView
 from molo.core.models import ArticlePage
 from molo.core.utils import get_locale_code
-from molo.profiles import views
-from nurseconnect import forms
 from wagtail.wagtailsearch.models import Query
 
 
 class HomeView(TemplateView):
     template_name = "core/main.html"
-
-    def render_to_response(self, context, **response_kwargs):
-        return render(self.request, self.template_name, context)
-
-
-class NurseConnectRegistrationView(views.RegistrationView):
-    form_class = forms.NurseConnectRegistrationForm
-
-    def form_valid(self, form):
-        username = form.cleaned_data["username"]
-        password = form.cleaned_data["password"]
-
-        user = User.objects.create_user(username=username, password=password)
-        user.profile.mobile_number = form.cleaned_data["mobile_number"]
-        user.profile.first_name = form.cleaned_data["first_name"]
-        user.profile.last_name = form.cleaned_data["last_name"]
-        user.profile.save()
-
-        user.nurse_connect_profile.gender = form.cleaned_data["gender"]
-        user.nurse_connect_profile.staff_number = form.cleaned_data["staff_number"]
-        user.nurse_connect_profile.facility_code = form.cleaned_data["facility_code"]
-
-        user.nurse_connect_profile.save()
-        user.profile.save()
-
-        authed_user = authenticate(username=username, password=password)
-        login(self.request, authed_user)
-        return HttpResponseRedirect(form.cleaned_data.get("next", "/"))
-
-
-class NurseConnectForgotPasswordView(FormView):
-    form_class = forms.NurseConnectForgotPasswordForm
-    template_name = "forgot_password.html"
-
-
-class NurseConnectResetPasswordView(FormView):
-    form_class = forms.NurseConnectResetPasswordForm
-    template_name = "reset_password.html"
-
-
-class NurseConnectResetPasswordSuccessView(TemplateView):
-    template_name = "reset_password_success.html"
-
-
-class NurseConnectEditProfileView(views.MyProfileEdit):
-    form_class = forms.NurseConnectEditProfileForm
+    #
+    # def render_to_response(self, context, **response_kwargs):
+    #     return render(self.request, self.template_name, context)
 
 
 def search(request, results_per_page=10):

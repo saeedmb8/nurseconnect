@@ -2,13 +2,15 @@
 
 {% if ancestors %}
     <ul class="Breadcrumb">
-        <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/">{% trans "Home" %}
-            <span class="Breadcrumb-nextIcon">></span>
-        </a></li>
+        <li class="Breadcrumb-item">
+            <a class="Breadcrumb-link" href="/">{% trans "Home" %}
+                <span class="Breadcrumb-nextIcon">></span>
+            </a>
+        </li>
         {% for ancestor in ancestors %}
             {% if forloop.last %}
-                <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link"
-                                                                       href="#">{{ ancestor }}</a>
+                <li class="Breadcrumb-item Breadcrumb-item--active">
+                    <a class="Breadcrumb-link" href="#">{{ ancestor }}</a>
                 </li>
             {% else %}
                 <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="{% pageurl ancestor %}">{{ ancestor }}

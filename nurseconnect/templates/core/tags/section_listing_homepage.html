@@ -1,8 +1,8 @@
-{% load wagtailcore_tags wagtailimages_tags core_tags %}
+{% load wagtailcore_tags wagtailimages_tags core_tags i18n %}
 
 {% if sections %}
     <div class="ListTitle ListTitle--menu" id="menu">
-        <h1 class="ListTitle-name">Menu</h1>
+        <h1 class="ListTitle-name">{% trans "Menu" %}</h1>
     </div>
     <ul class="ListView ListView--menu">
         {% for section in sections %}

@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'modelcluster',
 
     'molo.core',
-    'molo.commenting',
     'nurseconnect',
 
     'wagtail.wagtailcore',
@@ -75,7 +74,6 @@ INSTALLED_APPS = [
 
     'mptt',
     'djcelery',
-    'molo.profiles',
 
     'raven.contrib.django.raven_compat',
     'django_cas_ng',
@@ -259,10 +257,6 @@ COMPRESS_PRECOMPILERS = [
     ('text/x-scss', 'django_libsass.SassCompiler'),
 ]
 
-# Wagtail settings
-LOGIN_URL = 'molo.profiles:user_auth'
-LOGIN_REDIRECT_URL = 'wagtailadmin_home'
-
 WAGTAIL_SITE_NAME = "base"
 
 # Use Elasticsearch as the search backend for extra performance and better
@@ -301,8 +295,3 @@ EMAIL_HOST = environ.get('EMAIL_HOST', 'localhost')
 EMAIL_PORT = environ.get('EMAIL_PORT', 25)
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
-
-# Molo comments settings
-COMMENTS_APP = 'molo.commenting'
-COMMENTS_FLAG_THRESHHOLD = 3
-COMMENTS_HIDE_REMOVED = False
