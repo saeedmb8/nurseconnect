@@ -14,7 +14,8 @@
                 </li>
             {% else %}
                 <li class="Breadcrumb-item">
-                    <a class="Breadcrumb-link" href="{% pageurl ancestor %}">{{ ancestor }}<span class="Breadcrumb-nextIcon"></span></a>
+                    <!-- Extra greaterthan symbol is intentional -->
+                    <a class="Breadcrumb-link" href="{% pageurl ancestor %}">{{ ancestor }}<span class="Breadcrumb-nextIcon">></span></a>
                 </li>
             {% endif %}
         {% endfor %}

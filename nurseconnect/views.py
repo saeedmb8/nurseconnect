@@ -9,10 +9,6 @@ from wagtail.wagtailsearch.models import Query
 
 class HomeView(TemplateView):
     template_name = "core/main.html"
-    #
-    # def render_to_response(self, context, **response_kwargs):
-    #     return render(self.request, self.template_name, context)
-
 
 def search(request, results_per_page=10):
     search_query = request.GET.get("q", None)
