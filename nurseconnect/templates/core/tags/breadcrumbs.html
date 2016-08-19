@@ -1,22 +1,20 @@
-
 {% load wagtailcore_tags i18n %}
 
 {% if ancestors %}
-{#  <h4>#}
     <ul class="Breadcrumb">
         <li class="Breadcrumb-item"><a class="Breadcrumb-link" href="/">{% trans "Home" %}
-        <span class="Breadcrumb-nextIcon">></span>
+            <span class="Breadcrumb-nextIcon">></span>
         </a></li>
         {% for ancestor in ancestors %}
-          {% if forloop.last %}
-              <li class="Breadcrumb-item Breadcrumb-item--active">
-                  <a class="Breadcrumb-link" href="#">{{ ancestor }}</a>
-            </li>
-          {% else %}
-              <li class="Breadcrumb-item">
-                  <a class="Breadcrumb-link" href="{% pageurl ancestor %}">{{ ancestor }}<span class="Breadcrumb-nextIcon"></span></a>
-              </li>
-          {% endif %}
+            {% if forloop.last %}
+                <li class="Breadcrumb-item Breadcrumb-item--active">
+                    <a class="Breadcrumb-link" href="#">{{ ancestor }}</a>
+                </li>
+            {% else %}
+                <li class="Breadcrumb-item">
+                    <a class="Breadcrumb-link" href="{% pageurl ancestor %}">{{ ancestor }}<span class="Breadcrumb-nextIcon"></span></a>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endif %}

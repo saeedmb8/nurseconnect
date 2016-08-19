@@ -23,16 +23,6 @@
             </li>
         {% endfor %}
     </ul>
-    <ul class="Breadcrumb-back">
-        <li class="Breadcrumb-item">
-            <a class="Breadcrumb-link">
-                <span class="Breadcrumb-backIcon"><</span>
-            </a>
-        </li>
-
-            <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link" href={{ self.get_parent.url }}>Back</a>
-        </li>
-    </ul>
 
     {% load_child_articles_for_section self as articles %}
     {% for article in articles %}
@@ -51,26 +41,19 @@
     {% endfor %}
 
     {% if articles %}
-        <ul class="Breadcrumb-back">
-            <li class="Breadcrumb-item">
-                <a class="Breadcrumb-link">
-                    <span class="Breadcrumb-backIcon"></span>
-                </a>
+        {% if articles_paginated.has_previous %}
+            <li class="Breadcrumb-item Breadcrumb-item--active">
+                <a class="Breadcrumb-link" href="?p={{ articles_paginated.previous_page_number }}"></a>
             </li>
-            {% if articles_paginated.has_previous %}
-                <li class="Breadcrumb-item Breadcrumb-item--active">
-                    <a class="Breadcrumb-link" href="?p={{ articles_paginated.previous_page_number }}"></a>
-                </li>
-            {% endif %}
-            <span class="Breadcrumb-item Breadcrumb-item--active">
-                Page {{ articles_paginated.number }} of {{ articles_paginated.paginator.num_pages }}
-            </span>
-            {% if articles_paginated.has_next %}
-                <li class="Breadcrumb-item Breadcrumb-item--active">
-                    <a class="Breadcrumb-link" href="?p={{ articles_paginated.next_page_number }}">&rarr;</a>
-                </li>
-            {% endif %}
-        </ul>
+        {% endif %}
+        <span class="Breadcrumb-item Breadcrumb-item--active">
+            Page {{ articles_paginated.number }} of {{ articles_paginated.paginator.num_pages }}
+        </span>
+        {% if articles_paginated.has_next %}
+            <li class="Breadcrumb-item Breadcrumb-item--active">
+                <a class="Breadcrumb-link" href="?p={{ articles_paginated.next_page_number }}">&rarr;</a>
+            </li>
+        {% endif %}
     {% endif %}
 {% endblock %}
 

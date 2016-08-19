@@ -13,21 +13,12 @@
                     <span class="u-screenReaderText">{% trans "Search" %}</span>
                 </a>
             </li>
-            {% if user.is_authenticated %}
             <li class="Navbar-item">
                 <a class="Navbar-link" href="{% url "molo.profiles:user_register" %}">
                     <span class="Icons icon-profile-orangeBittersweet"></span>
                     <span class="u-screenReaderText">{% trans "Profile" %}</span>
                 </a>
             </li>
-            {% else %}
-            <li class="Navbar-item">
-                <a class="Navbar-link" href="{% url "molo.profiles:auth_login" %}">
-                    <span class="Icons icon-profile-orangeBittersweet"></span>
-                    <span class="u-screenReaderText">{% trans "Login" %}</span>
-                </a>
-            </li>
-            {% endif %}
             <li class="Navbar-item">
                 <a class="Navbar-link" href="#menu">
                     <span class="Icons icon-burger-orangeBittersweet"></span>
