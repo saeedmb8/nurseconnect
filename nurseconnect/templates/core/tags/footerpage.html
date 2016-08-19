@@ -2,10 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% if footers %}
-  <ul>
   {% for page in footers %}
-      <li><p class="Footer-paragraph"><a href="{% pageurl page %}" class="Footer-link">{{page.title}}</a></li>
+      <p class="Footer-paragraph"><a href="{% pageurl page %}" class="Footer-link">{{page.title}}</a></p>
   {% endfor %}
-  </ul>
 {% endif %}
-
