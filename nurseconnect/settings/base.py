@@ -306,13 +306,3 @@ EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', '')
 COMMENTS_APP = 'molo.commenting'
 COMMENTS_FLAG_THRESHHOLD = 3
 COMMENTS_HIDE_REMOVED = False
-
-# Password reset - security questions
-SECURITY_QUESTION_1 = environ.get(
-    'SECURITY_QUESTION_1', 'Name of the city you were born in')
-SECURITY_QUESTION_2 = environ.get(
-    'SECURITY_QUESTION_2', 'Name of your primary school')
-
-# Comment Filtering Regexes
-REGEX_PHONE = r'.*?(\(?\d{3})? ?[\.-]? ?\d{3} ?[\.-]? ?\d{4}.*?'
-REGEX_EMAIL = r'([\w\.-]+@[\w\.-]+)'

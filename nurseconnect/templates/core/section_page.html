@@ -6,9 +6,6 @@
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
 {% block content %}
-{#    {% if self.image %}#}
-{#        <a href="{% pageurl self %}">{% image self.image width-60 %}</a>#}
-{#    {% endif %}#}
     <div class="ListTitle">
         <h1 class="ListTitle-name">{{ self.title }}</h1>
     </div>
@@ -23,18 +20,6 @@
                     <h3 class="ListItem-title">{{ section.title }}</h3>
                     <span class="ListItem-iconRight Icons icon-chevron_right-bluePelorous"></span>
                 </a>
-                {#          <ul class="list-block">#}
-                {#            <li>#}
-                {#              {% if section.description %}<p>{{section.description}}</p>{% endif %}#}
-                {#              {% load_descendant_articles_for_section section featured_in_section=True as featured_articles %}#}
-                {#              {% if featured_articles %}#}
-                {#              {% for article in featured_articles %}#}
-                {#                <h3><a href="{% pageurl article %}">{{article.title}}</a></h3>#}
-                {#                <p>{{article.subtitle}}</p>#}
-                {#              {% endfor %}#}
-                {#              {% endif %}#}
-                {#            </li>#}
-                {#          </ul>#}
             </li>
         {% endfor %}
     </ul>
@@ -46,7 +31,6 @@
         </li>
 
             <li class="Breadcrumb-item Breadcrumb-item--active"><a class="Breadcrumb-link" href={{ self.get_parent.url }}>Back</a>
-{#                {% breadcrumbs %}#}
         </li>
     </ul>
 
@@ -70,12 +54,12 @@
         <ul class="Breadcrumb-back">
             <li class="Breadcrumb-item">
                 <a class="Breadcrumb-link">
-                    <span class="Breadcrumb-backIcon"><</span>
+                    <span class="Breadcrumb-backIcon"></span>
                 </a>
             </li>
             {% if articles_paginated.has_previous %}
                 <li class="Breadcrumb-item Breadcrumb-item--active">
-                    <a class="Breadcrumb-link" href="?p={{ articles_paginated.previous_page_number }}">&larr;</a>
+                    <a class="Breadcrumb-link" href="?p={{ articles_paginated.previous_page_number }}"></a>
                 </li>
             {% endif %}
             <span class="Breadcrumb-item Breadcrumb-item--active">

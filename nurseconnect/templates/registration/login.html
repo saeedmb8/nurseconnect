@@ -5,19 +5,8 @@
 {% load i18n %}
 
 {% block content %}
-{#	<div class="title profile">#}
-{#		<h3>{% trans "Sign in" %}</h3>#}
-{#	</div>#}
     <div class="Logo--auth icon-logo"></div>
-
-{#	<div class="block turq">#}
-{#		<div class="signin-form">#}
-{#			<h5>{% trans "LOGIN TO YOUR ACCOUNT!" %}</h5>#}
-{#			<p>{% trans "We’re excited to have you..." %}</p>#}
 	    <form method="post" action=".">{% csrf_token %}
-{#	        {% if form.errors %}#}
-{#	            <p class="error errorlist">{% trans "Your username and password does not match. Please try again." %}</p>#}
-{#	        {% endif %}#}
             <div class="FormGroup FormGroup--padded">
                 <div class="FormField FormField--center FormField--bordered">
                     <input class="FormField-input" type="text" name="username" value="" placeholder="Username">
@@ -28,22 +17,13 @@
             </div>
             <div class="FormGroup FormGroup--padded">
                 <button type="submit" class="PillButton PillButton--blue">log in</button>
-                <a class="Link" href="/pages/login-issues.html">Having trouble logging in?</a>
-            </div><!--/FormGroup-->
-
+                <a class="Link" href="/pages/login-issues.html"> {% trans "Having trouble logging in?" %}</a>
+            </div>
             <div class="FormGroup FormGroup--padded FormGroup--bordered">
                 <p>hello</p>
-                <a class="PillButton PillButton--orange" href="/pages/register.html">sign up</a>
-            </div><!--/FormGroup-->
-{#					<p><strong>{% trans "Username" %}</strong></p>#}
-{#					{{form.username}}#}
-{#					<p><strong>{% trans "4-digit pin" %}</strong></p>#}
-{#					{{form.password}}#}
-{#					<input type="submit" value="{% trans 'Sign in' %}">#}
-{#					<input type="hidden" name="next" value="{% if request.GET.next %}{{ request.GET.next }}{% else %}{{request.site.root_page.url}}{% endif %}" />#}
+                <a class="PillButton PillButton--orange" href="/pages/register.html">{% trans "sign up" %}</a>
+            </div>
 	    </form>
-		</div>
-{#		<a href="{% url 'password_reset' %}">{% trans 'Forgotten your password?' %}</a>#}
-{#	</div>#}
+    </div>
 {% endblock %}
 

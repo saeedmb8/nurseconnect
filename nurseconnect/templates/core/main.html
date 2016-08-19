@@ -4,18 +4,10 @@
 {% load static core_tags %}
 {% load i18n %}
 
-    {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
-    {% block content %}
-{#        {% if user.is_anonymous%}#}
-{#             <div class="Logo--auth icon-logo"></div>#}
-{#                <a class="Link" href="#">Join our community. We're here to support you!</a>#}
-{#                <a class="PillButton PillButton--orange" href="{% url "molo.profiles:user_register" %}">{% trans "sign up now" %}</a>#}
-{#        {% else %}#}
-
-            {% bannerpages %}
-            {% latest_listing_homepage num_count=6 %}
-            {% section_listing_homepage %}
-
-{#        {% endif %}#}
-    {% endblock %}
+{% block content %}
+    {% bannerpages %}
+    {% latest_listing_homepage num_count=6 %}
+    {% section_listing_homepage %}
+{% endblock %}

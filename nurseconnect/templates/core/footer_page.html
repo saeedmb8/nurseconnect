@@ -8,8 +8,8 @@
 
 {% block content %}
 <div class="articles nav">
-  <h3 class="article-title">{{self.title}}</h3>
-  <p>{{self.subtitle}}</p>
+  <h3 class="article-title">{{ self.title }}</h3>
+  <p>{{ self.subtitle }}</p>
   {% if self.image %}
   <div class="banner">{% image self.image width-240 %}</div>
   {% endif %}
@@ -17,11 +17,7 @@
 <article>
   {% for block in self.body %}
       {% if block.block_type == 'heading' %}
-          <footer class="Footer" role="contentinfo">
-            <p class="Footer-paragraph"><a href="#" class="Footer-link">Privacy Policy</a> &nbsp;
-                <a href="#" class="Footer-link">Terms of Use</a></p>
-            <p class="Footer-paragraph">{{ block.value }}</p>
-          </footer>
+          <p class="Footer-paragraph">{{ block.value }}</p>
       {% else %}
       {% if block.block_type == 'image' %}
         {% image block.value width-240 %}
@@ -41,6 +37,3 @@
 </article>
 </div>
 {% endblock %}
-
-
-
