@@ -1428,8 +1428,8 @@ input {
   width: 80%;
   height: 48px;
   height: 3rem;
-  padding: 16px 128px 16px 16px;
-  padding: 1rem 8rem 1rem 1rem;
+  padding: 16px 16px 16px 16px;
+  padding: 1rem 1rem 1rem 1rem;
   float: left;
   -webkit-border-radius: 2rem 0 0 2rem;
      -moz-border-radius: 2rem 0 0 2rem;

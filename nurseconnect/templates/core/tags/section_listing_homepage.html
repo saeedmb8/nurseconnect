@@ -1,4 +1,3 @@
-
 {% load wagtailcore_tags wagtailimages_tags core_tags %}
 
 {% if sections %}
@@ -8,26 +7,26 @@
     <ul class="ListView ListView--menu">
         {% for section in sections %}
             <li class="ListItemWrapper--menu">
-            <div class="articles nav {{section.get_effective_extra_style_hints}}">
-                <a href="{% pageurl section %}" class="ListItem ListItem--rightIcon ">
-                    <h3 class="ListItem-title">{{section.title}}</h3>
-                    <p class="ListItem-desc">{{ section.description }}</p>
-                    <span class="ListItem-iconRight Icons icon-chevron_right-bluePelorous"></span>
-                </a>
-            </div>
-            {% load_descendant_articles_for_section section featured_in_homepage=True as featured_articles %}
-            {% for article in featured_articles %}
-            <ul class="list-block">
-                <li>
-                {% if article.image %}
-                <a href="{% pageurl article %}">{% image article.image width-60 %}</a>
-                {% endif %}
-                <h3><a href="{% pageurl article %}">{{article.title}}</a></h3>
-                <p>{{article.subtitle}}</p>
+                <div class="articles nav {{ section.get_effective_extra_style_hints }}">
+                    <a href="{% pageurl section %}" class="ListItem ListItem--rightIcon ">
+                        <h3 class="ListItem-title">{{ section.title }}</h3>
+                        <p class="ListItem-desc">{{ section.description }}</p>
+                        <span class="ListItem-iconRight Icons icon-chevron_right-bluePelorous"></span>
+                    </a>
+                </div>
+                {% load_descendant_articles_for_section section featured_in_homepage=True as featured_articles %}
+                {% for article in featured_articles %}
+                    <ul class="list-block">
+                        <li>
+                            {% if article.image %}
+                                <a href="{% pageurl article %}">{% image article.image width-60 %}</a>
+                            {% endif %}
+                            <h3><a href="{% pageurl article %}">{{ article.title }}</a></h3>
+                            <p>{{ article.subtitle }}</p>
+                        </li>
+                    </ul>
+                {% endfor %}
             </li>
-            </ul>
-            {% endfor %}
-            </li>
-        {% endfor%}
+        {% endfor %}
     </ul>
 {% endif %}

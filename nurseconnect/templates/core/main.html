@@ -1,8 +1,6 @@
-
 {% extends "base.html" %}
 
-{% load static core_tags %}
-{% load i18n %}
+{% load static core_tags i18n %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 

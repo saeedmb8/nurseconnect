@@ -2,8 +2,6 @@
 {% load i18n static core_tags wagtailsettings_tags %}
 {% get_settings %}
 
-{% load i18n %}
-
 {% block content %}
     <div class="Logo--auth icon-logo"></div>
 	    <form method="post" action=".">{% csrf_token %}

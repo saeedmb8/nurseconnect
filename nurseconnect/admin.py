@@ -10,8 +10,8 @@ class NurseConnectUserProfileInLineModelAdmin(admin.StackedInline):
 
 
 class NurseConnectUserAdmin(ProfileUserAdmin):
-    inlines = (NurseConnectUserProfileInLineModelAdmin, )
-    list_display = ProfileUserAdmin.list_display + ("gender", )
+    inlines = (NurseConnectUserProfileInLineModelAdmin,)
+    list_display = ProfileUserAdmin.list_display + ("gender",)
 
     def gender(self, obj):
         return obj.nurse_connect_profile.get_gender_display()

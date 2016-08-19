@@ -1,10 +1,8 @@
-import re
-
 from django import forms
 from django.forms import Form
 from django.utils.translation import ugettext_lazy as _
-from nurseconnect import constants
 from molo.profiles.forms import RegistrationForm, EditProfileForm
+from nurseconnect import constants
 
 
 class NurseConnectRegistrationForm(RegistrationForm):
