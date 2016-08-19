@@ -9,7 +9,7 @@ from django.views.generic import TemplateView
 
 from molo.core.utils import get_locale_code
 from molo.core.models import ArticlePage
-from molo.profiles.views import RegistrationView, MyProfileEdit
+from molo.profiles import views
 from nurseconnect import forms
 from wagtail.wagtailsearch.models import Query
 
@@ -21,7 +21,7 @@ class HomeView(TemplateView):
         return render(self.request, self.template_name, context)
 
 
-class NurseConnectRegistrationView(RegistrationView):
+class NurseConnectRegistrationView(views.RegistrationView):
     form_class = forms.NurseConnectRegistrationForm
 
     def form_valid(self, form):
@@ -60,7 +60,7 @@ class NurseConnectResetPasswordSuccessView(TemplateView):
     template_name = "reset_password_success.html"
 
 
-class NurseConnectEditProfileView(MyProfileEdit):
+class NurseConnectEditProfileView(views.MyProfileEdit):
     form_class = forms.NurseConnectEditProfileForm
 
 

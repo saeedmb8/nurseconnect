@@ -5,17 +5,14 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
 from molo.profiles.forms import DateOfBirthForm
 from molo.profiles.views import RegistrationDone
-from nurseconnect.views import NurseConnectRegistrationView, NurseConnectForgotPasswordView, \
-    NurseConnectResetPasswordView, NurseConnectResetPasswordSuccessView, NurseConnectEditProfileView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
-from . import views
+from nurseconnect import views
 
 # implement CAS URLs in a production setting
 if settings.ENABLE_SSO:
@@ -35,20 +32,20 @@ urlpatterns += patterns(
     url(r'^documents/', include(wagtaildocs_urls)),
     url(
         r'^profiles/register/$',
-        NurseConnectRegistrationView.as_view(),
+        views.NurseConnectRegistrationView.as_view(),
         name='user_register'
         ),
     url(r'^profiles/forgot_password/$',
-        NurseConnectForgotPasswordView.as_view(),
+        views.NurseConnectForgotPasswordView.as_view(),
         name='forgot_password'),
     url(r'^profiles/reset_password/$',
-        NurseConnectResetPasswordView.as_view(),
+        views.NurseConnectResetPasswordView.as_view(),
         name='reset_password'),
     url(r'^profiles/reset_password_success/$',
-        NurseConnectResetPasswordSuccessView.as_view(),
+        views.NurseConnectResetPasswordSuccessView.as_view(),
         name='reset_password_success'),
     url(r'^profiles/edit/myprofile/$',
-        login_required(NurseConnectEditProfileView.as_view()),
+        login_required(views.NurseConnectEditProfileView.as_view()),
         name='edit_my_profile'),
     url(
         r'^profiles/register/done/',
