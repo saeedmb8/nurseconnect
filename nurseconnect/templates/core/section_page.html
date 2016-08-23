@@ -25,12 +25,15 @@
     {% for article in articles %}
         <ul class="ListView">
             <li class="ListItemWrapper">
-                <a class="ListItem ListItem--withImage" href="{% pageurl article %}">
+                    <a class="ListItem {% if article.image %}ListItem--withImage{% else %}ListItem--rightIcon{% endif %}" href="{% pageurl article %}">
                     <h3 class="ListItem-title">{{ article.title }}</h3>
                     <h4 class="ListItem-subtitle">{{ article.subtitle }}</h4>
                     <p class="ListItem-desc">{{ article.description }}</p>
                     {% if article.image %}
-                        <a class="ListItem-image" href="{% pageurl article %}">{% image article.image width-60 %}</a>
+
+                    {% image article.image fill-100x100 as tmp_img %}
+
+                        <img class="ListItem-image" alt="{{ tmp_img.title }}" src="{{ tmp_img.url }}">
                     {% endif %}
                 </a>
             </li>

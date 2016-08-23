@@ -6,16 +6,18 @@
     </div>
         <ul class="ListView">
         {% for article in articles %}
-            <li class="ListItemWrapper">
-                <h3 class="ListItem-title"><a href="{% pageurl article %}">{{ article.title }}</a></h3>
-                {% if article.image %}
-                    <a class="ListItem ListItem--withImage" href="{% pageurl article %}">{% image article.image width-60 %}</a>
-                {% endif %}
-                <p class="ListItem-desc">{{ article.subtitle }}</p>
-                <span class="ListItem-image Icons icon-clinic-blueRegal"></span>
+            <li class="ListItemWrapper">                
+                    <a class="ListItem {% if article.image %}ListItem--withImage{% else %}ListItem--rightIcon{% endif %}" href="{% pageurl article %}">
+                        <h3 class="ListItem-title">{{ article.title }}</h3>
+                        <p class="ListItem-desc">{{ article.subtitle }}</p>
+                        {% if article.image %}
+                        <img class="ListItem-image" src="{{article.image}}">
+                        {% else %}
+                        <span class="ListItem-iconRight Icons icon-chevron_right-bluePelorous"></span>
+                        {% endif %}
+                </a>
             </li>
         {% endfor %}
         </ul>
     </div>
 {% endif %}
-
