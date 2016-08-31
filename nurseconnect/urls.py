@@ -1,8 +1,8 @@
 import os
 
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
-from django.conf import settings
 from django.contrib import admin
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
@@ -29,6 +29,11 @@ urlpatterns += patterns(
     url(r"^documents/", include(wagtaildocs_urls)),
     url(r"search/$", views.search, name="search"),
     url(r"sections/$", include(wagtail_urls)),
+
+    url(
+        r"^profiles/",
+        include("molo.profiles.urls", namespace="molo.profiles")
+    ),
 
     url(r"", include("molo.core.urls")),
     url("^", include("django.contrib.auth.urls")),
