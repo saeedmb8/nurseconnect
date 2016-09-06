@@ -78,6 +78,9 @@ INSTALLED_APPS = [
     'raven.contrib.django.raven_compat',
     'django_cas_ng',
     'compressor',
+
+    # styleguide
+    'styleguide',
 ]
 
 SITE_ID = 1
