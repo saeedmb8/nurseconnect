@@ -41,7 +41,7 @@ BASE_URL = 'http://example.com'
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -55,8 +55,6 @@ INSTALLED_APPS = [
 
     'molo.core',
     'nurseconnect',
-    'modeltranslation',
-    'django.contrib.admin',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
