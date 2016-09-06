@@ -25,6 +25,8 @@
                 <a class="PillButton PillButton--orange"
                    href="{% url "molo.profiles:user_register" %}">{% trans "sign up" %}</a>
             </div>
+            <a href="{% url "molo.profiles:profile_password_change" %}"
+               class="profiles__forgotten-password">{% trans "Forgotten your password?" %}</a>
         </div>
     </form>
 {% endblock %}

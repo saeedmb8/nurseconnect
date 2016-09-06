@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
 
     'molo.profiles',
+    'molo.yourwords',
     'mptt',
     'djcelery',
 

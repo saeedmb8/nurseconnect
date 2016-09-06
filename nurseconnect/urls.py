@@ -29,7 +29,10 @@ urlpatterns += patterns(
     url(r"^documents/", include(wagtaildocs_urls)),
     url(r"search/$", views.search, name="search"),
     url(r"sections/$", include(wagtail_urls)),
-
+    url(r'^yourwords/',
+        include('molo.yourwords.urls',
+                namespace='molo.yourwords',
+                app_name='molo.yourwords')),
     url(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")
