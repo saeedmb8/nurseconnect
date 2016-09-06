@@ -9,6 +9,8 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
+from styleguide import urls
+
 from nurseconnect import views
 
 # implement CAS URLs in a production setting
@@ -35,6 +37,7 @@ urlpatterns += patterns(
         include("molo.profiles.urls", namespace="molo.profiles")
     ),
 
+    url(r"^styleguide/", include("styleguide.urls")),
     url(r"", include("molo.core.urls")),
     url("^", include("django.contrib.auth.urls")),
     url(r"", include(wagtail_urls)),
