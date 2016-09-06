@@ -93,7 +93,7 @@
         {% wagtailuserbar %}
 
         <main role="main">
-            {% include "core/header.html" %}
+            <div class="Logo--auth icon-logo"></div>
             {% breadcrumbs %}
             {% block content %}
             {% endblock %}
@@ -101,17 +101,10 @@
             {% block extra_js %}
             {% endblock %}
 
-            {% block search %}
-                {% include "core/social_media.html" %}
-                {% if languages %}
-                    {% include "search/search_block.html" %}
-                {% endif %}
-            {% endblock %}
-
             {% block footer %}
                 <footer class="Footer" role="contentinfo">
                     {% footer_page %}
-                    <p class="Footer-paragraph">&copy; 2016  {% trans "Copyright National Department of Health" %}</p>
+                    <p class="Footer-paragraph">&copy; 2016 {% trans "Copyright National Department of Health" %}</p>
                 </footer>
             {% endblock %}
         </main>

@@ -1,14 +1,9 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
-from django.views.generic import TemplateView
 from molo.core.models import ArticlePage
 from molo.core.utils import get_locale_code
 from wagtail.wagtailsearch.models import Query
-
-
-class HomeView(TemplateView):
-    template_name = "core/main.html"
 
 
 def search(request, results_per_page=10):
