@@ -5,7 +5,8 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from nurseconnect.views import NurseConnectEditProfileView, NurseConnectRegistrationView
+from nurseconnect.views import NurseConnectEditProfileView, \
+    NurseConnectRegistrationView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
