@@ -6,28 +6,27 @@
     <div class="profiles">
         <form method="post" action="{% url "edit_my_profile" %}" class="profiles__form">
             {% csrf_token %}
-            <fieldset>
-                <label for="id_alias">{% trans "Type new display name:" %}</label>
-                {{ form.alias }}
-            </fieldset>
-
-            <fieldset>
-                <label for="id_date_of_birth_year">{% trans "Update your date of birth:" %}</label>
-                {{ form.date_of_birth }}
-            </fieldset>
-            <fieldset>
-                <label for="id_date_of_birth_year">{% trans "Update your first name" %}</label>
+            <ul class="ListViewProfile">
+                <li class="ListItemWrapper">
+                    <a class="ListItem ListItem--rightIcon ">
+                        <label for="id_date_of_birth_year">{% trans "Update your first name" %}</label>
+                    </a>
+                </li>
                 {{ form.first_name }}
-            </fieldset>
-            <fieldset>
-                <label for="id_date_of_birth_year">{% trans "Update your surname" %}</label>
+                <li class="ListItemWrapper">
+                    <a class="ListItem ListItem--rightIcon ">
+                        <label for="id_date_of_birth_year">{% trans "Update your surname" %}</label>
+                    </a>
+                </li>
                 {{ form.last_name }}
-            </fieldset>
-            <fieldset>
-                <label for="id_date_of_birth_year">{% trans "Update your mobile number" %}</label>
-                {{ form.username }}
-            </fieldset>
-            <input type="submit" value="{% trans "Update Profile" %}">
+                <li class="ListItemWrapper">
+                    <a class="ListItem ListItem--rightIcon ">
+                        <label for="id_date_of_birth_year">{% trans "Update your mobile number" %}</label>
+                        {{ form.username }}
+                    </a>
+                </li>
+            </ul>
+            <input type="submit" class="PillButton PillButton--orange" value="{% trans "Update Profile" %}">
         </form>
     </div>
 {% endblock %}

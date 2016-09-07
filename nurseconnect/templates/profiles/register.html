@@ -26,24 +26,6 @@
                     <span class="input-hint">({% trans "Enter password" %})</span>
                 </div>
 
-                {% if settings.profiles.UserProfilesSettings.show_mobile_number_field %}
-                    <div class="FormField FormField--center FormField--bordered">
-                        <label for="mobile_number">{% trans "Enter your mobile number" %}</label>
-                        {{ form.mobile_number.errors }}
-                        {{ form.mobile_number }}
-                        <span class="input-hint">{% trans "(e.g. +27900000013)" %}</span>
-                    </div>
-                {% endif %}
-
-                {% if settings.profiles.UserProfilesSettings.show_email_field %}
-                    <div class="FormField FormField--center FormField--bordered">
-                        <label for="id_email">{% trans "Enter your email addresss" %}</label>
-                        {{ form.email.errors }}
-                        {{ form.email }}
-                        <span class="input-hint">{% trans "(e.g. example@foo.com)" %}</span>
-                    </div>
-                {% endif %}
-
                 <div class="FormField FormField--center FormField--bordered">
                     {% if form.terms_and_conditions.errors %}
                         <span class="error">
@@ -56,7 +38,7 @@
                 </div>
 
                 <input type="submit" value="{% trans "Register" %}"/>
-                <input type="hidden" name="next" value="{% url "molo.profiles:registration_done" %}"/>
+                <input type="hidden" name="next" value="{% url "registration_done" %}"/>
             </div>
         </form>
     </div>

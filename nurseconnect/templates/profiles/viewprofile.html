@@ -7,6 +7,8 @@
     <div class="profiles">
         <div class="ListTitle ListTitle--highlight">
             <h2 class="ListTitle-name">Settings</h2>
+            <a href="{% url "edit_my_profile" %}"
+               class="call-to-action__nav-item call-to-action__nav-item--editprofile">{% trans "Edit" %}</a>
         </div>
         <div class="FormGroup FormGroup--padded">
             <div class="FormField FormField FormField--bordered">
@@ -19,15 +21,20 @@
             </div>
             <div class="FormField FormField FormField--bordered">
                 <label for="id_username">{% trans "Mobile Number" %}</label>
-                <p class="profile__username">{{ user.username | default:"Not set" }}</p>
-            </div>
-            <div class="call-to-action call-to-action--profile call-to-action--view-profile">
-                <a href="{% url "molo.profiles:auth_logout" %}"
-                   class="call-to-action__nav-item call-to-action__nav-item--logout">{% trans "log out" %}</a>
-                <a href="{% url "edit_my_profile" %}"
-                   class="call-to-action__nav-item call-to-action__nav-item--editprofile">{% trans "Edit My Profile" %}</a>
-                <a href="{% url "molo.profiles:profile_password_change" %}"
-                   class="call-to-action__nav-item call-to-action__nav-item--change-password">{% trans "Change My Password" %}</a>
+                <p class="profile__username">{{ user.username }}</p>
             </div>
         </div>
+        <div class="ListTitle ListTitle--highlight">
+            <h2 class="ListTitle-name">Password</h2>
+            <a href="{% url "molo.profiles:profile_password_change" %}"
+               class="call-to-action__nav-item call-to-action__nav-item--change-password">{% trans "Change Password" %}</a>
+        </div>
+        <div class="ListTitle ListTitle--highlight">
+            <h2 class="ListTitle-name">Security Questions</h2>
+        </div>
+        <div class="call-to-action call-to-action--profile call-to-action--view-profile">
+            <a href="{% url "molo.profiles:auth_logout" %}"
+               class="call-to-action__nav-item call-to-action__nav-item--logout">{% trans "log out" %}</a>
+        </div>
+    </div>
 {% endblock %}

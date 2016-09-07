@@ -59,7 +59,7 @@ class RegistrationForm(forms.Form):
         return self.cleaned_data['username']
 
 
-class EditProfileForm(forms.Form):
+class EditProfileForm(forms.ModelForm):
     first_name = forms.CharField(
         label="First Name",
         widget=forms.TextInput(
@@ -94,6 +94,5 @@ class EditProfileForm(forms.Form):
     class Meta:
         model = UserProfile
         fields = [
-            "alias", "date_of_birth", "mobile_number",
             "first_name", "last_name", "username"
         ]
