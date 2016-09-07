@@ -1,1 +1,0 @@
--e git+https://github.com/praekelt/molo.profiles.git@feature/reset_password#egg=molo.profiles

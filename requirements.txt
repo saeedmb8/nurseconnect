@@ -1,3 +1,5 @@
+git+https://github.com/praekelt/molo.profiles.git@feature/reset_password#egg=molo.profiles
+
 molo.core==3.7.5
 #molo.profiles==1.2.6
 molo.commenting==0.5.4
