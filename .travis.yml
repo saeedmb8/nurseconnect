@@ -16,6 +16,8 @@ install:
 script:
   - flake8 nurseconnect
   - py.test
+notifications:
+  slack: praekelt:37JlRu8DWDq9ZdTowf5cgMoN
 after_success:
   - coveralls
 deploy:
