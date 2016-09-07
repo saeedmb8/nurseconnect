@@ -5,10 +5,11 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
+from django.views.generic import FormView
+from django.views.generic import UpdateView
 
 from molo.core.models import ArticlePage
 from molo.core.utils import get_locale_code
-from molo.profiles.views import MyProfileEdit, RegistrationView
 from wagtail.wagtailsearch.models import Query
 
 from nurseconnect import forms
@@ -41,16 +42,14 @@ def search(request, results_per_page=10):
     })
 
 
-class NurseConnectRegistrationView(RegistrationView):
+class RegistrationView(FormView):
+    form_class = forms.RegistrationForm
+    template_name = 'profiles/register.html'
+
     def form_valid(self, form):
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
-        mobile_number = form.cleaned_data['mobile_number']
         user = User.objects.create_user(username=username, password=password)
-        user.profile.mobile_number = mobile_number
-        if form.cleaned_data['email']:
-            user.email = form.cleaned_data['email']
-            user.save()
         user.profile.save()
 
         authed_user = authenticate(username=username, password=password)
@@ -58,23 +57,23 @@ class NurseConnectRegistrationView(RegistrationView):
         return HttpResponseRedirect(form.cleaned_data.get('next', '/'))
 
     def render_to_response(self, context, **response_kwargs):
-        return super(NurseConnectRegistrationView, self).render_to_response(
+        return super(RegistrationView, self).render_to_response(
             context, **response_kwargs
         )
 
 
-class NurseConnectEditProfileView(MyProfileEdit):
-    form_class = forms.NurseConnectEditProfileForm
+class EditProfileView(UpdateView):
+    form_class = forms.EditProfileForm
 
     def get_initial(self):
-        initial = super(NurseConnectEditProfileView, self).get_initial()
+        initial = super(EditProfileView, self).get_initial()
         initial.update({'first_name': self.request.user.first_name})
         initial.update({'last_name': self.request.user.last_name})
         initial.update({'username': self.request.user.username})
         return initial
 
     def form_valid(self, form):
-        super(MyProfileEdit, self).form_valid(form)
+        super(EditProfileView, self).form_valid(form)
         first_name = form.cleaned_data['first_name']
         last_name = form.cleaned_data['last_name']
         username = form.cleaned_data['username']

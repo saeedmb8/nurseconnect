@@ -30,16 +30,21 @@ urlpatterns += patterns(
     url(r"^documents/", include(wagtaildocs_urls)),
     url(r"search/$", views.search, name="search"),
     url(r"sections/$", include(wagtail_urls)),
-    url(r'^yourwords/',
+    url(
+        r'^yourwords/',
         include('molo.yourwords.urls',
                 namespace='molo.yourwords',
                 app_name='molo.yourwords')),
-    url(r'^profiles/register/$',
-        views.NurseConnectRegistrationView.as_view(),
-        name='user_register'),
-    url(r'^profiles/edit/myprofile/$',
-        login_required(views.NurseConnectEditProfileView.as_view()),
-        name='edit_my_profile'),
+    url(
+        r'^profiles/register/$',
+        views.RegistrationView.as_view(),
+        name='user_register'
+    ),
+    url(
+        r'^profiles/edit/myprofile/$',
+        login_required(views.EditProfileView.as_view()),
+        name='edit_my_profile'
+    ),
     url(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")
