@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from nurseconnect.views import NurseConnectEditProfileView, NurseConnectRegistrationView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -33,6 +35,12 @@ urlpatterns += patterns(
         include('molo.yourwords.urls',
                 namespace='molo.yourwords',
                 app_name='molo.yourwords')),
+    url(r'^profiles/register/$',
+        NurseConnectRegistrationView.as_view(),
+        name='user_register'),
+    url(r'^profiles/edit/myprofile/$',
+        login_required(NurseConnectEditProfileView.as_view()),
+        name='edit_my_profile'),
     url(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")

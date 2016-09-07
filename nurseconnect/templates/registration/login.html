@@ -4,29 +4,32 @@
 
 
 {% block content %}
+    <div class="Article-body">
+        <h1 class="Article-title">Welcome back. Please enter your login details.</h1>
+    </div>
     <form method="post" action=".">{% csrf_token %}
         <div class="FormGroup FormGroup--padded">
             {% if form.errors %}
                 <p class="error errorlist">{% trans "Your mobile number and password does not match. Please try again." %}</p>
             {% endif %}
             <div class="FormField FormField--center FormField--bordered">
-                <p><strong>{% trans "Username" %}</strong></p>
+                <p><strong>{% trans "Mobile Number" %}</strong></p>
                 {{ form.username }}
             </div>
             <div class="FormField FormField--center FormField--bordered">
-                <p><strong>{% trans "4-digit pin" %}</strong></p>
+                <p><strong>{% trans "Password" %}</strong></p>
                 {{ form.password }}
             </div>
             <div class="FormGroup FormGroup--padded">
-                <input type="submit" value="{% trans 'Log in' %}">
+                <button type="submit" class="PillButton PillButton--blue">log in</button>
                 <input type="hidden" name="next" value="{% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.site.root_page.url }}{% endif %}"/>
             </div>
             <div class="FormGroup FormGroup--padded FormGroup--bordered">
                 <a class="PillButton PillButton--orange"
-                   href="{% url "molo.profiles:user_register" %}">{% trans "sign up" %}</a>
+                   href="{% url "user_register" %}">{% trans "sign up" %}</a>
             </div>
             <a href="{% url "molo.profiles:profile_password_change" %}"
-               class="profiles__forgotten-password">{% trans "Forgotten your password?" %}</a>
+               class="Link">{% trans "Forgotten your password?" %}</a>
         </div>
     </form>
 {% endblock %}
