@@ -1,4 +1,4 @@
-molo.core==3.7.3
+molo.core==3.7.5
 molo.profiles==1.2.6
 molo.commenting==0.5.4
 psycopg2==2.6.2
