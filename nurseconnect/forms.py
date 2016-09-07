@@ -41,14 +41,17 @@ class RegistrationForm(forms.Form):
     next = forms.CharField(required=False)
 
     def clean_username(self):
-        validation_msg_fragment = molo_profiles_forms.get_validation_msg_fragment()
+        validation_msg_fragment = \
+            molo_profiles_forms.get_validation_msg_fragment()
 
         if User.objects.filter(
             username__iexact=self.cleaned_data['username']
         ).exists():
             raise forms.ValidationError(_("Username already exists."))
 
-        if not molo_profiles_forms.validate_no_email_or_phone(self.cleaned_data['username']):
+        if not molo_profiles_forms.validate_no_email_or_phone(
+            self.cleaned_data['username']
+        ):
             raise forms.ValidationError(
                 _(
                     "Sorry, but that is an invalid username. Please don't use"

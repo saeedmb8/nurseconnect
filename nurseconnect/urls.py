@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -42,7 +43,7 @@ urlpatterns += patterns(
     ),
     url(
         r'^register/done/',
-        login_required(views.RegistrationDone.as_view(
+        login_required(TemplateView.as_view(
             template_name="core/main.html"
         )),
         name='registration_done'

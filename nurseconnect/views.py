@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
 from django.views.generic import FormView
-from django.views.generic import TemplateView
 from django.views.generic import UpdateView
 
 from molo.core.models import ArticlePage
@@ -62,10 +61,6 @@ class RegistrationView(FormView):
         return super(RegistrationView, self).render_to_response(
             context, **response_kwargs
         )
-
-
-class RegistrationDone(TemplateView):
-    template_name = 'core/viewprofile.html'
 
 
 class EditProfileView(UpdateView):
