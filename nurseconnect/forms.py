@@ -1,5 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+
 from molo.profiles.forms import EditProfileForm
 from molo.profiles.models import UserProfile
 

@@ -5,11 +5,13 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
+
 from molo.core.models import ArticlePage
 from molo.core.utils import get_locale_code
 from molo.profiles.views import MyProfileEdit, RegistrationView
-from nurseconnect.forms import NurseConnectEditProfileForm
 from wagtail.wagtailsearch.models import Query
+
+from nurseconnect import forms
 
 
 def search(request, results_per_page=10):
@@ -46,8 +48,6 @@ class NurseConnectRegistrationView(RegistrationView):
         mobile_number = form.cleaned_data['mobile_number']
         user = User.objects.create_user(username=username, password=password)
         user.profile.mobile_number = mobile_number
-        user.profile.first_name = ""
-        user.profile.last_name = ""
         if form.cleaned_data['email']:
             user.email = form.cleaned_data['email']
             user.save()
@@ -64,7 +64,7 @@ class NurseConnectRegistrationView(RegistrationView):
 
 
 class NurseConnectEditProfileView(MyProfileEdit):
-    form_class = NurseConnectEditProfileForm
+    form_class = forms.NurseConnectEditProfileForm
 
     def get_initial(self):
         initial = super(NurseConnectEditProfileView, self).get_initial()
