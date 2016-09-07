@@ -3,11 +3,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(
-        r"",
-        TemplateView.as_view(template_name="styleguide/index.html"),
-        name="index"
-    ),
-    url(
         r"^atoms/",
         TemplateView.as_view(template_name="styleguide/atoms.html"),
         name="atoms"
@@ -31,5 +26,10 @@ urlpatterns = [
         r"^pages/",
         TemplateView.as_view(template_name="styleguide/pages.html"),
         name="pages"
+    ),
+    url(
+        r"",
+        TemplateView.as_view(template_name="styleguide/index.html"),
+        name="index"
     )
 ]
