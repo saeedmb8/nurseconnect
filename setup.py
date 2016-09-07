@@ -28,6 +28,7 @@ setup(name='nurseconnect',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
+      dependency_links=["https://github.com/praekelt/molo.profiles.git@feature/reset_password#egg=molo.profiles",],
       install_requires=requires,
       tests_require=requires,
       entry_points={})
