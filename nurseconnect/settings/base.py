@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'modelcluster',
 
     'molo.core',
+
     'nurseconnect',
 
     'wagtail.wagtailcore',
