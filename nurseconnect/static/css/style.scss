@@ -28,6 +28,12 @@ textarea {
   color: $anotherShadeOfGrey;
 }
 
+@media screen and (min-width: 600px) {
+    body {
+      max-width: 320px;
+    }
+}
+
 // dark grey
 .highlight-primary {
   color: $colorSecond;
