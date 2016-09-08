@@ -68,7 +68,10 @@ class RegistrationForm(forms.Form):
     terms_and_conditions = forms.BooleanField(
         required=True,
         error_messages={
-            "invalid": _("Please accept the T&amp;Cs in order to complete the registration")
+            "invalid": _(
+                "Please accept the T&amp;Cs "
+                "in order to complete the registration"
+            )
         },
         label=_("Accept the Terms of Use")
     )
@@ -83,7 +86,8 @@ class RegistrationForm(forms.Form):
         username = self.cleaned_data["username"]
 
         if username[0] == "0":
-            self.cleaned_data["username"] = INT_PREFIX + username[1:len(username)]
+            self.cleaned_data["username"] = \
+                INT_PREFIX + username[1:len(username)]
 
         return self.cleaned_data["username"]
 
