@@ -6,11 +6,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import get_language_from_request
 from django.views.generic import FormView
-from django.views.generic import UpdateView
 
 from molo.core.models import ArticlePage
 from molo.core.utils import get_locale_code
-from molo.profiles.models import UserProfile
 from wagtail.wagtailsearch.models import Query
 
 from nurseconnect import forms
@@ -51,7 +49,7 @@ class RegistrationView(FormView):
         username = form.cleaned_data["username"]
         password = form.cleaned_data["password"]
         user = User.objects.create_user(username=username, password=password)
-        user.profile.save()
+        user.save()
 
         authed_user = authenticate(username=username, password=password)
         login(self.request, authed_user)
@@ -63,11 +61,11 @@ class RegistrationView(FormView):
         )
 
 
-class EditProfileView(UpdateView):
-    model = UserProfile
+class EditProfileView(FormView):
+    model = User
     form_class = forms.EditProfileForm
     template_name = "profiles/editprofile.html"
-    success_url = reverse_lazy('molo.profiles:view_my_profile')
+    success_url = reverse_lazy("molo.profiles:view_my_profile")
 
     def get_initial(self):
         initial = super(EditProfileView, self).get_initial()
@@ -87,6 +85,3 @@ class EditProfileView(UpdateView):
         self.request.user.username = username
         self.request.user.save()
         return HttpResponseRedirect(reverse("molo.profiles:view_my_profile"))
-
-    def get_object(self, queryset=None):
-        return self.request.user.profile

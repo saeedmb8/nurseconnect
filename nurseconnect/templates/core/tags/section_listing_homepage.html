@@ -8,7 +8,7 @@
         {% for section in sections %}
             <li class="ListItemWrapper--menu">
                 <div class="articles nav {{ section.get_effective_extra_style_hints }}">
-                    <a href="{% pageurl section %}" class="ListItem ListItem--rightIcon ">
+                    <a href="{% pageurl section %}" class="ListItem ListItem--rightIcon">
                         <h3 class="ListItem-title">{{ section.title }}</h3>
                         <p class="ListItem-desc">{{ section.description }}</p>
                         <span class="ListItem-iconRight Icons icon-chevron_right-bluePelorous"></span>

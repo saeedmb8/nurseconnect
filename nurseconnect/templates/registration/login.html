@@ -13,11 +13,13 @@
                 <p class="error errorlist">{% trans "Your mobile number and password does not match. Please try again." %}</p>
             {% endif %}
             <div class="FormField FormField--center FormField--bordered">
-                <p><strong>{% trans "Mobile Number" %}</strong></p>
+                {{ form.username.error }}
+                {{ form.username.label }}
                 {{ form.username }}
             </div>
             <div class="FormField FormField--center FormField--bordered">
-                <p><strong>{% trans "Password" %}</strong></p>
+                {{ form.password.error }}
+                {{ form.password.label }}
                 {{ form.password }}
             </div>
             <div class="FormGroup FormGroup--padded">
@@ -28,7 +30,7 @@
                 <a class="PillButton PillButton--orange"
                    href="{% url "user_register" %}">{% trans "sign up" %}</a>
             </div>
-            <a href="{% url "molo.profiles:profile_password_change" %}"
+            <a href="#"
                class="Link">{% trans "Forgotten your password?" %}</a>
         </div>
     </form>

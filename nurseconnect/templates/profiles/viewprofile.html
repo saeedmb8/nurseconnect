@@ -15,7 +15,7 @@
                 <p>{{ user.first_name | default:"Anonymous" }}</p>
             </div>
             <div class="FormField FormField FormField--bordered">
-                <label for="id_surname">{% trans "Last Name" %}</label>
+                <label for="id_surname">{% trans "Surname" %}</label>
                 <p class="profile__last-name">{{ user.last_name | default:"Anonymous" }}</p>
             </div>
             <div class="FormField FormField FormField--bordered">
@@ -33,7 +33,7 @@
         </div>
         <div class="call-to-action call-to-action--profile call-to-action--view-profile">
             <a href="{% url "molo.profiles:auth_logout" %}"
-               class="call-to-action__nav-item call-to-action__nav-item--logout">{% trans "log out" %}</a>
+               class="PillButton PillButton--orange">{% trans "log out" %}</a>
         </div>
     </div>
 {% endblock %}

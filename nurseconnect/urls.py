@@ -32,33 +32,34 @@ urlpatterns += patterns(
     url(r"search/$", views.search, name="search"),
     url(r"sections/$", include(wagtail_urls)),
     url(
-        r'^yourwords/',
-        include('molo.yourwords.urls',
-                namespace='molo.yourwords',
-                app_name='molo.yourwords')),
-    url(
-        r'^profiles/register/$',
-        views.RegistrationView.as_view(),
-        name='user_register'
+        r"^yourwords/",
+        include("molo.yourwords.urls",
+                namespace="molo.yourwords",
+                app_name="molo.yourwords")
     ),
     url(
-        r'^register/done/',
+        r"^profiles/register/$",
+        views.RegistrationView.as_view(),
+        name="user_register"
+    ),
+    url(
+        r"^register/done/$",
         login_required(TemplateView.as_view(
             template_name="core/main.html"
         )),
-        name='registration_done'
+        name="registration_done"
     ),
     url(
-        r'^profiles/edit/myprofile/$',
+        r"^profiles/edit/myprofile/$",
         login_required(views.EditProfileView.as_view()),
-        name='edit_my_profile'
+        name="edit_my_profile"
     ),
+
     url(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")
     ),
-    url(r'^comments/', include('molo.commenting.urls')),
-
+    url(r"^comments/", include("molo.commenting.urls")),
     url(r"^styleguide/", include("styleguide.urls", namespace="styleguide")),
     url(r"", include("molo.core.urls")),
     url("^", include("django.contrib.auth.urls")),

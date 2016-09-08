@@ -13,30 +13,26 @@
             {% csrf_token %}
             <div class="FormGroup FormGroup--padded">
                 <div class="FormField FormField--center FormField--bordered">
-                    <label for="id_username">{% trans "Mobile Number" %}</label>
-                    {{ form.username.errors }}
+                    {{ form.username.label_tag }}
                     {{ form.username }}
-                    <span class="input-hint">({% trans "eg. 0821234567" %})</span>
+                    {{ form.username.errors }}
                 </div>
-
+                {{ form.non_field_errors }}
                 <div class="FormField FormField--center FormField--bordered">
-                    <label for="id_password">{% trans "Password" %}</label>
-                    {{ form.password.errors }}
+                    {{ form.password.label_tag }}
                     {{ form.password }}
-                    <span class="input-hint">({% trans "Enter password" %})</span>
+                    {{ form.password.errors }}
                 </div>
-
                 <div class="FormField FormField--center FormField--bordered">
-                    {% if form.terms_and_conditions.errors %}
-                        <span class="error">
-          {% trans "Please accept the T&amp;Cs in order to complete the registration" %}
-        </span>
-                    {% endif %}
-                    {{ form.terms_and_conditions }}
-                    <label for="id_terms_and_conditions"
-                           class="profiles__terms">{% trans "I accept the Terms and Conditions" %}</label>
+                    {{ form.confirm_password.label_tag }}
+                    {{ form.confirm_password }}
+                    {{ form.confirm_password.errors }}
                 </div>
-
+                <div class="FormField FormField--center FormField--bordered">
+                    {{ form.terms_and_conditions }}
+                    {{ form.terms_and_conditions.label_tag }}
+                    {{ form.terms_and_conditions.errors }}
+                </div>
                 <input type="submit" value="{% trans "Register" %}"/>
                 <input type="hidden" name="next" value="{% url "registration_done" %}"/>
             </div>

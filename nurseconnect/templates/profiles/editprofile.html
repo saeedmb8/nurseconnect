@@ -9,20 +9,23 @@
             <ul class="ListViewProfile">
                 <li class="ListItemWrapper">
                     <a class="ListItem ListItem--rightIcon ">
-                        <label for="id_date_of_birth_year">{% trans "Update your first name" %}</label>
+                        {{ form.first_name.label_tag }}
+                        {{ form.first_name }}
+                        {{ form.first_name.errors }}
                     </a>
                 </li>
-                {{ form.first_name }}
                 <li class="ListItemWrapper">
                     <a class="ListItem ListItem--rightIcon ">
-                        <label for="id_date_of_birth_year">{% trans "Update your surname" %}</label>
+                        {{ form.last_name.label_tag }}
+                        {{ form.last_name }}
+                        {{ form.last_name.errors }}
                     </a>
                 </li>
-                {{ form.last_name }}
                 <li class="ListItemWrapper">
                     <a class="ListItem ListItem--rightIcon ">
-                        <label for="id_date_of_birth_year">{% trans "Update your mobile number" %}</label>
+                        {{ form.username.label_tag }}
                         {{ form.username }}
+                        {{ form.username.errors }}
                     </a>
                 </li>
             </ul>
