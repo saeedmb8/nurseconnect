@@ -16,13 +16,12 @@
                 </div>
                 {% load_descendant_articles_for_section section featured_in_homepage=True as featured_articles %}
                 {% for article in featured_articles %}
-                    <ul class="list-block">
-                        <li>
-                            {% if article.image %}
-                                <a href="{% pageurl article %}">{% image article.image width-60 %}</a>
-                            {% endif %}
-                            <h3><a href="{% pageurl article %}">{{ article.title }}</a></h3>
-                            <p>{{ article.subtitle }}</p>
+                    <ul class="ListView">
+                        <li class="ListItemWrapper">
+                            <a class="ListItem ListItem--withImage" href="{% pageurl article %}">
+                                <h3 class="ListItem-subtitle">{{ article.title }}</h3>
+                                <p class="ListItem-desc">{{ article.subtitle }}</p>
+                            </a>
                         </li>
                     </ul>
                 {% endfor %}

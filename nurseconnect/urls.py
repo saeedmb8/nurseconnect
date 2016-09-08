@@ -29,7 +29,18 @@ urlpatterns += patterns(
     url(r"^django-admin/", include(admin.site.urls)),
     url(r"^admin/", include(wagtailadmin_urls)),
     url(r"^documents/", include(wagtaildocs_urls)),
-    url(r"search/$", views.search, name="search"),
+    url(
+        r"search/$",
+        login_required(views.SearchView.as_view(
+            template_name="search/search.html"
+        )),
+        name="search"
+    ),
+    url(
+        r"search/results/$",
+        login_required(views.search),
+        name="search_query"
+    ),
     url(r"sections/$", include(wagtail_urls)),
     url(
         r"^yourwords/",

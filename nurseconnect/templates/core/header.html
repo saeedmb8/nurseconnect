@@ -9,13 +9,13 @@
         <nav class="Navbar-navigation">
             <ul class="Navbar-linkList">
                 <li class="Navbar-item">
-                    <a class="Navbar-link" href="#search">
+                    <a class="Navbar-link" href="{% url "search" %}">
                         <span class="Icons icon-search-orangeBittersweet"></span>
                         <span class="u-screenReaderText">{% trans "Search" %}</span>
                     </a>
                 </li>
                 <li class="Navbar-item">
-                    <a class="Navbar-link" href="{% url 'molo.profiles:view_my_profile' %}">
+                    <a class="Navbar-link" href="{% url "molo.profiles:view_my_profile" %}">
                         <span class="Icons icon-profile-orangeBittersweet"></span>
                         <span class="u-screenReaderText">{% trans "Profile" %}</span>
                     </a>
