@@ -17,14 +17,30 @@
 //    Use the 'color' function to grab the hex from
 //    the map.
 
+$colors: (
+    greyscale: (
+        white: #ffffff,
+        black: #000000,
+        grey: #666666,
+        grey-light-slate: #7e93a0
+    ),
+    brand: (
+        blue-tranquil: #dae8eb,
+        blue-spindle: #c0d6dd,
+        blue-pelorous: #2d9ec5,
+        blue-regal: #213d55,
+        orange-bittersweet: #ff6655
+    )
+);
+
 //color Variables
-$color-blue-tranquil: #dae8eb;        // background 1st lvl
-$color-blue-spindle: #c0d6dd;         // background 2nd lvl
-$color-white: #ffffff;                // background 3rd lvl, btn text
-$color-blue-pelorous: #2d9ec5;        // links, interactive color, h2,buttons
-$color-orange-bittersweet: #ff6655;   // 1st lvl: h1,qoutes,section catagories/tags, first level icons
-$color-blue-regal: #213d55;           // 2nd lvl: inactive state, secondary icons, p
-$color-grey-light-slate: #7e93a0;     // 3rd lvl: == 50% opacity of blue-regal, descriptive text, radio labels, nested background state
+$color-blue-tranquil: color(brand, blue-tranquil);        // background 1st lvl
+$color-blue-spindle: color(brand, blue-spindle);         // background 2nd lvl
+$color-white: color(greyscale, white);                // background 3rd lvl, btn text
+$color-blue-pelorous: color(brand, blue-pelorous);        // links, interactive color, h2,buttons
+$color-orange-bittersweet: color(brand, orange-bittersweet);   // 1st lvl: h1,qoutes,section catagories/tags, first level icons
+$color-blue-regal: color(brand, blue-regal);           // 2nd lvl: inactive state, secondary icons, p
+$color-grey-light-slate: color(greyscale, grey-light-slate);     // 3rd lvl: == 50% opacity of blue-regal, descriptive text, radio labels, nested background state
 
 
 // Base Font
@@ -38,6 +54,13 @@ $font-light: ("light", unquote("#{$sans-serif}"));
 $font-regular: ("regular", unquote("#{$sans-serif}"));
 $font-medium: ("medium", unquote("#{$sans-serif}"));
 $font-bold: ("bold", unquote("#{$sans-serif}"));
+
+$fonts: (
+    system: (
+        unquote("sans-serif"),
+        unquote("Helvetica, Arial, sans-serif")
+    )
+);
 
 // Headings
 //$header-font-weight: $bold;
@@ -57,5 +80,3 @@ $bp-xlarge: 120em; // Over 1920px
 $bp-xxlarge: 160em; // 2580px
 $bp-fourk: 210em; // 3360k
 $bp-site-static: 90.0625em;
-
-@import "modules/all";

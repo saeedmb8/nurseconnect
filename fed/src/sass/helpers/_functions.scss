@@ -1,0 +1,31 @@
+/// Map deep get
+/// @author Hugo Giraudel
+/// @access public
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
+@function color($group, $color) {
+    $clr: map-deep-get($colors, $group, $color);
+    @return $clr;
+}
+
+@function font($key) {
+    $key-nth: null;
+
+    @if $enhanced == false {
+        $key-nth: 1;
+    } @else {
+        $key-nth: 2;
+    }
+
+    $result: nth(map-get($fonts, $key), $key-nth);
+
+    @return $result;
+}

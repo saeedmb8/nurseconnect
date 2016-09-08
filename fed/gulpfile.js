@@ -14,6 +14,7 @@ var plumber         = require('gulp-plumber');
 var runSequence     = require('run-sequence');
 var sass            = require('gulp-sass');
 var sassLint        = require('gulp-sass-lint');
+var sassGlob        = require('gulp-sass-glob');
 var watch           = require('gulp-watch');
 var bourbon         = require('bourbon').includePaths;
 
@@ -40,6 +41,7 @@ var sassConfig = {
 gulp.task('styles', ['clean-css', 'lint-sass'], function () {
     return gulp.src(srcPath + '/sass/**/*.s+(a|c)ss')
     .pipe(plumber())
+    .pipe(sassGlob())
     .pipe(sass(sassConfig).on('error', sass.logError))
     .pipe(bless())
     .pipe(autoprefixer({

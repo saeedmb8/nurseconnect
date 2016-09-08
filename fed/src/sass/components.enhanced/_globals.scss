@@ -9,7 +9,7 @@
 // ==========================================
 // ** CSS Browser Normalization
 // ==========================================
-@import "../../node_modules/sanitize.css/sanitize.css";
+// @import "../../node_modules/sanitize.css/sanitize.css";
 // ==========================================
 
 :root,
@@ -28,16 +28,14 @@ body {
 //     display: block;
 //     max-width: 100%;
 // }
-
-
-
-.clear {
-    clear: both;
-}
-
-button,
-a,
-input {
-    text-decoration: none;
-    cursor: pointer;
-}
+//
+// .clear {
+//     clear: both;
+// }
+//
+// button,
+// a,
+// input {
+//     text-decoration: none;
+//     cursor: pointer;
+// }

@@ -1,4 +1,4 @@
-$enhanced: false;
+$enhanced: true;
 
 // SCSS Helpers and Utilities
 @import "helpers/vendor";
@@ -6,7 +6,12 @@ $enhanced: false;
 @import "helpers/variables";
 
 // Components
-@import "components/ui/*";
+@import "components.enhanced/resets";
+@import "components.enhanced/globals";
+@import "components.enhanced/ui/*";
+
+// Pages
+@import "pages/auth";
 
 // Utility Classes
 @import "helpers/utils";
