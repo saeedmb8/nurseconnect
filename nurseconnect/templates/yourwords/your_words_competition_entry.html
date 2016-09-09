@@ -13,20 +13,20 @@
          <div class="Article-image">{% image competition.image width-380 %}</div>
         <div class="content">
             {% for block in competition.content %}
-                {% if block.block_type == 'heading' %}
+                {% if block.block_type == "heading" %}
                     <h5>{{ block.value }}</h5>
                 {% else %}
-                    {% if block.block_type == 'image' %}
+                    {% if block.block_type == "image" %}
                         {% image block.value width-240 %}
                     {% else %}
-                        {% if block.block_type == 'numbered_list' %}
+                        {% if block.block_type == "numbered_list" %}
                             <ol>
                                 {% for item in block.value %}
                                     <li>{{ item }}</li>
                                 {% endfor %}
                             </ol>
                         {% else %}
-                            {% if block.block_type == 'list' %}
+                            {% if block.block_type == "list" %}
                                 <ul>
                                     {% for item in block.value %}
                                         <li>{{ item }}</li>
@@ -44,14 +44,14 @@
             {% csrf_token %}
 
             {% if form.story_name.errors %}
-                <p class="alert-error">* {{ form.story_name.errors|join:' '}}</p>
+                <p class="alert-error">* {{ form.story_name.errors|join:" "}}</p>
             {% endif %}
 
             <label>{% trans "Title of your story" %}</label><br/>
             <p>{{ form.story_name }}</p>
 
             {% if form.story_text.errors %}
-                <p class="alert-error">* {{ form.story_text.errors|join:' '}}</p>
+                <p class="alert-error">* {{ form.story_text.errors|join:" "}}</p>
             {% endif %}
             <label>{% trans "Tell us your story here" %}</label>
             <p>{{ form.story_text }}</p>
@@ -59,7 +59,7 @@
             <div class="options">
                 <div>
                     {% if form.terms_or_conditions_approved.errors %}
-                        <p class="alert-error">* {{ form.terms_or_conditions_approved.errors|join:' '}}</p>
+                        <p class="alert-error">* {{ form.terms_or_conditions_approved.errors|join:" "}}</p>
                     {% endif %}
                     {{ form.terms_or_conditions_approved }}
                     <label>{% trans "I accept the Terms and Conditions" %}</label>

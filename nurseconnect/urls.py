@@ -41,7 +41,6 @@ urlpatterns += patterns(
         login_required(views.search),
         name="search_query"
     ),
-    url(r"sections/$", include(wagtail_urls)),
     url(
         r"^yourwords/",
         include("molo.yourwords.urls",
@@ -70,6 +69,7 @@ urlpatterns += patterns(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")
     ),
+    url(r"^sections/$", include(wagtail_urls)),
     url(r"^comments/", include("molo.commenting.urls")),
     url(r"^styleguide/", include("styleguide.urls", namespace="styleguide")),
     url(r"", include("molo.core.urls")),

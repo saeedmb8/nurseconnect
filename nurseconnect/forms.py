@@ -26,8 +26,9 @@ class RegistrationForm(forms.Form):
         ),
         label=_("Mobile Number"),
     )
+
     password = forms.RegexField(
-        regex=r"^.{4,15}$",
+        regex=r"^\w+$",
         widget=forms.PasswordInput(
             attrs=dict(
                 required=True,
@@ -40,13 +41,14 @@ class RegistrationForm(forms.Form):
         error_messages={
             "invalid": _(
                 "Your password must contain any alphanumeric "
-                "combination of 4 or more characters, not more than 15."
+                "combination of 4 or more characters."
             ),
         },
         label=_("Password")
     )
+
     confirm_password = forms.RegexField(
-        regex=r"^.{4,15}$",
+        regex=r"^\w+$",
         widget=forms.PasswordInput(
             attrs=dict(
                 required=True,
@@ -55,16 +57,16 @@ class RegistrationForm(forms.Form):
                 placeholder=_("Confirm Password")
             )
         ),
-        max_length=4,
         min_length=4,
         error_messages={
             "invalid": _(
                 "Your password must contain any alphanumeric "
-                "combination of 4 or more characters, not more than 15."
+                "combination of 4 or more characters."
             ),
         },
         label=_("Password")
     )
+
     terms_and_conditions = forms.BooleanField(
         required=True,
         error_messages={
@@ -75,7 +77,6 @@ class RegistrationForm(forms.Form):
         },
         label=_("Accept the Terms of Use")
     )
-    next = forms.CharField(required=False)
 
     def clean_username(self):
 
@@ -108,16 +109,20 @@ class EditProfileForm(forms.Form):
             attrs={
                 "placeholder": _("Name"),
             }
-        )
+        ),
+        max_length=30
     )
+
     last_name = forms.CharField(
         label=_("Last Name"),
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Surname"),
             }
-        )
+        ),
+        max_length=30
     )
+
     username = forms.CharField(
         required=False,
         validators=[
@@ -136,9 +141,3 @@ class EditProfileForm(forms.Form):
         ),
         label=_("Mobile Number"),
     )
-
-    class Meta:
-        model = User
-        fields = [
-            "first_name", "last_name", "username"
-        ]

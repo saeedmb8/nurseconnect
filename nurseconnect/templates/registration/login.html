@@ -13,14 +13,14 @@
                 <p class="error errorlist">{% trans "Your mobile number and password does not match. Please try again." %}</p>
             {% endif %}
             <div class="FormField FormField--center FormField--bordered">
-                {{ form.username.error }}
-                {{ form.username.label }}
+                {{ form.username.label_tag }}
                 {{ form.username }}
+                {{ form.username.error }}
             </div>
             <div class="FormField FormField--center FormField--bordered">
-                {{ form.password.error }}
-                {{ form.password.label }}
+                {{ form.password.label_tag }}
                 {{ form.password }}
+                {{ form.password.error }}
             </div>
             <div class="FormGroup FormGroup--padded">
                 <button type="submit" class="PillButton PillButton--blue">log in</button>

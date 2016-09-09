@@ -33,7 +33,7 @@
                     {{ form.terms_and_conditions.label_tag }}
                     {{ form.terms_and_conditions.errors }}
                 </div>
-                <input type="submit" value="{% trans "Register" %}"/>
+                <input class="PillButton PillButton--orange" type="submit" value="{% trans "Register" %}"/>
                 <input type="hidden" name="next" value="{% url "registration_done" %}"/>
             </div>
         </form>
