@@ -25,7 +25,9 @@ class RegistrationViewTest(TestCase):
         self.assertFormError(
             response, "form", "confirm_password", ["This field is required."])
         self.assertFormError(
-            response, "form", "terms_and_conditions", ["This field is required."])
+            response, "form", "terms_and_conditions", [
+                "This field is required."
+            ])
 
 
 class GemEditProfileViewTest(TestCase):
