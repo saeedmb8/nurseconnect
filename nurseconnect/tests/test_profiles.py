@@ -5,9 +5,10 @@ from django.test.client import Client
 from molo.core.tests.base import MoloTestCaseMixin
 
 
-class UserProfileValidationTests(TestCase):
+class UserProfileValidationTests(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.client = Client()
+        self.mk_main()
 
     def test_user_profile_validation(self):
         response = self.client.post(reverse("user_register"), {
@@ -58,6 +59,7 @@ class UserProfileValidationTests(TestCase):
 class RegistrationViewTest(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.client = Client()
+        self.mk_main()
 
     def test_user_info_displaying_after_registration(self):
         self.user = User.objects.create_user(
