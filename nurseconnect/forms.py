@@ -9,7 +9,7 @@ INT_PREFIX = "+27"
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(
-        required=False,
+        required=True,
         validators=[
             RegexValidator(
                 ZATEL_REG,
