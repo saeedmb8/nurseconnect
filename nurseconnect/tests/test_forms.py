@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 
 from nurseconnect.forms import RegistrationForm
@@ -6,7 +7,9 @@ from molo.core.tests.base import MoloTestCaseMixin
 
 class RegisterTestCase(TestCase, MoloTestCaseMixin):
     def setUp(self):
-        self.mk_main()
+        self.user = User.objects.create_user(
+            username='+27791234567',
+            password='1234')
 
     def test_register_username_required(self):
         form_data = {
@@ -15,7 +18,7 @@ class RegisterTestCase(TestCase, MoloTestCaseMixin):
             "terms_and_conditions": True
         }
         form = RegistrationForm(data=form_data)
-        self.assertEqual(form.is_valid(), False)
+        self.failIf(form.is_valid())
 
     def test_register_password_required(self):
         form_data = {

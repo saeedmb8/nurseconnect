@@ -11,7 +11,6 @@ from molo.core.tests.base import MoloTestCaseMixin
 class RegistrationViewTest(TestCase, MoloTestCaseMixin):
     def setUp(self):
         self.client = Client()
-        self.mk_main()
 
     def test_register_view(self):
         response = self.client.get(reverse('user_register'))
@@ -35,7 +34,6 @@ class RegistrationViewTest(TestCase, MoloTestCaseMixin):
 class GemEditProfileViewTest(TestCase, MoloTestCaseMixin):
     def setUp(self):
         self.client = Client()
-        self.mk_main()
 
         self.user = User.objects.create_user(
             username='+27791234567',
