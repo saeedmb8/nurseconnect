@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
+from molo.core.tests.base import MoloTestCaseMixin
 
 
 class UserProfileValidationTests(TestCase):
@@ -11,8 +12,7 @@ class UserProfileValidationTests(TestCase):
     def test_user_profile_validation(self):
         response = self.client.post(reverse("user_register"), {
             "username": "wrong username",
-            "password": "1234",
-            "confirm_password": "1234"
+            "password": "1234"
         })
         self.assertContains(response,
                             "Please enter a valid South "
@@ -20,8 +20,7 @@ class UserProfileValidationTests(TestCase):
 
         response = self.client.post(reverse("user_register"), {
             "username": "username",
-            "password": "wrong$$$",
-            "confirm_password": "1234"
+            "password": "wrong$$$"
         })
         self.assertContains(response,
                             "Your password must contain any alphanumeric "
@@ -29,8 +28,7 @@ class UserProfileValidationTests(TestCase):
 
         response = self.client.post(reverse("user_register"), {
             "username": "username",
-            "password": "12",
-            "confirm_password": "1234"
+            "password": "12"
         })
         self.assertContains(response,
                             "Ensure this value has at least 4 characters"
@@ -57,7 +55,7 @@ class UserProfileValidationTests(TestCase):
                             "Please try again.")
 
 
-class RegistrationViewTest(TestCase):
+class RegistrationViewTest(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.client = Client()
 

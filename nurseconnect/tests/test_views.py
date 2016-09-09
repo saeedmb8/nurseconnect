@@ -6,7 +6,7 @@ from molo.core.tests.base import MoloTestCaseMixin
 from nurseconnect import forms
 
 
-class RegistrationViewTest(TestCase):
+class RegistrationViewTest(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.client = Client()
 
@@ -31,7 +31,7 @@ class RegistrationViewTest(TestCase):
             ])
 
 
-class GemEditProfileViewTest(TestCase):
+class EditProfileViewTest(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.client = Client()
 
