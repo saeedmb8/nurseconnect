@@ -53,10 +53,10 @@ urlpatterns += patterns(
         name="user_register"
     ),
     url(
-        r"^home/$",
-        login_required(TemplateView.as_view(
+        r"^$",
+        TemplateView.as_view(
             template_name="core/main.html"
-        )),
+        ),
         name="home"
     ),
     url(
