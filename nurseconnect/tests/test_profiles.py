@@ -12,8 +12,7 @@ class UserProfileValidationTests(TestCase):
         response = self.client.post(reverse("user_register"), {
             "username": "wrong username",
             "password": "1234",
-            "confirm_password": "1234",
-            "terms_and_conditions": True
+            "confirm_password": "1234"
         })
         self.assertContains(response,
                             "Please enter a valid South "
@@ -22,8 +21,7 @@ class UserProfileValidationTests(TestCase):
         response = self.client.post(reverse("user_register"), {
             "username": "username",
             "password": "wrong$$$",
-            "confirm_password": "1234",
-            "terms_and_conditions": True
+            "confirm_password": "1234"
         })
         self.assertContains(response,
                             "Your password must contain any alphanumeric "
@@ -32,8 +30,7 @@ class UserProfileValidationTests(TestCase):
         response = self.client.post(reverse("user_register"), {
             "username": "username",
             "password": "12",
-            "confirm_password": "1234",
-            "terms_and_conditions": True
+            "confirm_password": "1234"
         })
         self.assertContains(response,
                             "Ensure this value has at least 4 characters"
