@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    {% if search_results %}
+        <h1 class="Article-title">Your search results for {{ search_query }}</h1>
+    {% else %}
+        <h1 class="Article-title">What are you looking for?</h1>
+    {% endif %}
+    {% include "search/search_block.html" %}
+    {% if search_results %}
+        {% include "search/search_results.html" %}
+    {% elif not search_results and searched or search_query == "" %}
+        <div>
+            {% if search_query == "" %}
+                <p>{% trans "No results found for " %}<strong>""</strong></p>
+            {% else %}
+                <p>{% trans "No results found for " %}<strong>{{ search_query }}.</strong></p>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="ListTitle ListTitle--search_quick_links" id="search_quick_links">
+        <h1 class="ListTitle-name">{% trans "Quick Links" %}</h1>
+    </div>
+    <div class="ListTitle ListTitle--search_popular_searches" id="search_popular_searches">
+        <h1 class="ListTitle-name">{% trans "Popular Searches" %}</h1>
+    </div>
+{% endblock %}

@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -27,15 +29,48 @@ urlpatterns += patterns(
     url(r"^django-admin/", include(admin.site.urls)),
     url(r"^admin/", include(wagtailadmin_urls)),
     url(r"^documents/", include(wagtaildocs_urls)),
-    url(r"search/$", views.search, name="search"),
-    url(r"sections/$", include(wagtail_urls)),
+    url(
+        r"search/$",
+        login_required(views.SearchView.as_view(
+            template_name="search/search.html"
+        )),
+        name="search"
+    ),
+    url(
+        r"search/results/$",
+        login_required(views.search),
+        name="search_query"
+    ),
+    url(
+        r"^yourwords/",
+        include("molo.yourwords.urls",
+                namespace="molo.yourwords",
+                app_name="molo.yourwords")
+    ),
+    url(
+        r"^profiles/register/$",
+        views.RegistrationView.as_view(),
+        name="user_register"
+    ),
+    url(
+        r"^$",
+        TemplateView.as_view(
+            template_name="core/main.html"
+        ),
+        name="home"
+    ),
+    url(
+        r"^profiles/edit/myprofile/$",
+        login_required(views.EditProfileView.as_view()),
+        name="edit_my_profile"
+    ),
 
     url(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")
     ),
-    url(r'^comments/', include('molo.commenting.urls')),
-
+    url(r"^sections/$", include(wagtail_urls)),
+    url(r"^comments/", include("molo.commenting.urls")),
     url(r"^styleguide/", include("styleguide.urls", namespace="styleguide")),
     url(r"", include("molo.core.urls")),
     url("^", include("django.contrib.auth.urls")),

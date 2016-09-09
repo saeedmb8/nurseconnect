@@ -15,13 +15,13 @@
 
         <article>
             {% for block in self.body %}
-                {% if block.block_type == 'heading' %}
+                {% if block.block_type == "heading" %}
                     <p class="Footer-paragraph">{{ block.value }}</p>
                 {% else %}
-                    {% if block.block_type == 'image' %}
+                    {% if block.block_type == "image" %}
                         {% image block.value width-240 %}
                     {% else %}
-                        {% if block.block_type == 'numbered_list' %}
+                        {% if block.block_type == "numbered_list" %}
                             <ol>
                                 {% for item in block.value %}
                                     <li>{{ item }}</li>
