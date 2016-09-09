@@ -52,7 +52,6 @@ def search(request, results_per_page=10):
 class RegistrationView(FormView):
     form_class = forms.RegistrationForm
     template_name = "profiles/register.html"
-    success_url = "core/main.html"
 
     def form_valid(self, form):
         username = form.cleaned_data["username"]
