@@ -618,6 +618,12 @@ input {
   cursor: pointer;
 }
 
+@media screen and (min-width: 600px) {
+    body {
+      max-width: 320px;
+    }
+}
+
 .Logo--auth {
   display: inline-block;
   width: 60%;

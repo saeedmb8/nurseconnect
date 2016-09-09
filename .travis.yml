@@ -13,7 +13,6 @@ install:
   - pip install flake8 --cache-dir $HOME/.cache/pip
   - pip install -r requirements-dev.txt --cache-dir $HOME/.cache/pip
   - pip install -e . --cache-dir $HOME/.cache/pip
-
 script:
   - flake8 nurseconnect
   - py.test
