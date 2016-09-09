@@ -52,6 +52,7 @@ def search(request, results_per_page=10):
 class RegistrationView(FormView):
     form_class = forms.RegistrationForm
     template_name = "profiles/register.html"
+    success_url = "core/main.html"
 
     def form_valid(self, form):
         username = form.cleaned_data["username"]
@@ -61,7 +62,7 @@ class RegistrationView(FormView):
 
         authed_user = authenticate(username=username, password=password)
         login(self.request, authed_user)
-        return HttpResponseRedirect(form.cleaned_data.get("next", "/"))
+        return HttpResponseRedirect(reverse("home"))
 
     def render_to_response(self, context, **response_kwargs):
         return super(RegistrationView, self).render_to_response(
