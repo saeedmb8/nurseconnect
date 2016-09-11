@@ -1,0 +1,25 @@
+.SiteHead {
+    $block: unquote("#{&}");
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: space-between;
+    background-color: $color-white;
+
+    &-actions,
+    &-brand {
+        margin: scale(gamma);
+    }
+
+    &-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-brand {
+        margin-right: 0;
+    }
+}

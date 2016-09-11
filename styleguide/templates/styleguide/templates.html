@@ -1,5 +1,16 @@
 {% extends "base-styleguide.html" %}
 
 {% block content %}
+{% include "includes/sg-styles.html" %}
+
 <h1>Templates</h1>
+<hr>
+
+<h2>App Shell</h2>
+<p>Site wrapper with no content.</p>
+<div class="sg-pattern">
+    {% include "includes/templates/app-shell.html" %}
+</div>
+
+
 {% endblock %}

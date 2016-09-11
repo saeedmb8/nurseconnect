@@ -5,9 +5,11 @@ $enhanced: true;
 @import "helpers/functions";
 @import "helpers/variables";
 
+// Globals
+@import "globals/resets";
+@import "globals/globals";
+
 // Components
-@import "components.enhanced/resets";
-@import "components.enhanced/globals";
 @import "components.enhanced/ui/*";
 
 // Pages

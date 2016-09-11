@@ -44,15 +44,15 @@ gulp.task('styles', ['clean-css', 'lint-sass'], function () {
     .pipe(sassGlob())
     .pipe(sass(sassConfig).on('error', sass.logError))
     .pipe(bless())
-    .pipe(autoprefixer({
+    .pipe(gulpif(production, autoprefixer({
         browsers: [
             'ie >= 8',
             'android >= 2.3',
             'iOS >= 6',
             '> 0%'
         ]
-    }))
-    .pipe(pixrem())
+    })))
+    .pipe(gulpif(production, pixrem()))
     .pipe(gulpif(production, cssNano()))
     .pipe(plumber.stop())
     .pipe(gulp.dest(distPath + '/css'))

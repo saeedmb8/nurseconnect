@@ -1,0 +1,20 @@
+.NavBar {
+    $block: unquote("#{&}");
+
+    &-navGroup {
+        margin: 0;
+        padding: 0;
+    }
+
+    &-navItem {
+        display: inline-block;
+        padding: 0 scale(alpha);
+        zoom: 1;
+    }
+
+    &-navLink {
+        color: $color-blue-pelorous;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}

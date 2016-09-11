@@ -29,3 +29,13 @@
 
     @return $result;
 }
+
+@function scale($key) {
+    $scale: map-get($scale, $key);
+
+    @if $enhanced == true {
+        @return rem($scale);
+    } @else {
+        @return unquote("#{$scale}px");
+    }
+}

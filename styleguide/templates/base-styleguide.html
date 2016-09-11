@@ -38,6 +38,9 @@
             var CutsTheMustard = 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window;
             var ScreenLargeEnough = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200);
 
+            // CutsTheMustard = false;
+            // ScreenLargeEnough = false;
+
             if (!CutsTheMustard || !ScreenLargeEnough) {
                 // Load Basic Styles. This blocks page loading to prevent FOUC.
                 document.write('<link rel="stylesheet" href="{% static 'css/styles.css' %}">');
@@ -74,7 +77,7 @@
 
                 // Load Custom Fonts Async
                 WebFontConfig = {
-                    google: { families: [ 'Open Sans:300,400,700' ] }
+                    google: { families: [ 'Open Sans:300,400,600' ] }
                 };
                 (function() {
                     var wf = document.createElement('script');

@@ -53,3 +53,38 @@
         padding: .5rem;
     }
 }
+
+.NavBar {
+    $block: unquote("#{&}");
+
+    display: flex;
+
+    &-navGroup {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    &-navItem {
+        display: block;
+        padding: 0 scale(beta);
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    &-navLink {
+        color: $color-blue-pelorous;
+        font-weight: 700;
+        text-decoration: none;
+    }
+}

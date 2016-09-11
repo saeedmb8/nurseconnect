@@ -1,0 +1,5 @@
+.ContentBody {
+    $block: unquote("#{&}");
+
+    background-color: $color-blue-tranquil;
+}
