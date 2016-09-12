@@ -621,6 +621,7 @@ body {
 .NavBar-navGroup {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .NavBar-navItem {

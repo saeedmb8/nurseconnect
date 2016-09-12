@@ -1,72 +1,72 @@
-.Navbar {
-    // @TODO: Refactor this to use the @at-root directive as soon
-    // as a fix becomes available.
-    $scoped-block-name: unquote("#{&}");
-
-    padding: .5rem;
-
-    &-logo {
-        display: inline-block;
-        position: relative;
-        width: 35%;
-        height: 2.75rem;
-        max-width: 9.5rem;
-        max-height: 2.75rem;
-        padding: .5rem 0;
-
-        @include breakpoint($bp-smart) {
-            width: 50%;
-            padding: .5rem;
-        }
-    }
-
-    &-logoIcon {
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        height: 0;
-        margin: auto 0;
-        //padding-bottom technique, aspect ration fix
-        padding-bottom: 28.33333333%;
-    }
-
-    &-item {
-        display: inline-block;
-    }
-
-    &-navigation {
-        float: right;
-    }
-
-    &-linkList {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-    }
-
-    &-link {
-        display: inline-block;
-        width: 2.75rem;
-        height: 2.75rem;
-        padding: .5rem;
-    }
-}
+// .Navbar {
+//     // @TODO: Refactor this to use the @at-root directive as soon
+//     // as a fix becomes available.
+//     $scoped-block-name: unquote("#{&}");
+//
+//     padding: .5rem;
+//
+//     &-logo {
+//         display: inline-block;
+//         position: relative;
+//         width: 35%;
+//         height: 2.75rem;
+//         max-width: 9.5rem;
+//         max-height: 2.75rem;
+//         padding: .5rem 0;
+//
+//         @include breakpoint($bp-smart) {
+//             width: 50%;
+//             padding: .5rem;
+//         }
+//     }
+//
+//     &-logoIcon {
+//         display: block;
+//         position: absolute;
+//         top: 0;
+//         bottom: 0;
+//         width: 100%;
+//         height: 0;
+//         margin: auto 0;
+//         //padding-bottom technique, aspect ration fix
+//         padding-bottom: 28.33333333%;
+//     }
+//
+//     &-item {
+//         display: inline-block;
+//     }
+//
+//     &-navigation {
+//         float: right;
+//     }
+//
+//     &-linkList {
+//         display: inline-block;
+//         margin: 0;
+//         padding: 0;
+//     }
+//
+//     &-link {
+//         display: inline-block;
+//         width: 2.75rem;
+//         height: 2.75rem;
+//         padding: .5rem;
+//     }
+// }
 
 .NavBar {
     $block: unquote("#{&}");
 
     display: flex;
+    color: $color-blue-pelorous;
 
     &-navGroup {
+        @include no-list;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        margin: 0;
-        padding: 0;
     }
 
     &-navItem {
@@ -80,11 +80,47 @@
         &:last-child {
             padding-right: 0;
         }
+
+        &--active {
+            color: $color-orange-bittersweet;
+        }
     }
 
     &-navLink {
-        color: $color-blue-pelorous;
+        color: inherit;
         font-weight: 700;
         text-decoration: none;
+
+        &:active,
+        &:focus,
+        &:hover {
+            color: $color-orange-bittersweet;
+        }
+    }
+
+
+
+    &--siteHead {
+        @include breakpoint($bp-smart) {
+            position: relative;
+
+            #{$block}-navItem {
+                &--active {
+                    &:after {
+                        display: block;
+                        position: absolute;
+                        top: rem(42);
+                        right: 0;
+                        left: 0;
+                        width: scale(gamma);
+                        height: scale(gamma);
+                        margin: 0 auto;
+                        transform: rotate(45deg);
+                        background-color: $color-blue-pelorous;
+                        content: "";
+                    }
+                }
+            }
+        }
     }
 }

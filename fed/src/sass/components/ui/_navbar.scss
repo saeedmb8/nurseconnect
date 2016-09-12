@@ -2,8 +2,7 @@
     $block: unquote("#{&}");
 
     &-navGroup {
-        margin: 0;
-        padding: 0;
+        @include no-list;
     }
 
     &-navItem {
