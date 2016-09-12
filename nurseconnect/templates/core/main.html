@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load static core_tags i18n %}
+{% load static core_tags i18n competition_tag %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -8,11 +8,8 @@
     {% if user.is_authenticated %}
         {% bannerpages %}
         {% latest_listing_homepage num_count=6 %}
+        {% your_words_competition %}
         {% section_listing_homepage %}
-        {% include "core/social_media.html" %}
-        {% if languages %}
-            {% include "search/search_block.html" %}
-        {% endif %}
     {% else %}
         {% include "core/home_page_before_login.html" %}
     {% endif %}
