@@ -1,32 +1,36 @@
-{% extends "base.html" %}
 {% load i18n wagtailsettings_tags %}
 {% get_settings %}
 
 {% block content %}
     <div class="profiles">
-        <form method="post" action="{% url "edit_my_profile" %}" class="profiles__form">
+        <form method="post" action="{% url "view_my_profile" %}" class="profiles__form">
+            <input type="hidden" name="action" value="edit_profile_settings">
             {% csrf_token %}
             <ul class="ListViewProfile">
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--rightIcon ">
-                        {{ form.first_name.label_tag }}
-                        {{ form.first_name }}
-                        {{ form.first_name.errors }}
-                    </a>
+                    <div class="ListItem ListItem--rightIcon ">
+                        {{ settings_form.first_name.label_tag }}
+                        {{ settings_form.first_name }}
+                        {{ settings_form.first_name.errors }}
+                        <p class="profile__last-name">{{ user.first_name | default:"Anonymous" }}</p>
+                    </div>
+
                 </li>
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--rightIcon ">
-                        {{ form.last_name.label_tag }}
-                        {{ form.last_name }}
-                        {{ form.last_name.errors }}
-                    </a>
+                    <div class="ListItem ListItem--rightIcon ">
+                        {{ settings_form.last_name.label_tag }}
+                        {{ settings_form.last_name }}
+                        {{ settings_form.last_name.errors }}
+                        <p class="profile__last-name">{{ user.last_name | default:"Anonymous" }}</p>
+                    </div>
                 </li>
                 <li class="ListItemWrapper">
-                    <a class="ListItem ListItem--rightIcon ">
-                        {{ form.username.label_tag }}
-                        {{ form.username }}
-                        {{ form.username.errors }}
-                    </a>
+                    <div class="ListItem ListItem--rightIcon ">
+                        {{ settings_form.username.label_tag }}
+                        {{ settings_form.username }}
+                        {{ settings_form.username.errors }}
+                        <p class="profile__last-name">{{ user.username | default:"Anonymous" }}</p>
+                    </div>
                 </li>
             </ul>
             <input type="submit" class="PillButton PillButton--orange" value="{% trans "Update Profile" %}">

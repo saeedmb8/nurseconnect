@@ -110,11 +110,11 @@ class EditProfileForm(forms.Form):
                 "placeholder": _("Name"),
             }
         ),
-        max_length=30
+        max_length=30,
     )
 
     last_name = forms.CharField(
-        label=_("Last Name"),
+        label=_("Surname"),
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Surname"),
@@ -141,3 +141,74 @@ class EditProfileForm(forms.Form):
         ),
         label=_("Mobile Number"),
     )
+
+
+class ProfilePasswordChangeForm(forms.Form):
+    old_password = forms.RegexField(
+        regex=r"^\w+$",
+        widget=forms.PasswordInput(
+            attrs=dict(
+                required=True,
+                render_value=False,
+                type="password",
+                placeholder=_("Old Password")
+            )
+        ),
+        min_length=4,
+        error_messages={
+            "invalid": _(
+                "Your password must contain any alphanumeric "
+                "combination of 4 or more characters."
+            ),
+        },
+        label=_("Old Password")
+    )
+
+    new_password = forms.RegexField(
+        regex=r"^\w+$",
+        widget=forms.PasswordInput(
+            attrs=dict(
+                required=True,
+                render_value=False,
+                type="password",
+                placeholder=_("New Password")
+            )
+        ),
+        min_length=4,
+        error_messages={
+            "invalid": _(
+                "Your password must contain any alphanumeric "
+                "combination of 4 or more characters."
+            ),
+        },
+        label=_("New Password")
+    )
+
+    confirm_password = forms.RegexField(
+        regex=r"^\w+$",
+        widget=forms.PasswordInput(
+            attrs=dict(
+                required=True,
+                render_value=False,
+                type="password",
+                placeholder=_("Confirm Password")
+            )
+        ),
+        min_length=4,
+        error_messages={
+            "invalid": _(
+                "Your password must contain any alphanumeric "
+                "combination of 4 or more characters."
+            ),
+        },
+        label=_("Confirm Password")
+    )
+
+    def clean(self):
+        new_password = self.cleaned_data.get("new_password", None)
+        confirm_password = self.cleaned_data.get("confirm_password", None)
+        if (new_password and confirm_password and
+                (new_password == confirm_password)):
+            return self.cleaned_data
+        else:
+            raise forms.ValidationError(_("New passwords do not match."))
