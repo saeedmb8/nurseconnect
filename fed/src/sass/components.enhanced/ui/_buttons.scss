@@ -10,34 +10,64 @@
 
 }
 
-.PillButton {
+// .PillButton {
+//     display: block;
+//     width: 100%;
+//     margin-top: 1rem;
+//     margin-bottom: 1rem;
+//     padding-top: .75rem;
+//     padding-bottom: .75rem;
+//     border-radius: 2rem;
+//     color: $color-white;
+//     font-size: .75rem;
+//     text-align: center;
+//     text-transform: uppercase;
+//
+//     &--blue {
+//         background-color: $color-blue-pelorous;
+//
+//         &:hover,
+//         &:active {
+//             background-color: darken($color-blue-pelorous, 10%);
+//         }
+//     }
+//
+//     &--orange {
+//         background-color: $color-orange-bittersweet;
+//
+//         &:hover,
+//         &:active {
+//             background-color: darken($color-orange-bittersweet, 10%);
+//         }
+//     }
+// }
+
+.Button {
     display: block;
     width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     padding-top: .75rem;
     padding-bottom: .75rem;
     border-radius: 2rem;
+    background-color: $color-orange-bittersweet;
     color: $color-white;
     font-size: .75rem;
+    font-weight: 600;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: capitalize;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: darken($color-orange-bittersweet, 10%);
+    }
 
     &--blue {
         background-color: $color-blue-pelorous;
 
         &:hover,
-        &:active {
+        &:active,
+        &:focus {
             background-color: darken($color-blue-pelorous, 10%);
-        }
-    }
-
-    &--orange {
-        background-color: $color-orange-bittersweet;
-
-        &:hover,
-        &:active {
-            background-color: darken($color-orange-bittersweet, 10%);
         }
     }
 }

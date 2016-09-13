@@ -30,11 +30,15 @@
     @return $result;
 }
 
-@function scale($key) {
+@function scale($key, $unit: "rem") {
     $scale: map-get($scale, $key);
 
     @if $enhanced == true {
-        @return rem($scale);
+        @if $unit == "rem" {
+            @return rem($scale);
+        } @elseif $unit == "em" {
+            @return em($scale);
+        }
     } @else {
         @return unquote("#{$scale}px");
     }

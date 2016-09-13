@@ -694,31 +694,74 @@ body {
   padding: 0;
 }
 
-.Article-fullWidthImage {
-  position: relative;
-  height: 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
+.Article {
+  padding: 1.5rem;
+  background-color: inherit;
 }
 
-.Article-fullWidthImage .Article-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+.Article::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.Article:first-child {
+  padding-top: 0;
+}
+
+.Article + .Article {
+  border-top: 1px solid #c0d6dd;
+}
+
+.Article--featured {
+  font-size: 1.25rem;
+}
+
+.Article--bgWhite {
+  background-color: #ffffff;
+}
+
+.Article--bgBlueTranquil {
+  background-color: #dae8eb;
+}
+
+.Article-hitBox {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Article-image {
+  display: block;
+  max-width: 100%;
+}
+
+.Article-image--prominent {
   width: 100%;
-  height: 100%;
+  margin-bottom: 0.5rem;
 }
 
-.Article-body {
-  padding-top: 0.75rem;
-  padding-right: 1.5rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.5rem;
+.Article-image--aside {
+  max-width: 25%;
+  float: right;
 }
 
-.Article-title {
-  font-size: 2rem;
-  line-height: 2rem;
+.Article-headline {
+  margin: 0 0 0.5rem;
+  color: #2d9ec5;
+  font-size: 1.46em;
+  font-weight: 400;
+}
+
+.Article-strapline {
+  margin: 0;
+  color: #213d55;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.Article-actions {
+  margin-top: 1rem;
 }
 
 .Breadcrumb-group {
@@ -768,36 +811,55 @@ body {
   text-transform: uppercase;
 }
 
-.PillButton {
+.Button {
   display: block;
   width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
   border-radius: 2rem;
+  background-color: #ff6655;
   color: #ffffff;
   font-size: .75rem;
+  font-weight: 600;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
-.PillButton--blue {
+.Button:hover,
+.Button:active,
+.Button:focus {
+  background-color: #ff3822;
+}
+
+.Button--blue {
   background-color: #2d9ec5;
 }
 
-.PillButton--blue:hover,
-.PillButton--blue:active {
+.Button--blue:hover,
+.Button--blue:active,
+.Button--blue:focus {
   background-color: #247d9b;
 }
 
-.PillButton--orange {
-  background-color: #ff6655;
+.ContentList {
+  background-color: #ffffff;
 }
 
-.PillButton--orange:hover,
-.PillButton--orange:active {
-  background-color: #ff3822;
+.ContentList--bgSecondary {
+  background-color: #c0d6dd;
+}
+
+.ContentList-header {
+  padding: 1rem 1.5rem;
+  background-color: inherit;
+}
+
+.ContentList-categoryLabel {
+  margin: 0;
+  color: #ff6655;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .FormField {
@@ -1148,6 +1210,67 @@ body {
   max-width: 7.8125rem;
 }
 
+.Menu-navGroup {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Menu-navGroup + .Menu-navGroup {
+  margin-top: 2rem;
+}
+
+.Menu-navGroup--lvl1 {
+  font-size: 1.5rem;
+}
+
+.Menu-navGroup--lvl1 .Menu-navLink {
+  padding: 1rem 1.5rem;
+}
+
+.Menu-navGroup--lvl2 {
+  font-size: 1rem;
+}
+
+.Menu-navGroup--lvl2 .Menu-navLink {
+  padding: 1rem 0;
+}
+
+.Menu-navGroup--lvl2 .Menu-navItem {
+  padding: 0 1.5rem;
+}
+
+.Menu-navItem:first-child {
+  padding-top: 0;
+}
+
+.Menu-navLink {
+  display: block;
+  border-bottom: 1px solid #dae8eb;
+  color: #2d9ec5;
+  text-decoration: none;
+}
+
+.Menu-navLink:hover,
+.Menu-navLink:active,
+.Menu-navLink:focus {
+  color: #ff6655;
+}
+
+.Menu-contentTout {
+  display: block;
+}
+
+.Menu-contentToutHeadline {
+  display: block;
+  font-weight: 600;
+}
+
+.Menu-contentToutStrapline {
+  display: block;
+  color: #213d55;
+}
+
 .NavBar {
   display: flex;
   color: #2d9ec5;
@@ -1444,7 +1567,7 @@ body {
 
 .SiteFooter-actions,
 .SiteFooter-brand {
-  margin: 1rem;
+  margin: 1rem 1.5rem;
 }
 
 .SiteFooter-actions {
