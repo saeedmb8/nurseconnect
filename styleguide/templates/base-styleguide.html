@@ -38,8 +38,8 @@
             var CutsTheMustard = 'querySelector' in document && 'localStorage' in window && 'addEventListener' in window;
             var ScreenLargeEnough = ((window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) >= 200);
 
-            // CutsTheMustard = false;
-            // ScreenLargeEnough = false;
+            CutsTheMustard = false;
+            ScreenLargeEnough = false;
 
             if (!CutsTheMustard || !ScreenLargeEnough) {
                 // Load Basic Styles. This blocks page loading to prevent FOUC.

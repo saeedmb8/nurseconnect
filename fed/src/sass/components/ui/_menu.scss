@@ -5,26 +5,26 @@
         @include no-list;
 
         & + & {
-            margin-top: scale(delta);
+            margin-top: scale(gamma);
         }
 
         &--lvl1 {
-            font-size: scale(gamma);
+            font-size: scale(beta);
 
             #{$block}-navLink {
-                padding: scale(beta) scale(gamma);
+                padding: scale(alpha);
             }
         }
 
         &--lvl2 {
-            font-size: scale(beta);
+            font-size: 12px;
 
             #{$block}-navLink {
-                padding: scale(beta) 0;
+                padding: scale(alpha) 0;
             }
 
             #{$block}-navItem {
-                padding: 0 scale(gamma);
+                padding: 0 scale(alpha);
             }
         }
     }

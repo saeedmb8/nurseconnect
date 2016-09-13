@@ -800,17 +800,6 @@ body {
   font-weight: 100;
 }
 
-.Link {
-  display: block;
-  width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  color: #2d9ec5;
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .Button {
   display: block;
   width: 100%;
@@ -1238,10 +1227,6 @@ body {
 
 .Menu-navGroup--lvl2 .Menu-navItem {
   padding: 0 1.5rem;
-}
-
-.Menu-navItem:first-child {
-  padding-top: 0;
 }
 
 .Menu-navLink {
