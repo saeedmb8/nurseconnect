@@ -158,7 +158,9 @@ class MyProfileView(View):
                     profile_password_change_form.cleaned_data["old_password"]
                 ):
                     user.set_password(
-                        profile_password_change_form.cleaned_data["new_password"]
+                        profile_password_change_form.cleaned_data[
+                            "new_password"
+                        ]
                     )
                     user.save()
                     return render(
