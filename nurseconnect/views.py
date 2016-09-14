@@ -18,7 +18,9 @@ from django.views.generic import View
 
 from molo.core.models import ArticlePage
 from molo.core.utils import get_locale_code
-from molo.profiles.models import SecurityAnswer, SecurityQuestion, UserProfilesSettings
+from molo.profiles.models import (
+    SecurityAnswer, SecurityQuestion, UserProfilesSettings
+)
 from wagtail.wagtailsearch.models import Query
 
 from nurseconnect import forms
@@ -69,7 +71,10 @@ class RegistrationView(FormView):
         username = form.cleaned_data["username"]
         password = form.cleaned_data["password"]
         try:
-            user = User.objects.create_user(username=username, password=password)
+            user = User.objects.create_user(
+                username=username,
+                password=password
+            )
             user.save()
             # TODO: save security questions
             for index, question in enumerate(SecurityQuestion.objects.all()):
@@ -342,8 +347,8 @@ class ResetPasswordView(FormView):
 
         if password != confirm_password:
             form.add_error(None,
-                           _("The two passwords that you entered do not match. "
-                             "Please try again."))
+                           _("The two passwords that you entered do not"
+                             " match. Please try again."))
             return self.render_to_response({"form": form})
 
         user.set_password(password)
