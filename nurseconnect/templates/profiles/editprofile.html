@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="profiles">
-        <form method="post" action="{% url "view_my_profile" %}" class="profiles__form">
+        <form method="POST" action="{% url "view_my_profile" %}" class="profiles__form">
             <input type="hidden" name="action" value="edit_profile_settings">
             {% csrf_token %}
             <ul class="ListViewProfile">
@@ -14,7 +14,6 @@
                         {{ settings_form.first_name.errors }}
                         <p class="profile__last-name">{{ user.first_name | default:"Anonymous" }}</p>
                     </div>
-
                 </li>
                 <li class="ListItemWrapper">
                     <div class="ListItem ListItem--rightIcon ">

@@ -65,9 +65,26 @@ urlpatterns += patterns(
         name="view_my_profile"
     ),
     url(
+        r"^profiles/forgot_password/$",
+        views.ForgotPasswordView.as_view(),
+        name="forgot_password"
+    ),
+    url(
+        r"^profiles/reset_password/$",
+        views.ResetPasswordView.as_view(),
+        name="reset_password"
+    ),
+    url(
         r"^password-reset/$",
         login_required(views.ProfilePasswordChangeView.as_view()),
         name="profile_password_change"
+    ),
+    url(
+        r"^profiles/reset_password_success/$",
+        TemplateView.as_view(
+            template_name="profiles/reset_password_success.html"
+        ),
+        name="reset_password_success"
     ),
     url(
         r"^$",

@@ -22,6 +22,17 @@
         <div class="ListTitle ListTitle--highlight">
             <h2 class="ListTitle-name">Security Questions</h2>
         </div>
+        {% if settings.profiles.UserProfilesSettings.show_security_question_fields %}
+            {% for field in form %}
+                {% if field in form.security_questions %}
+                    <div class="FormField FormField--center FormField--bordered">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         <div class="call-to-action call-to-action--profile call-to-action--view-profile">
             <a href="{% url "molo.profiles:auth_logout" %}"
                class="PillButton PillButton--orange">{% trans "log out" %}</a>
