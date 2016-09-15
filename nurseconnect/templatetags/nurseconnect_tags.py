@@ -1,7 +1,5 @@
 from django.template import Library
 
-from molo.core.templatetags.core_tags import get_pages
-
 register = Library()
 
 
@@ -12,11 +10,12 @@ def footer_link(context):
 
     if request.site:
         pages = request.site.root_page.specific.footers()
+        terms = pages.filter(title="Terms").first()
     else:
-        pages = []
+        terms = []
 
     return {
-        'footers': get_pages(context, pages, locale),
+        'terms': terms,
         'request': context['request'],
         'locale_code': locale,
     }
