@@ -251,6 +251,10 @@ LOCALE_PATHS = [
 STATIC_ROOT = join(PROJECT_ROOT, "static")
 STATIC_URL = "/static/"
 
+STATICFILES_DIRS = [
+    join(PROJECT_ROOT, "fed/dist"),
+]
+
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
