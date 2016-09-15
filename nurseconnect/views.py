@@ -254,7 +254,7 @@ class ForgotPasswordView(FormView):
             q["user"] = username
             q["token"] = token
             reset_password_url = "{0}?{1}".format(
-                reverse("molo.profiles:reset_password"), q.urlencode()
+                reverse("reset_password"), q.urlencode()
             )
             return HttpResponseRedirect(reset_password_url)
         else:
