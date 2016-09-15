@@ -53,11 +53,6 @@ urlpatterns += patterns(
         name="user_register"
     ),
     url(
-        r"^profiles/edit/myprofile/$",
-        login_required(views.EditProfileView.as_view()),
-        name="edit_my_profile"
-    ),
-    url(
         r"^view/myprofile/$",
         login_required(views.MyProfileView.as_view(
             template_name="profiles/viewprofile.html"
@@ -73,11 +68,6 @@ urlpatterns += patterns(
         r"^profiles/reset_password/$",
         views.ResetPasswordView.as_view(),
         name="reset_password"
-    ),
-    url(
-        r"^password-reset/$",
-        login_required(views.ProfilePasswordChangeView.as_view()),
-        name="profile_password_change"
     ),
     url(
         r"^profiles/reset_password_success/$",

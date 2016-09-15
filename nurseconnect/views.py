@@ -104,31 +104,6 @@ class RegistrationView(FormView):
         return kwargs
 
 
-class EditProfileView(FormView):
-    model = User
-    form_class = forms.EditProfileForm
-    template_name = "profiles/editprofile.html"
-    success_url = reverse_lazy("view_my_profile")
-
-    def get_initial(self):
-        initial = super(EditProfileView, self).get_initial()
-        initial.update({"first_name": self.request.user.first_name})
-        initial.update({"last_name": self.request.user.last_name})
-        initial.update({"username": self.request.user.username})
-        return initial
-
-    def form_valid(self, form):
-        super(EditProfileView, self).form_valid(form)
-        cleaned_data = form.clean()
-
-        self.request.user.first_name = cleaned_data["first_name"]
-        self.request.user.last_name = cleaned_data["last_name"]
-        self.request.user.username = cleaned_data["username"]
-        self.request.user.save()
-
-        return HttpResponseRedirect(reverse("view_my_profile"))
-
-
 class MyProfileView(View):
     template_name = "profiles/viewprofile.html"
     settings_form = forms.EditProfileForm(prefix="settings_form")
@@ -216,31 +191,6 @@ class MyProfileView(View):
             "profile_password_change_form": self.profile_password_change_form,
         }
         return HttpResponseRedirect(reverse("view_my_profile"), context)
-
-
-class ProfilePasswordChangeView(FormView):
-    form_class = forms.ProfilePasswordChangeForm
-    template_name = "profiles/viewprofile.html"
-
-    def get_initial(self):
-        initial = super(ProfilePasswordChangeView, self).get_initial()
-        initial.update({"old_password": "*******"})
-        initial.update({"new_password": "*******"})
-        initial.update({"change_password": "*******"})
-        return initial
-
-    def form_valid(self, form):
-        user = self.request.user
-        if user.check_password(form.cleaned_data["old_password"]):
-            user.set_password(form.cleaned_data["new_password"])
-            user.save()
-            return HttpResponseRedirect(reverse("view_my_profile"))
-        messages.error(
-            self.request,
-            _("The old password is incorrect.")
-        )
-        return render(self.request, self.template_name,
-                      {"form": form})
 
 
 class ForgotPasswordView(FormView):
