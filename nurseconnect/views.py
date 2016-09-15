@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.http import QueryDict
@@ -21,6 +21,7 @@ from molo.core.utils import get_locale_code
 from molo.profiles.models import (
     SecurityAnswer, SecurityQuestion, UserProfilesSettings
 )
+
 from wagtail.wagtailsearch.models import Query
 
 from nurseconnect import forms
