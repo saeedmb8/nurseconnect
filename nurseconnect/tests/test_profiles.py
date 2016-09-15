@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
+
 from molo.core.tests.base import MoloTestCaseMixin
 
 
@@ -54,25 +55,3 @@ class UserProfileValidationTests(MoloTestCaseMixin, TestCase):
         self.assertContains(response,
                             "Your mobile number and password does not match. "
                             "Please try again.")
-
-
-class RegistrationViewTest(MoloTestCaseMixin, TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.mk_main()
-
-    def test_user_info_displaying_after_registration(self):
-        self.user = User.objects.create_user(
-            username="+27791234567",
-            password="tester1234")
-        self.client.login(username="+27791234567", password="tester1234")
-        response = self.client.get(reverse("edit_my_profile"))
-        self.assertNotContains(response, "Rick")
-        self.assertNotContains(response, "Morty")
-        self.user.first_name = "Rick"
-        self.user.last_name = "Morty"
-        self.user.save()
-        response = self.client.get(reverse("edit_my_profile"))
-        self.assertContains(response, "first_name")
-        self.assertContains(response, "last_name")
-        self.assertContains(response, "username")
