@@ -19,12 +19,12 @@ from wagtail.wagtailcore.models import Site
 from wagtail.contrib.settings.context_processors import SettingsProxy
 
 urlpatterns = patterns(
-    "",
-    url(r"", include("testapp.urls")),
-    url(r"^profiles/",
-        include("molo.profiles.urls",
-                namespace="molo.profiles",
-                app_name="molo.profiles")),
+    '',
+    url(r'', include('testapp.urls')),
+    url(r'^profiles/',
+        include('molo.profiles.urls',
+                namespace='molo.profiles',
+                app_name='molo.profiles')),
 )
 
 
@@ -305,7 +305,7 @@ class RegistrationViewTest(TestCase, MoloTestCaseMixin):
         profile_settings.save()
 
         response = self.client.post(reverse("user_register"), {
-            "username": "A bad username 😁",
+            "username": "A bad username",
             "password": "1234",
             "email": "example@foo.com",
             "terms_and_conditions": True
