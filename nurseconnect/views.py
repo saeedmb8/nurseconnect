@@ -76,7 +76,9 @@ class RegistrationView(FormView):
             )
             user.save()
             # TODO: save security questions
-            for index, question in enumerate(models.SecurityQuestion.objects.all()):
+            for index, question in enumerate(
+                models.SecurityQuestion.objects.all()
+            ):
                 answer = form.cleaned_data["question_%s" % index]
                 models.SecurityAnswer.objects.create(
                     user=user.profile,
@@ -199,7 +201,9 @@ class ForgotPasswordView(FormView):
     def form_valid(self, form):
         error_message = "The username and security question(s) combination " \
                         + "do not match."
-        profile_settings = models.UserProfilesSettings.for_site(self.request.site)
+        profile_settings = models.UserProfilesSettings.for_site(
+            self.request.site
+        )
 
         if "forgot_password_attempts" not in self.request.session:
             self.request.session["forgot_password_attempts"] = \
@@ -265,7 +269,9 @@ class ForgotPasswordView(FormView):
         kwargs = super(ForgotPasswordView, self).get_form_kwargs()
         self.security_questions = list(models.SecurityQuestion.objects.all())
         random.shuffle(self.security_questions)
-        profile_settings = models.UserProfilesSettings.for_site(self.request.site)
+        profile_settings = models.UserProfilesSettings.for_site(
+            self.request.site
+        )
         kwargs["questions"] = self.security_questions[
             :profile_settings.num_security_questions
         ]

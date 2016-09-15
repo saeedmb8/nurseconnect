@@ -31,7 +31,6 @@ urlpatterns = patterns(
 @override_settings(
     ROOT_URLCONF="molo.profiles.tests.test_views", LOGIN_URL="/login/")
 class RegistrationViewTest(TestCase, MoloTestCaseMixin):
-
     def setUp(self):
         self.client = Client()
         self.mk_main()
@@ -312,7 +311,7 @@ class RegistrationViewTest(TestCase, MoloTestCaseMixin):
             "terms_and_conditions": True
         })
 
-        expected_validation_message = "This value must contain only letters,"\
+        expected_validation_message = "This value must contain only letters," \
                                       " numbers and underscores."
         self.assertContains(response, expected_validation_message)
 
@@ -342,7 +341,6 @@ class RegistrationViewTest(TestCase, MoloTestCaseMixin):
 @override_settings(
     ROOT_URLCONF="molo.profiles.tests.test_views")
 class RegistrationDone(TestCase, MoloTestCaseMixin):
-
     def setUp(self):
         self.user = User.objects.create_user(
             username="tester",
@@ -368,7 +366,6 @@ class RegistrationDone(TestCase, MoloTestCaseMixin):
         "molo.profiles.context_processors.get_profile_data",
     ])
 class MyProfileViewTest(TestCase, MoloTestCaseMixin):
-
     def setUp(self):
         self.user = User.objects.create_user(
             username="tester",
@@ -389,7 +386,6 @@ class MyProfileViewTest(TestCase, MoloTestCaseMixin):
 @override_settings(
     ROOT_URLCONF="molo.profiles.tests.test_views")
 class MyProfileEditTest(TestCase, MoloTestCaseMixin):
-
     def setUp(self):
         self.user = User.objects.create_user(
             username="tester",
@@ -407,8 +403,8 @@ class MyProfileEditTest(TestCase, MoloTestCaseMixin):
     def test_update_alias_only(self):
         response = self.client.post(reverse("molo.profiles:edit_my_profile"),
                                     {
-            "alias": "foo"
-        })
+                                        "alias": "foo"
+                                    })
         self.assertRedirects(
             response, reverse("view_my_profile"))
         self.assertEqual(UserProfile.objects.get(user=self.user).alias,
@@ -435,9 +431,9 @@ class MyProfileEditTest(TestCase, MoloTestCaseMixin):
     def test_update_alias_and_dob(self):
         response = self.client.post(reverse("molo.profiles:edit_my_profile"),
                                     {
-            "alias": "foo",
-            "date_of_birth": "2000-01-01"
-        })
+                                        "alias": "foo",
+                                        "date_of_birth": "2000-01-01"
+                                    })
         self.assertRedirects(
             response, reverse("view_my_profile"))
         self.assertEqual(UserProfile.objects.get(user=self.user).alias,
@@ -447,7 +443,7 @@ class MyProfileEditTest(TestCase, MoloTestCaseMixin):
 
     def test_update_mobile_number(self):
         response = self.client.post(reverse("molo.profiles:edit_my_profile"), {
-                                    "mobile_number": "+27788888813"})
+            "mobile_number": "+27788888813"})
         self.assertRedirects(
             response, reverse("molo.profiles:view_my_profile"))
         self.assertEqual(UserProfile.objects.get(user=self.user).mobile_number,
@@ -455,7 +451,7 @@ class MyProfileEditTest(TestCase, MoloTestCaseMixin):
 
     def test_update_email(self):
         response = self.client.post(reverse("molo.profiles:edit_my_profile"), {
-                                    "email": "example@foo.com"})
+            "email": "example@foo.com"})
         self.assertRedirects(
             response, reverse("view_my_profile"))
         self.assertEqual(UserProfile.objects.get(user=self.user).user.email,
@@ -465,7 +461,6 @@ class MyProfileEditTest(TestCase, MoloTestCaseMixin):
 @override_settings(
     ROOT_URLCONF="molo.profiles.tests.test_views")
 class ProfileDateOfBirthEditTest(MoloTestCaseMixin, TestCase):
-
     def setUp(self):
         self.user = User.objects.create_user(
             username="tester",
@@ -495,7 +490,6 @@ class ProfileDateOfBirthEditTest(MoloTestCaseMixin, TestCase):
 @override_settings(
     ROOT_URLCONF="molo.profiles.tests.test_views")
 class ProfilePasswordChangeViewTest(TestCase, MoloTestCaseMixin):
-
     def setUp(self):
         self.mk_main()
         self.user = User.objects.create_user(
@@ -550,7 +544,6 @@ class ProfilePasswordChangeViewTest(TestCase, MoloTestCaseMixin):
     ROOT_URLCONF="molo.profiles.tests.test_views",
 )
 class ForgotPasswordViewTest(TestCase, MoloTestCaseMixin):
-
     def setUp(self):
         self.mk_main()
         self.client = Client()
