@@ -66,13 +66,13 @@ class RegistrationViewTest(MoloTestCaseMixin, TestCase):
             username="+27791234567",
             password="tester1234")
         self.client.login(username="+27791234567", password="tester1234")
-        response = self.client.get(reverse("edit_my_profile"))
+        response = self.client.get(reverse("molo.profiles:edit_my_profile"))
         self.assertNotContains(response, "Rick")
         self.assertNotContains(response, "Morty")
         self.user.first_name = "Rick"
         self.user.last_name = "Morty"
         self.user.save()
-        response = self.client.get(reverse("edit_my_profile"))
+        response = self.client.get(reverse("molo.profiles:edit_my_profile"))
         self.assertContains(response, "first_name")
         self.assertContains(response, "last_name")
         self.assertContains(response, "username")

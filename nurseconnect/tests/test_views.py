@@ -43,6 +43,6 @@ class EditProfileViewTest(MoloTestCaseMixin, TestCase):
         self.client.login(username="+27791234567", password="tester1234")
 
     def test_edit_profile_view_uses_correct_form(self):
-        response = self.client.get(reverse("edit_my_profile"))
+        response = self.client.get(reverse("molo.profiles:edit_my_profile"))
         self.assertTrue(isinstance(response.context["form"],
                                    forms.EditProfileForm))
