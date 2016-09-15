@@ -109,7 +109,7 @@ class RegistrationForm(forms.Form):
             self[name] for name in filter(
                 lambda x: x.startswith("question_"), self.fields.keys()
             )
-            ]
+               ]
 
     def clean_username(self):
         username = self.cleaned_data["username"]
