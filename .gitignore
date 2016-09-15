@@ -45,5 +45,6 @@ docs/_build
 .ruby-version
 .idea/
 /media/
+.cache/
 
 node_modules

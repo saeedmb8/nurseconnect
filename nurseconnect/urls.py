@@ -53,22 +53,42 @@ urlpatterns += patterns(
         name="user_register"
     ),
     url(
+        r"^view/myprofile/$",
+        login_required(views.MyProfileView.as_view(
+            template_name="profiles/viewprofile.html"
+        )),
+        name="view_my_profile"
+    ),
+    url(
+        r"^profiles/forgot_password/$",
+        views.ForgotPasswordView.as_view(),
+        name="forgot_password"
+    ),
+    url(
+        r"^profiles/reset_password/$",
+        views.ResetPasswordView.as_view(),
+        name="reset_password"
+    ),
+    url(
+        r"^profiles/reset_password_success/$",
+        TemplateView.as_view(
+            template_name="profiles/reset_password_success.html"
+        ),
+        name="reset_password_success"
+    ),
+    url(
         r"^$",
         TemplateView.as_view(
             template_name="core/main.html"
         ),
         name="home"
     ),
-    url(
-        r"^profiles/edit/myprofile/$",
-        login_required(views.EditProfileView.as_view()),
-        name="edit_my_profile"
-    ),
 
     url(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")
     ),
+
     url(r"^sections/$", include(wagtail_urls)),
     url(r"^comments/", include("molo.commenting.urls")),
     url(r"^styleguide/", include("styleguide.urls", namespace="styleguide")),
