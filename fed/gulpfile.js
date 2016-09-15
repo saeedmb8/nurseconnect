@@ -52,8 +52,8 @@ gulp.task('styles', ['clean-css', 'lint-sass'], function () {
             '> 0%'
         ]
     })))
-    .pipe(gulpif(production, pixrem()))
-    .pipe(gulpif(production, cssNano()))
+    .pipe(pixrem())
+    .pipe(cssNano())
     .pipe(plumber.stop())
     .pipe(gulp.dest(distPath + '/css'))
     .pipe(browserSync.stream());
