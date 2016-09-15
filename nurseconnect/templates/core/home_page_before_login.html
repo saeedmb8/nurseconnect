@@ -1,9 +1,14 @@
 {% load i18n %}
 
+<div class="Article-body">
+    <h1 class="Article-title">Join our community. We're here to support you.</h1>
+    <p>NurseConnect will send valuable weekly SMS messages about maternal and newborn health,
+        family planning, MomConnect tips, service feedback, and motivational encouragement.</p>
+</div>
 <div class="FormGroup FormGroup--padded FormGroup--bordered">
-    <a class="PillButton PillButton--orange" href="{% url 'molo.profiles:user_register' %}">sign up now</a>
+    <a class="PillButton PillButton--orange" href="{% url "user_register" %}">sign up now</a>
 </div>
 
 <div class="FormGroup FormGroup--padded">
-    <a class="PillButton PillButton--blue" href="{% url 'molo.profiles:auth_login' %}">login</a>
+    <a class="PillButton PillButton--blue" href="{% url "molo.profiles:auth_login" %}">login</a>
 </div>

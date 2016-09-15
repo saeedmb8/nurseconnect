@@ -1,0 +1,11 @@
+{% load wagtailcore_tags wagtailimages_tags i18n %}
+
+{% if footers %}
+    <p class="Footer-paragraph">
+        {% for page in footers %}
+            {% if page.title == "Terms" %}
+                <a href="{% pageurl page %}" class="Footer-link">{% trans "Accept the Terms of Use" %}</a> &nbsp;
+            {% endif %}
+        {% endfor %}
+    </p>
+{% endif %}
