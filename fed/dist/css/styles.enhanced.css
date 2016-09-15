@@ -830,6 +830,113 @@ body {
   background-color: #247d9b;
 }
 
+.Comments {
+  background-color: #c0d6dd;
+}
+
+.Comments-label {
+  margin: 0 0 0.5rem;
+  padding: 1.5rem 1.5rem 0;
+  color: #ff6655;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.Comments-item {
+  margin: 0;
+  padding: 0 1.5rem;
+}
+
+.Comments-item + .Comments-item {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #2d9ec5;
+}
+
+.Comments-byline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  align-content: stretch;
+  justify-content: space-between;
+}
+
+.Comments-author {
+  display: block;
+  color: #213d55;
+  font-size: 1.5rem;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.Comments-dateline {
+  display: inline-block;
+  color: #7e93a0;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.Comments-words {
+  margin: 0 0 0.5rem;
+}
+
+.Comments-actionBar {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Comments-action {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Comments-actionLink {
+  color: #2d9ec5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.Comments-actionLink + .Comments-actionLink {
+  margin-left: 1rem;
+}
+
+.Comments-submission {
+  margin: 0;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-top: 1px solid #2d9ec5;
+  overflow: hidden;
+}
+
+.Comments-fieldLabel {
+  display: block;
+  margin-bottom: 1rem;
+  color: #213d55;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.Comments-field {
+  display: block;
+  width: 100%;
+  height: 6rem;
+  margin: 0;
+  border: 1px solid #dae8eb;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  color: #213d55;
+}
+
+.Comments-field::placeholder {
+  color: #7e93a0;
+}
+
+.Comments-submitButton {
+  margin-top: 1.5rem;
+}
+
 .ContentList {
   background-color: #ffffff;
 }
@@ -1273,7 +1380,7 @@ body {
 }
 
 .NavBar-navItem {
-  display: block;
+  display: inline-block;
   padding: 0 1rem;
 }
 
@@ -1392,6 +1499,136 @@ body {
 
 .OnOffSwitch-checkbox:checked + .OnOffSwitch-label .OnOffSwitch-switch {
   right: 0;
+}
+
+.Paper-header {
+  padding: 1.5rem;
+  background-color: #c0d6dd;
+  border-bottom: #dae8eb;
+}
+
+.Paper-graphic {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.Paper-headline {
+  margin: 0.5rem 0;
+  color: #2d9ec5;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.Paper-dateline {
+  color: #ff6655;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.Paper-byline {
+  font-weight: 300;
+}
+
+.Paper-lead {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.Paper-copy {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  font-weight: 300;
+}
+
+.Paper-copy p {
+  margin: 1rem 0;
+}
+
+.Paper-copy p:first-child {
+  margin-top: 0;
+}
+
+.Paper-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.Paper-copy b,
+.Paper-copy strong {
+  font-weight: 600;
+}
+
+.Paper-copy a {
+  color: #ff6655;
+  font-weight: 600;
+}
+
+.Paper-copy blockquote {
+  max-width: 90%;
+  margin: 1rem -1.5rem 1rem auto;
+  padding: 1.5rem;
+  color: #232323;
+  font-family: serif;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.Paper-copy h1,
+.Paper-copy h2,
+.Paper-copy h3,
+.Paper-copy h4,
+.Paper-copy h5,
+.Paper-copy h6 {
+  margin: 2rem 0 1rem;
+  color: #232323;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.Paper-copy h1 {
+  font-size: 2.5rem;
+}
+
+.Paper-copy h2 {
+  font-size: 2rem;
+}
+
+.Paper-copy h3 {
+  font-size: 1.5rem;
+}
+
+.Paper-copy h4 {
+  font-size: 1rem;
+}
+
+.Paper-copy h5 {
+  font-size: 0.5rem;
+}
+
+.Paper-copy ul,
+.Paper-copy ol {
+  margin: 1rem 0;
+  padding: 0 0 0 1em;
+}
+
+.Paper-copy figure {
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0 1.5rem;
+}
+
+.Paper-copy figure img {
+  width: 100%;
+  height: auto;
+}
+
+.Paper-copy figcaption {
+  padding: 0 1.5rem;
+  font-family: serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
 }
 
 .Profile {
