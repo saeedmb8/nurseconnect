@@ -335,8 +335,6 @@ class RegistrationViewTest(TestCase, MoloTestCaseMixin):
         self.assertContains(response, expected_validation_message)
 
 
-@override_settings(
-    ROOT_URLCONF='molo.profiles.tests.test_views')
 class RegistrationDone(TestCase, MoloTestCaseMixin):
     def setUp(self):
         self.user = User.objects.create_user(
@@ -358,7 +356,6 @@ class RegistrationDone(TestCase, MoloTestCaseMixin):
 
 
 @override_settings(
-    ROOT_URLCONF='molo.profiles.tests.test_views',
     TEMPLATE_CONTEXT_PROCESSORS=settings.TEMPLATE_CONTEXT_PROCESSORS + [
         'molo.profiles.context_processors.get_profile_data',
     ])
@@ -380,8 +377,6 @@ class MyProfileViewTest(TestCase, MoloTestCaseMixin):
         self.assertContains(response, 'The Alias')
 
 
-@override_settings(
-    ROOT_URLCONF='molo.profiles.tests.test_views')
 class MyProfileEditTest(TestCase, MoloTestCaseMixin):
     def setUp(self):
         self.user = User.objects.create_user(
@@ -455,8 +450,6 @@ class MyProfileEditTest(TestCase, MoloTestCaseMixin):
                          'example@foo.com')
 
 
-@override_settings(
-    ROOT_URLCONF='molo.profiles.tests.test_views')
 class ProfileDateOfBirthEditTest(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.user = User.objects.create_user(
@@ -484,8 +477,6 @@ class ProfileDateOfBirthEditTest(MoloTestCaseMixin, TestCase):
                          date(2000, 1, 1))
 
 
-@override_settings(
-    ROOT_URLCONF='molo.profiles.tests.test_views')
 class ProfilePasswordChangeViewTest(TestCase, MoloTestCaseMixin):
     def setUp(self):
         self.mk_main()
@@ -537,9 +528,6 @@ class ProfilePasswordChangeViewTest(TestCase, MoloTestCaseMixin):
         self.assertTrue(user.check_password('1234'))
 
 
-@override_settings(
-    ROOT_URLCONF="molo.profiles.tests.test_views",
-)
 class ForgotPasswordViewTest(TestCase, MoloTestCaseMixin):
     def setUp(self):
         self.mk_main()
