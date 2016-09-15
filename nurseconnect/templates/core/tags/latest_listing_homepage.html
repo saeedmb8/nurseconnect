@@ -2,7 +2,7 @@
 
 {% if articles %}
     <div class="ListTitle ListTitle--latest" id="latest">
-        <h1 class="ListTitle-name">{% trans "Latest" %}</h1>
+        <h1 class="ListTitle-name">{% trans "Latest Articles" %}</h1>
     </div>
     {% for article in articles %}
         <ul class="ListView ListView--latest">
@@ -16,4 +16,3 @@
         </ul>
     {% endfor %}
 {% endif %}
-
