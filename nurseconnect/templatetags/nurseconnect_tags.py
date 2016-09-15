@@ -1,7 +1,5 @@
 from django.template import Library
 
-from molo.core.templatetags.core_tags import get_pages
-
 register = Library()
 
 
