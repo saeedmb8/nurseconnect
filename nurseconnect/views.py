@@ -18,9 +18,7 @@ from django.views.generic import View
 
 from molo.core.models import ArticlePage
 from molo.core.utils import get_locale_code
-from molo.profiles.models import (
-    SecurityAnswer, SecurityQuestion, UserProfilesSettings
-)
+from molo.profiles import models
 
 from wagtail.wagtailsearch.models import Query
 
@@ -78,9 +76,9 @@ class RegistrationView(FormView):
             )
             user.save()
             # TODO: save security questions
-            for index, question in enumerate(SecurityQuestion.objects.all()):
+            for index, question in enumerate(models.SecurityQuestion.objects.all()):
                 answer = form.cleaned_data["question_%s" % index]
-                SecurityAnswer.objects.create(
+                models.SecurityAnswer.objects.create(
                     user=user.profile,
                     question=question,
                     answer=answer
@@ -101,7 +99,7 @@ class RegistrationView(FormView):
 
     def get_form_kwargs(self):
         kwargs = super(RegistrationView, self).get_form_kwargs()
-        kwargs["questions"] = SecurityQuestion.objects.all()
+        kwargs["questions"] = models.SecurityQuestion.objects.all()
         return kwargs
 
 
@@ -201,7 +199,7 @@ class ForgotPasswordView(FormView):
     def form_valid(self, form):
         error_message = "The username and security question(s) combination " \
                         + "do not match."
-        profile_settings = UserProfilesSettings.for_site(self.request.site)
+        profile_settings = models.UserProfilesSettings.for_site(self.request.site)
 
         if "forgot_password_attempts" not in self.request.session:
             self.request.session["forgot_password_attempts"] = \
@@ -265,9 +263,9 @@ class ForgotPasswordView(FormView):
     def get_form_kwargs(self):
         # add security questions for form field generation
         kwargs = super(ForgotPasswordView, self).get_form_kwargs()
-        self.security_questions = list(SecurityQuestion.objects.all())
+        self.security_questions = list(models.SecurityQuestion.objects.all())
         random.shuffle(self.security_questions)
-        profile_settings = UserProfilesSettings.for_site(self.request.site)
+        profile_settings = models.UserProfilesSettings.for_site(self.request.site)
         kwargs["questions"] = self.security_questions[
             :profile_settings.num_security_questions
         ]

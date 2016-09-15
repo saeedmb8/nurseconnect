@@ -105,8 +105,11 @@ class RegistrationForm(forms.Form):
             )
 
     def security_questions(self):
-        return [self[name] for name in filter(
-            lambda x: x.startswith("question_"), self.fields.keys())]
+        return [
+            self[name] for name in filter(
+                lambda x: x.startswith('question_'), self.fields.keys()
+            )
+        ]
 
     def clean_username(self):
         username = self.cleaned_data["username"]
