@@ -42,8 +42,13 @@ input {
     cursor: pointer;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 760px) {
     body {
-      max-width: 320px;
+        background-color: #efefef;
+    }
+    main {
+        max-width: 320px;
+        background-color: $color-blue-tranquil;
+        margin: auto;
     }
 }
