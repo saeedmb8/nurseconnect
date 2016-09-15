@@ -69,30 +69,25 @@ class RegistrationView(FormView):
     def form_valid(self, form):
         username = form.cleaned_data["username"]
         password = form.cleaned_data["password"]
-        try:
-            user = User.objects.create_user(
-                username=username,
-                password=password
+
+        user = User.objects.create_user(
+            username=username,
+            password=password
+        )
+        user.save()
+        # TODO: save security questions
+        for index, question in enumerate(
+            models.SecurityQuestion.objects.all()
+        ):
+            answer = form.cleaned_data["question_%s" % index]
+            models.SecurityAnswer.objects.create(
+                user=user.profile,
+                question=question,
+                answer=answer
             )
-            user.save()
-            # TODO: save security questions
-            for index, question in enumerate(
-                models.SecurityQuestion.objects.all()
-            ):
-                answer = form.cleaned_data["question_%s" % index]
-                models.SecurityAnswer.objects.create(
-                    user=user.profile,
-                    question=question,
-                    answer=answer
-                )
-            authed_user = authenticate(username=username, password=password)
-            login(self.request, authed_user)
-            return HttpResponseRedirect(reverse("home"))
-        except User.DoesNotExist:
-            form.add_error("username",
-                           _("The username that you entered appears to be "
-                             "invalid. Please try again."))
-            return self.render_to_response({"form": form})
+        authed_user = authenticate(username=username, password=password)
+        login(self.request, authed_user)
+        return HttpResponseRedirect(reverse("home"))
 
     def render_to_response(self, context, **response_kwargs):
         return super(RegistrationView, self).render_to_response(
