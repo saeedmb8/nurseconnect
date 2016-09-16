@@ -136,17 +136,17 @@ class MyProfileView(View):
             )
             if settings_form.is_valid():
                 cleaned_data = settings_form.clean()
-                self.request.user.first_name = cleaned_data["first_name"]
-                self.request.user.last_name = cleaned_data["last_name"]
+                request.user.first_name = cleaned_data["first_name"]
+                request.user.last_name = cleaned_data["last_name"]
                 if cleaned_data["username"]:
-                    self.request.user.username = cleaned_data["username"]
-                self.request.user.save()
+                    request.user.username = cleaned_data["username"]
+                request.user.save()
 
                 return render(
-                    self.request,
+                    request,
                     self.template_name,
                     context={
-                        "settings_form": settings_form,
+                        "settings_form": self.settings_form,
                         "profile_password_change_form":
                             self.profile_password_change_form,
                         "success_message":
@@ -176,7 +176,7 @@ class MyProfileView(View):
                         context={
                             "settings_form": self.settings_form,
                             "profile_password_change_form":
-                                profile_password_change_form,
+                                self.profile_password_change_form,
                             "success_message":
                                 "Successfully updated your password!"
                         }
