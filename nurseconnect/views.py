@@ -1,17 +1,25 @@
 import random
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.views import deprecate_current_app
+from django.contrib.sites.shortcuts import get_current_site
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.http import QueryDict
-from django.shortcuts import render
+from django.shortcuts import render, resolve_url
+from django.template.response import TemplateResponse
+from django.utils.http import is_safe_url
 from django.utils.translation import get_language_from_request
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView
 from django.views.generic import TemplateView
 from django.views.generic import View
@@ -23,6 +31,10 @@ from molo.profiles import models
 from wagtail.wagtailsearch.models import Query
 
 from nurseconnect import forms
+from nurseconnect.forms import NurseconnectAuthenticationForm
+
+REDIRECT_FIELD_NAME = 'next'
+INT_PREFIX = "+27"
 
 
 class SearchView(TemplateView):
@@ -30,7 +42,6 @@ class SearchView(TemplateView):
         context = super(SearchView, self).get_context_data(**kwargs)
         context["searched"] = False
         return context
-
 
 def search(request, results_per_page=10):
     search_query = request.GET.get("search", None)
@@ -234,14 +245,14 @@ class ForgotPasswordView(FormView):
         # when some question indexes don't exist
         answer_checks = []
         for i in range(profile_settings.num_security_questions):
-                user_answer = form.cleaned_data["question_%s" % (i,)]
-                saved_answer = user.profile.securityanswer_set.get(
-                    user=user.profile,
-                    question=self.security_questions[i]
-                )
-                answer_checks.append(
-                    saved_answer.check_answer(user_answer)
-                )
+            user_answer = form.cleaned_data["question_%s" % (i,)]
+            saved_answer = user.profile.securityanswer_set.get(
+                user=user.profile,
+                question=self.security_questions[i]
+            )
+            answer_checks.append(
+                saved_answer.check_answer(user_answer)
+            )
 
         # redirect to reset password page if username and security
         # questions were matched
@@ -324,3 +335,46 @@ class ResetPasswordView(FormView):
         return super(ResetPasswordView, self).render_to_response(
             context, **response_kwargs
         )
+
+
+@deprecate_current_app
+@sensitive_post_parameters()
+@csrf_protect
+@never_cache
+def login_user(request, template_name='registration/login.html',
+               redirect_field_name=REDIRECT_FIELD_NAME,
+               authentication_form=NurseconnectAuthenticationForm,
+               extra_context=None):
+    """
+    Displays the login form and handles the login action.
+    """
+    redirect_to = request.POST.get(redirect_field_name,
+                                   request.GET.get(redirect_field_name, ''))
+
+    if request.method == "POST":
+        form = authentication_form(request, data=request.POST)
+
+        if form.is_valid():
+
+            # Ensure the user-originating redirection url is safe.
+            if not is_safe_url(url=redirect_to, host=request.get_host()):
+                redirect_to = resolve_url(settings.LOGIN_REDIRECT_URL)
+
+            # Okay, security check complete. Log the user in.
+            login(request, form.get_user())
+            return HttpResponseRedirect(redirect_to)
+    else:
+        form = authentication_form(request)
+
+    current_site = get_current_site(request)
+
+    context = {
+        'form': form,
+        redirect_field_name: redirect_to,
+        'site': current_site,
+        'site_name': current_site.name,
+    }
+    if extra_context is not None:
+        context.update(extra_context)
+
+    return TemplateResponse(request, template_name, context)

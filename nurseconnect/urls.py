@@ -60,17 +60,17 @@ urlpatterns += patterns(
         name="view_my_profile"
     ),
     url(
-        r"^profiles/forgot_password/$",
+        r"^profiles/forgot-password/$",
         views.ForgotPasswordView.as_view(),
         name="forgot_password"
     ),
     url(
-        r"^profiles/reset_password/$",
+        r"^profiles/reset-password/$",
         views.ResetPasswordView.as_view(),
         name="reset_password"
     ),
     url(
-        r"^profiles/reset_password_success/$",
+        r"^profiles/reset-password-success/$",
         TemplateView.as_view(
             template_name="profiles/reset_password_success.html"
         ),
@@ -89,6 +89,7 @@ urlpatterns += patterns(
         include("molo.profiles.urls", namespace="molo.profiles")
     ),
 
+    url(r"^login/$", views.login_user, name="auth_login"),
     url(r"^sections/$", include(wagtail_urls)),
     url(r"^comments/", include("molo.commenting.urls")),
     url(r"^styleguide/", include("styleguide.urls", namespace="styleguide")),
