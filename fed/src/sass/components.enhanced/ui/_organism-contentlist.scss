@@ -1,14 +1,24 @@
 .ContentList {
     $block: unquote("#{&}");
 
+    @include clearfix;
     background-color: $color-white;
+
+    & + & {
+        border-top: 1px solid $color-blue-regal;
+        border-top: 1px solid rgba($color-blue-regal, .1);
+    }
 
     &--bgSecondary {
         background-color: $color-blue-spindle;
     }
 
+    &--bgTertiary {
+        background-color: $color-blue-tranquil;
+    }
+
     &-header {
-        padding: scale(beta) scale(gamma);
+        margin: scale(beta) scale(gamma);
         background-color: inherit;
     }
 
@@ -20,7 +30,7 @@
         text-transform: uppercase;
     }
 
-    &-body {
-
+    &-actions {
+        margin: scale(gamma);
     }
 }

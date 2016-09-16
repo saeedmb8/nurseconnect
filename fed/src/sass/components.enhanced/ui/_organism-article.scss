@@ -36,7 +36,7 @@
     $block: unquote("#{&}");
 
     @include clearfix;
-    padding: scale(gamma);
+    margin: scale(gamma);
     background-color: inherit;
 
     &:first-child {
@@ -45,11 +45,14 @@
     }
 
     & + & {
-        border-top: 1px solid $color-blue-spindle;
+        padding-top: scale(gamma);
+        border-top: 1px solid $color-blue-regal;
+        border-top: 1px solid rgba($color-blue-regal, .1);
     }
 
     &--featured {
         font-size: 1.25rem;
+        background-color: $color-white;
     }
 
     &--bgWhite {
