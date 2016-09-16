@@ -1,25 +1,17 @@
 import random
 
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth.views import deprecate_current_app
-from django.contrib.sites.shortcuts import get_current_site
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.http import QueryDict
-from django.shortcuts import render, resolve_url
-from django.template.response import TemplateResponse
-from django.utils.http import is_safe_url
+from django.shortcuts import render
 from django.utils.translation import get_language_from_request
 from django.utils.translation import ugettext_lazy as _
-from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_protect
-from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import FormView
 from django.views.generic import TemplateView
 from django.views.generic import View
@@ -31,7 +23,6 @@ from molo.profiles import models
 from wagtail.wagtailsearch.models import Query
 
 from nurseconnect import forms
-from nurseconnect.forms import NurseconnectAuthenticationForm
 
 REDIRECT_FIELD_NAME = 'next'
 INT_PREFIX = "+27"
@@ -42,6 +33,7 @@ class SearchView(TemplateView):
         context = super(SearchView, self).get_context_data(**kwargs)
         context["searched"] = False
         return context
+
 
 def search(request, results_per_page=10):
     search_query = request.GET.get("search", None)
@@ -279,8 +271,8 @@ class ForgotPasswordView(FormView):
             self.request.site
         )
         kwargs["questions"] = self.security_questions[
-            :profile_settings.num_security_questions
-        ]
+                              :profile_settings.num_security_questions
+                              ]
         return kwargs
 
 
