@@ -5,7 +5,9 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import login
 from django.views.generic import TemplateView
+from nurseconnect.forms import NurseconnectAuthenticationForm
 
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -60,17 +62,17 @@ urlpatterns += patterns(
         name="view_my_profile"
     ),
     url(
-        r"^profiles/forgot_password/$",
+        r"^profiles/forgot-password/$",
         views.ForgotPasswordView.as_view(),
         name="forgot_password"
     ),
     url(
-        r"^profiles/reset_password/$",
+        r"^profiles/reset-password/$",
         views.ResetPasswordView.as_view(),
         name="reset_password"
     ),
     url(
-        r"^profiles/reset_password_success/$",
+        r"^profiles/reset-password-success/$",
         TemplateView.as_view(
             template_name="profiles/reset_password_success.html"
         ),
@@ -83,10 +85,14 @@ urlpatterns += patterns(
         ),
         name="home"
     ),
-
     url(
         r"^profiles/",
         include("molo.profiles.urls", namespace="molo.profiles")
+    ),
+    url(
+        r"^login/$",
+        login, {"authentication_form": NurseconnectAuthenticationForm},
+        name="auth_login"
     ),
 
     url(r"^sections/$", include(wagtail_urls)),

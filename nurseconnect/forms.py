@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
@@ -136,6 +138,7 @@ class RegistrationForm(forms.Form):
 
 class EditProfileForm(forms.Form):
     first_name = forms.CharField(
+        required=False,
         label=_("First Name"),
         widget=forms.TextInput(
             attrs={
@@ -146,10 +149,11 @@ class EditProfileForm(forms.Form):
     )
 
     last_name = forms.CharField(
+        required=False,
         label=_("Surname"),
         widget=forms.TextInput(
             attrs={
-                "placeholder": _("Surname"),
+                "placeholder": _("Surname")
             }
         ),
         max_length=30
@@ -167,12 +171,25 @@ class EditProfileForm(forms.Form):
             attrs={
                 "placeholder": "eg. 0821234567",
                 "type": "tel",
-                "zaTel": "true",
-                "required": "required"
+                "zaTel": "true"
             }
         ),
         label=_("Mobile Number"),
     )
+
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+        if username:
+            if username[0] == "0":
+                self.cleaned_data["username"] = \
+                    INT_PREFIX + username[1:len(username)]
+
+            if User.objects.filter(
+                username__iexact=self.cleaned_data["username"]
+            ).exists():
+                self.add_error(None, "Username already exists.")
+
+        return self.cleaned_data["username"]
 
 
 class ProfilePasswordChangeForm(forms.Form):
@@ -266,6 +283,15 @@ class ForgotPasswordForm(forms.Form):
         label=_("Mobile Number"),
     )
 
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+
+        if username and username[0] == "0":
+            self.cleaned_data["username"] = \
+                INT_PREFIX + username[1:len(username)]
+
+        return self.cleaned_data["username"]
+
     def __init__(self, *args, **kwargs):
         questions = kwargs.pop("questions")
         super(ForgotPasswordForm, self).__init__(*args, **kwargs)
@@ -330,3 +356,26 @@ class ResetPasswordForm(forms.Form):
         },
         label=_("Confirm Password")
     )
+
+
+class NurseconnectAuthenticationForm(AuthenticationForm):
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if username and username[0] == "0":
+            username = INT_PREFIX + username[1:len(username)]
+
+        if username and password:
+            self.user_cache = authenticate(username=username,
+                                           password=password)
+            if self.user_cache is None:
+                raise forms.ValidationError(
+                    self.error_messages['invalid_login'],
+                    code='invalid_login',
+                    params={'username': self.username_field.verbose_name},
+                )
+            else:
+                self.confirm_login_allowed(self.user_cache)
+
+        return self.cleaned_data

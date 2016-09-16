@@ -24,6 +24,9 @@ from wagtail.wagtailsearch.models import Query
 
 from nurseconnect import forms
 
+REDIRECT_FIELD_NAME = 'next'
+INT_PREFIX = "+27"
+
 
 class SearchView(TemplateView):
     def get_context_data(self, **kwargs):
@@ -133,16 +136,19 @@ class MyProfileView(View):
             )
             if settings_form.is_valid():
                 cleaned_data = settings_form.clean()
-                self.request.user.first_name = cleaned_data["first_name"]
-                self.request.user.last_name = cleaned_data["last_name"]
-                self.request.user.username = cleaned_data["username"]
-                self.request.user.save()
+                if cleaned_data["first_name"]:
+                    request.user.first_name = cleaned_data["first_name"]
+                if cleaned_data["last_name"]:
+                    request.user.last_name = cleaned_data["last_name"]
+                if cleaned_data["username"]:
+                    request.user.username = cleaned_data["username"]
+                request.user.save()
 
                 return render(
                     request,
                     self.template_name,
                     context={
-                        "settings_form": settings_form,
+                        "settings_form": self.settings_form,
                         "profile_password_change_form":
                             self.profile_password_change_form,
                         "success_message":
@@ -172,7 +178,7 @@ class MyProfileView(View):
                         context={
                             "settings_form": self.settings_form,
                             "profile_password_change_form":
-                                profile_password_change_form,
+                                self.profile_password_change_form,
                             "success_message":
                                 "Successfully updated your password!"
                         }
@@ -234,14 +240,14 @@ class ForgotPasswordView(FormView):
         # when some question indexes don't exist
         answer_checks = []
         for i in range(profile_settings.num_security_questions):
-                user_answer = form.cleaned_data["question_%s" % (i,)]
-                saved_answer = user.profile.securityanswer_set.get(
-                    user=user.profile,
-                    question=self.security_questions[i]
-                )
-                answer_checks.append(
-                    saved_answer.check_answer(user_answer)
-                )
+            user_answer = form.cleaned_data["question_%s" % (i,)]
+            saved_answer = user.profile.securityanswer_set.get(
+                user=user.profile,
+                question=self.security_questions[i]
+            )
+            answer_checks.append(
+                saved_answer.check_answer(user_answer)
+            )
 
         # redirect to reset password page if username and security
         # questions were matched
