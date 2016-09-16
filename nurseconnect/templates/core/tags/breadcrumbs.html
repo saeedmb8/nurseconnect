@@ -1,23 +1,28 @@
-{% load wagtailcore_tags i18n %}
+{% load static wagtailcore_tags i18n %}
 
 {% if ancestors %}
-    <ul class="Breadcrumb">
-        <li class="Breadcrumb-item">
-            <a class="Breadcrumb-link" href="/">{% trans "Home" %}
-                <span class="Breadcrumb-nextIcon">></span>
-            </a>
-        </li>
-        {% for ancestor in ancestors %}
-            {% if forloop.last %}
-                <li class="Breadcrumb-item Breadcrumb-item--active">
-                    <a class="Breadcrumb-link" href="#">{{ ancestor }}</a>
-                </li>
-            {% else %}
-                <li class="Breadcrumb-item">
-                    <!-- Extra greaterthan symbol is intentional -->
-                    <a class="Breadcrumb-link" href="{% pageurl ancestor %}">{{ ancestor }}<span class="Breadcrumb-nextIcon">></span></a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <nav class="Breadcrumb" role="navigation">
+        <ul class="Breadcrumb-group" role="menu">
+            <li class="Breadcrumb-item" role="presentation">
+                <a class="Breadcrumb-link" href="{% url "home" %}">
+                    <span class="Breadcrumb-chevron"></span>
+                </a>
+            </li>
+            {% for ancestor in ancestors %}
+                {% if forloop.last %}
+                    <li class="Breadcrumb-item" role="presentation">
+                        <a class="Breadcrumb-link" href="#">{{ ancestor }}</a>
+                        <span class="Breadcrumb-chevron"></span>
+                    </li>
+                {% else %}
+                    <li class="Breadcrumb-item" role="presentation">
+                        <!-- Extra greaterthan symbol is intentional -->
+                        <a class="Breadcrumb-link" href="{% pageurl ancestor %}">{{ ancestor }}
+                            <span  class="Breadcrumb-link Breadcrumb-link--current">></span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
 {% endif %}
