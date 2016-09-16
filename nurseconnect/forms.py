@@ -266,6 +266,15 @@ class ForgotPasswordForm(forms.Form):
         label=_("Mobile Number"),
     )
 
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+
+        if username and username[0] == "0":
+            self.cleaned_data["username"] = \
+                INT_PREFIX + username[1:len(username)]
+
+        return self.cleaned_data["username"]
+
     def __init__(self, *args, **kwargs):
         questions = kwargs.pop("questions")
         super(ForgotPasswordForm, self).__init__(*args, **kwargs)
