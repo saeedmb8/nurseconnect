@@ -136,8 +136,10 @@ class MyProfileView(View):
             )
             if settings_form.is_valid():
                 cleaned_data = settings_form.clean()
-                request.user.first_name = cleaned_data["first_name"]
-                request.user.last_name = cleaned_data["last_name"]
+                if cleaned_data["first_name"]:
+                    request.user.first_name = cleaned_data["first_name"]
+                if cleaned_data["last_name"]:
+                    request.user.last_name = cleaned_data["last_name"]
                 if cleaned_data["username"]:
                     request.user.username = cleaned_data["username"]
                 request.user.save()
