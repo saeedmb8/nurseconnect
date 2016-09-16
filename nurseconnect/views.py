@@ -138,11 +138,12 @@ class MyProfileView(View):
                 cleaned_data = settings_form.clean()
                 self.request.user.first_name = cleaned_data["first_name"]
                 self.request.user.last_name = cleaned_data["last_name"]
-                self.request.user.username = cleaned_data["username"]
+                if cleaned_data["username"]:
+                    self.request.user.username = cleaned_data["username"]
                 self.request.user.save()
 
                 return render(
-                    request,
+                    self.request,
                     self.template_name,
                     context={
                         "settings_form": settings_form,
@@ -271,8 +272,8 @@ class ForgotPasswordView(FormView):
             self.request.site
         )
         kwargs["questions"] = self.security_questions[
-                              :profile_settings.num_security_questions
-                              ]
+            :profile_settings.num_security_questions
+        ]
         return kwargs
 
 

@@ -111,7 +111,7 @@ class RegistrationForm(forms.Form):
             self[name] for name in filter(
                 lambda x: x.startswith('question_'), self.fields.keys()
             )
-        ]
+            ]
 
     def clean_username(self):
         username = self.cleaned_data["username"]
@@ -138,6 +138,7 @@ class RegistrationForm(forms.Form):
 
 class EditProfileForm(forms.Form):
     first_name = forms.CharField(
+        required=False,
         label=_("First Name"),
         widget=forms.TextInput(
             attrs={
@@ -148,10 +149,11 @@ class EditProfileForm(forms.Form):
     )
 
     last_name = forms.CharField(
+        required=False,
         label=_("Surname"),
         widget=forms.TextInput(
             attrs={
-                "placeholder": _("Surname"),
+                "placeholder": _("Surname")
             }
         ),
         max_length=30
@@ -169,12 +171,19 @@ class EditProfileForm(forms.Form):
             attrs={
                 "placeholder": "eg. 0821234567",
                 "type": "tel",
-                "zaTel": "true",
-                "required": "required"
+                "zaTel": "true"
             }
         ),
         label=_("Mobile Number"),
     )
+
+    def clean_username(self):
+        if User.objects.filter(
+            username__iexact=self.cleaned_data["username"]
+        ).exists():
+            raise forms.ValidationError(_("Username already exists."))
+
+        return self.cleaned_data["username"]
 
 
 class ProfilePasswordChangeForm(forms.Form):
