@@ -2,6 +2,7 @@
 
 {% load static core_tags %}
 {% load wagtailcore_tags wagtailimages_tags %}
+{% load comments mptt_tags molo_commenting_tags i18n %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -45,6 +46,8 @@
                     {% endif %}
                     <h2 class="Article-headline">{{ article.title }}</h2>
                     <p class="Article-strapline">{{ article.subtitle }}</p>
+                    {% get_comment_count for article as comment_count %}
+                    Comments: {{ comment_count }}
                 </a>
             </article>
         {% endfor %}
@@ -65,8 +68,8 @@
                         </li>
                     {% endif %}
 
-                    {% for page_number in articles.paginator.page_range%}
-                        {% if forloop.counter <= articles_paginated.paginator.num_pages %}
+                    {% for page_number in articles.paginator.page_range %}
+                        {% if forloop.counter <= articles_paginated.paginator.num_pages and articles_paginated.paginator.num_pages > 1 %}
                             <li class="Pagination-item" role="presentation">
                                 <a href="?p={{ forloop.counter }}"
                                    class="Pagination-link {% if forloop.counter == articles_paginated.number %}Pagination-link--current{% endif %}"
