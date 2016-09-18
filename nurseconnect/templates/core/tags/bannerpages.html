@@ -5,9 +5,9 @@
         {% if bannerpage.banner %}
             <h1>{{ bannerpage.title }}</h1>
             {% if bannerpage.banner_link_page %}
-                <a href="{% pageurl bannerpage.banner_link_page %}">{% image bannerpage.banner width-375 %}</a>
+                <a href="{% pageurl bannerpage.banner_link_page %}">{% image bannerpage.banner max-500x150 %}</a>
             {% else %}
-                {% image bannerpage.banner width-320 %}
+                {% image bannerpage.banner max-500x150 %}
             {% endif %}
         {% endif %}
     {% endfor %}

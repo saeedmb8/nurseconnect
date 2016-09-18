@@ -276,7 +276,7 @@ class ForgotPasswordView(FormView):
             self.request.site
         )
         kwargs["questions"] = self.security_questions[
-              :profile_settings.num_security_questions
+            :profile_settings.num_security_questions
         ]
         return kwargs
 
