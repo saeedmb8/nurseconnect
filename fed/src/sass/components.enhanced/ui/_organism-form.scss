@@ -37,6 +37,21 @@
                 }
             }
         }
+
+        &--error {
+            #{$block}-fieldLabel,
+            #{$block}-input,
+            #{$block}-message {
+                color: $color-secondary-error;
+            }
+
+            #{$block}-input,
+            #{$block}-textArea,
+            #{$block}-selectBox {
+                border: 1px solid $color-secondary-error;
+                background-color: tint($color-secondary-error, 80%);
+            }
+        }
     }
 
     &-fieldLabel {
@@ -47,13 +62,15 @@
     }
 
     &-input,
-    &-textArea {
+    &-textArea,
+    &-selectBox {
         display: block;
         width: 100%;
-        color: $color-blue-regal;
-        background-color: $color-white;
-        border-radius: 3px;
         padding: scale(beta);
+        border-radius: 3px;
+        background-color: $color-white;
+        color: $color-blue-regal;
+        appearance: none;
 
         &[disabled],
         &[readonly] {
@@ -63,32 +80,96 @@
     }
 
     &-textArea {
-
+        height: 6rem;
     }
 
     &-choiceGroup {
+        @include no-list;
 
         &Item {
+            position: relative;
 
+            & + & {
+                margin-top: scale(beta);
+            }
+        }
+    }
+
+    &-choiceLabel {
+        display: block;
+        cursor: pointer;
+
+        &:before {
+            display: inline-block;
+            width: 2em;
+            height: 2em;
+            margin-right: 1em;
+            padding: 4px;
+            border: 1px solid $color-blue-regal;
+            background-clip: content-box;
+            background-color: $color-white;
+            content: "";
+            vertical-align: middle;
+        }
+
+
+        &--radio {
+            &:before {
+                border-radius: 50%;
+            }
         }
     }
 
     &-choiceInput {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
 
-    }
-
-    &-choiceLabel {
-
-        &--checkbox {
-
+        &:checked {
+            & + #{$block}-choiceLabel {
+                &:before {
+                    background-color: $color-blue-pelorous;
+                }
+            }
         }
 
-        &--radio {
+        &[disabled],
+        &[readonly] {
+            & + #{$block}-choiceLabel {
+                cursor: not-allowed;
 
+                &:before {
+                    background-color: shade($color-blue-spindle, 5%);
+                    border-color: shade($color-blue-spindle, 5%);
+                }
+            }
         }
     }
 
     &-selectBox {
+        display: inline-block;
+        float: left;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
 
+        &Indicator {
+            display: inline-block;
+            margin-left: -2em;
+            line-height: 3em;
+            vertical-align: middle;
+            pointer-events: none;
+
+            &:after {
+                display: inline-block;
+                content: "\25BC";
+            }
+        }
+    }
+
+    &-message {
+        display: block;
+        margin-top: scale(alpha);
     }
 }

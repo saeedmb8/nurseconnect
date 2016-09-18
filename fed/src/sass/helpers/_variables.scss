@@ -31,6 +31,9 @@ $colors: (
         blue-pelorous: #2d9ec5,
         blue-regal: #213d55,
         orange-bittersweet: #ff6655
+    ),
+    secondary: (
+        error: #ff2929
     )
 );
 
@@ -45,6 +48,7 @@ $color-grey-light-slate: color(greyscale, grey-light-slate);     // 3rd lvl: == 
 $color-grey: color(greyscale, grey);
 $color-black: color(greyscale, black);
 $color-grey-nero: color(greyscale, grey-nero);
+$color-secondary-error: color(secondary, error);
 
 
 // Base Font
