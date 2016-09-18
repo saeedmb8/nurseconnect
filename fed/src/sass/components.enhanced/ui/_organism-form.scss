@@ -1,0 +1,94 @@
+.Form {
+    $block: unquote("#{&}");
+
+    &-fieldGroup {
+        border: 0;
+        margin: 0;
+        padding: scale(gamma);
+
+        & + & {
+            margin-top: scale(gamma);
+        }
+    }
+
+    &-groupHeading {
+        display: block;
+        width: 100%;
+        color: $color-blue-pelorous;
+        font-size: scale(delta);
+        font-weight: 400;
+    }
+
+    &-field {
+        display: block;
+
+        & + & {
+            margin-top: scale(beta);
+        }
+
+        &--required {
+            #{$block}-fieldLabel {
+                &:after {
+                    display: inline-block;
+                    content: " *";
+                    color: $color-orange-bittersweet;
+                    font-size: 1.25em;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    &-fieldLabel {
+        display: block;
+        color: $color-blue-regal;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    &-input,
+    &-textArea {
+        display: block;
+        width: 100%;
+        color: $color-blue-regal;
+        background-color: $color-white;
+        border-radius: 3px;
+        padding: scale(beta);
+
+        &[disabled],
+        &[readonly] {
+            background-color: shade($color-blue-spindle, 5%);
+            cursor: not-allowed;
+        }
+    }
+
+    &-textArea {
+
+    }
+
+    &-choiceGroup {
+
+        &Item {
+
+        }
+    }
+
+    &-choiceInput {
+
+    }
+
+    &-choiceLabel {
+
+        &--checkbox {
+
+        }
+
+        &--radio {
+
+        }
+    }
+
+    &-selectBox {
+
+    }
+}
