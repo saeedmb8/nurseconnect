@@ -4,6 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
+from django_comments.abstracts import COMMENT_MAX_LENGTH
+from molo.commenting.forms import MoloCommentForm
 
 from wagtail.contrib.settings.context_processors import SettingsProxy
 from wagtail.wagtailcore.models import Site
@@ -111,7 +113,7 @@ class RegistrationForm(forms.Form):
             self[name] for name in filter(
                 lambda x: x.startswith('question_'), self.fields.keys()
             )
-        ]
+            ]
 
     def clean_username(self):
         username = self.cleaned_data["username"]
@@ -379,3 +381,15 @@ class NurseconnectAuthenticationForm(AuthenticationForm):
                 self.confirm_login_allowed(self.user_cache)
 
         return self.cleaned_data
+
+
+class NurseconectCommentForm(MoloCommentForm):
+    comment = forms.CharField(
+        label=_('Comment'),
+        widget=forms.Textarea(
+            attrs=dict(
+                placeholder=_("Confirm Password")
+            )
+        ),
+        max_length=COMMENT_MAX_LENGTH
+    )

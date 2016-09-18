@@ -32,6 +32,7 @@ class SearchView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
         context["searched"] = False
+        context["active"] = "search"
         return context
 
 
@@ -114,6 +115,7 @@ class MyProfileView(View):
         settings_form = self.settings_form
         profile_password_change_form = self.profile_password_change_form
         context = {
+            "active": "profile",
             "settings_form": settings_form,
             "profile_password_change_form": profile_password_change_form,
         }
@@ -274,7 +276,7 @@ class ForgotPasswordView(FormView):
             self.request.site
         )
         kwargs["questions"] = self.security_questions[
-            :profile_settings.num_security_questions
+              :profile_settings.num_security_questions
         ]
         return kwargs
 
@@ -330,3 +332,12 @@ class ResetPasswordView(FormView):
         return super(ResetPasswordView, self).render_to_response(
             context, **response_kwargs
         )
+
+
+class MenuView(TemplateView):
+    template_name = "core/menu.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(MenuView, self).get_context_data(**kwargs)
+        context["active"] = "menu"
+        return context

@@ -10,13 +10,42 @@
         <article class="Paper-body">
             <header class="Paper-header">
                 {% if self.image %}
-                    <div class="Paper-graphic">{% image self.image width-300 %}</div>
+                    <div class="Paper-graphic">{% image self.image max-500x150 %}</div>
                 {% endif %}
-                <time class="Paper-dateline" datetime="2016-09-14" pubdate title="September 14, 2016">14 September
-                    2016
+                <time class="Paper-dateline" datetime="2016-09-14" pubdate title="September 14, 2016">
+                    {% if self.articlepage.first_published_at.month == 1 %}
+                        January
+                    {% elif self.articlepage.first_published_at.month == 2 %}
+                        February
+                    {% elif self.articlepage.first_published_at.month == 3 %}
+                        March
+                    {% elif self.articlepage.first_published_at.month == 4 %}
+                        April
+                    {% elif self.articlepage.first_published_at.month == 5 %}
+                        May
+                    {% elif self.articlepage.first_published_at.month == 6 %}
+                        June
+                    {% elif self.articlepage.first_published_at.month == 7 %}
+                        July
+                    {% elif self.articlepage.first_published_at.month == 8 %}
+                        August
+                    {% elif self.articlepage.first_published_at.month == 9 %}
+                        September
+                    {% elif self.articlepage.first_published_at.month == 10 %}
+                        October
+                    {% elif self.articlepage.first_published_at.month == 11 %}
+                        November
+                    {% elif self.articlepage.first_published_at.month == 12 %}
+                        December
+                    {% endif %}
+                    {{ self.articlepage.first_published_at.day }}
+                    {{ self.articlepage.first_published_at.year }}
                 </time>
                 <h1 class="Paper-headline">{{ self.title }}</h1>
-                <span class="Paper-byline">by <a href="#" class="Paper-bylineAuthor" rel="author">Franz Kafka</a></span>
+                <span class="Paper-byline">by <a href="#" class="Paper-bylineAuthor" rel="author">
+                    {{ self.articlepage.owner.first_name }}
+                    {{ self.articlepage.owner.last_name }}
+                </a></span>
                 <p class="Paper-lead">{{ self.subtitle }}</p>
             </header>
             <div class="Paper-copy">
@@ -46,6 +75,9 @@
                 {% endfor %}
             </div>
         </article>
-        {% include "comments/comment_block.html" %}
+        <section class="Comments">
+            <h1 class="Comments-label">Comments</h1>
+            {% include "comments/comment_block.html" %}
+        </section>
     </section>
 {% endblock %}

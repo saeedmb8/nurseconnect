@@ -10,7 +10,7 @@
                 <article class="Article Article--featured">
                     <a href="{% pageurl article %}" class="Article-hitBox">
                         {% if article.image %}
-                            <div class="Article-image Article-image--prominent">{% image self.image width-300 %}</div>
+                            <img class="Article-image Article-image--prominent">{% image self.image width-300 %}</img>
                         {% endif %}
                         <h2 class="Article-headline">{{ article.title }}</h2>
                         <p class="Article-strapline">{{ article.subtitle }}</p>

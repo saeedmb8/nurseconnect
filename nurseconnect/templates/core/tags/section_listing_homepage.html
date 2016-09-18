@@ -10,23 +10,25 @@
                 <ul class="Menu-navGroup Menu-navGroup--lvl1" role="menu">
                     <li class="Menu-navItem" role="presentation">
                         {% for section in sections %}
-                            <li class="ListItemWrapper--menu">
-                                <a href="{% pageurl section %}" class="Menu-navLink"
-                                   role="menuitem">{{ section.title }}</a>
-                                {% load_descendant_articles_for_section section featured_in_homepage=True as featured_articles %}
-                                <ul class="Menu-navGroup Menu-navGroup--lvl2" role="menu">
-                                    {% for article in featured_articles %}
-                                        <li class="Menu-navItem" role="presentation">
-                                            <a class="Menu-navLink" role="menuitem" href="{% pageurl article %}">
+                            {% if not section.show_in_menus %}
+                                <li class="ListItemWrapper--menu">
+                                    <a href="{% pageurl section %}" class="Menu-navLink"
+                                       role="menuitem">{{ section.title }}</a>
+                                    {% load_descendant_articles_for_section section count=2 featured_in_homepage=True as featured_articles %}
+                                    <ul class="Menu-navGroup Menu-navGroup--lvl2" role="menu">
+                                        {% for article in featured_articles %}
+                                            <li class="Menu-navItem" role="presentation">
+                                                <a class="Menu-navLink" role="menuitem" href="{% pageurl article %}">
                                                 <span class="Menu-contentTout">
                                                     <span class="Menu-contentToutHeadline">{{ article.title }}</span>
                                                     <span class="Menu-contentToutStrapline">{{ article.subtitle }}</span>
                                                 </span>
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %}
                         {% endfor %}
                     </li>
                 </ul>
