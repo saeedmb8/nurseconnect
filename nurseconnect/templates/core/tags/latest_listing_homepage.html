@@ -1,4 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags i18n %}
+{% load comments mptt_tags molo_commenting_tags %}
 
 {% if articles %}
     <section class="ContentList">
@@ -14,6 +15,8 @@
                         {% endif %}
                         <h2 class="Article-headline">{{ article.title }}</h2>
                         <p class="Article-strapline">{{ article.subtitle }}</p>
+                        {% get_comment_count for article as comment_count %}
+                        Comments: {{ comment_count }}
                     </a>
                 </article>
             {% endfor %}

@@ -2,6 +2,7 @@
 
 {% load static core_tags %}
 {% load wagtailcore_tags wagtailimages_tags %}
+{% load comments mptt_tags molo_commenting_tags i18n %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -47,6 +48,8 @@
                     {{ self.articlepage.owner.last_name }}
                 </a></span>
                 <p class="Paper-lead">{{ self.subtitle }}</p>
+                {% get_comment_count for self as comment_count %}
+                Comments: {{ comment_count }}
             </header>
             <div class="Paper-copy">
                 {% for block in self.body %}

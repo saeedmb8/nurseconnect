@@ -2,10 +2,8 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
-from django_comments.abstracts import COMMENT_MAX_LENGTH
-from molo.commenting.forms import MoloCommentForm
+from phonenumber_field.formfields import PhoneNumberField
 
 from wagtail.contrib.settings.context_processors import SettingsProxy
 from wagtail.wagtailcore.models import Site
@@ -15,24 +13,7 @@ INT_PREFIX = "+27"
 
 
 class RegistrationForm(forms.Form):
-    username = forms.CharField(
-        required=True,
-        validators=[
-            RegexValidator(
-                ZATEL_REG,
-                "Please enter a valid South African telephone number"
-            )
-        ],
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "eg. 0821234567",
-                "type": "tel",
-                "zaTel": "true",
-                "required": "required"
-            }
-        ),
-        label=_("Mobile Number"),
-    )
+    username = PhoneNumberField(required=False)
 
     password = forms.RegexField(
         regex=r"^\w+$",
@@ -161,23 +142,7 @@ class EditProfileForm(forms.Form):
         max_length=30
     )
 
-    username = forms.CharField(
-        required=False,
-        validators=[
-            RegexValidator(
-                ZATEL_REG,
-                "Please enter a valid South African telephone number"
-            )
-        ],
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "eg. 0821234567",
-                "type": "tel",
-                "zaTel": "true"
-            }
-        ),
-        label=_("Mobile Number"),
-    )
+    username = PhoneNumberField(required=False)
 
     def clean_username(self):
         username = self.cleaned_data["username"]
@@ -266,24 +231,7 @@ class ProfilePasswordChangeForm(forms.Form):
 
 
 class ForgotPasswordForm(forms.Form):
-    username = forms.CharField(
-        required=True,
-        validators=[
-            RegexValidator(
-                ZATEL_REG,
-                "Please enter a valid South African telephone number"
-            )
-        ],
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "eg. 0821234567",
-                "type": "tel",
-                "zaTel": "true",
-                "required": "required"
-            }
-        ),
-        label=_("Mobile Number"),
-    )
+    username = PhoneNumberField(required=False)
 
     def clean_username(self):
         username = self.cleaned_data["username"]
@@ -381,15 +329,3 @@ class NurseconnectAuthenticationForm(AuthenticationForm):
                 self.confirm_login_allowed(self.user_cache)
 
         return self.cleaned_data
-
-
-class NurseconectCommentForm(MoloCommentForm):
-    comment = forms.CharField(
-        label=_('Comment'),
-        widget=forms.Textarea(
-            attrs=dict(
-                placeholder=_("Confirm Password")
-            )
-        ),
-        max_length=COMMENT_MAX_LENGTH
-    )
