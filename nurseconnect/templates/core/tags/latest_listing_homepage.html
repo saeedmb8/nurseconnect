@@ -1,4 +1,5 @@
 {% load wagtailcore_tags wagtailimages_tags i18n %}
+{% load comments mptt_tags molo_commenting_tags %}
 
 {% if articles %}
     <section class="ContentList">
@@ -10,10 +11,12 @@
                 <article class="Article Article--featured">
                     <a href="{% pageurl article %}" class="Article-hitBox">
                         {% if article.image %}
-                            <div class="Article-image Article-image--prominent">{% image self.image width-300 %}</div>
+                            <img class="Article-image Article-image--prominent">{% image self.image width-300 %}</img>
                         {% endif %}
                         <h2 class="Article-headline">{{ article.title }}</h2>
                         <p class="Article-strapline">{{ article.subtitle }}</p>
+                        {% get_comment_count for article as comment_count %}
+                        Comments: {{ comment_count }}
                     </a>
                 </article>
             {% endfor %}

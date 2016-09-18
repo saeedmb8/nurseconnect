@@ -6,15 +6,21 @@
         <form method="POST" action="{% url "view_my_profile" %}" class="profiles__form">
             <input type="hidden" name="action" value="edit_profile_settings">
             {% csrf_token %}
-            {% if form.errors %}
-                <p class="error errorlist">
-                    {% for key, errors in form.errors.iteritems %}
-                        {% for error in errors %}
-                            {% trans error %}<br/>
-                        {% endfor %}
+
+            {% if settings_form.errors or settings_form.non_field_errors %}
+                {% if settings_form.non_field_errors %}
+                    {% for error in settings_form.non_field_errors %}
+                        <span class="error">{{ error }}</span>
                     {% endfor %}
-                </p>
+                {% endif %}
             {% endif %}
+            {% if messages %}
+                    <ul class="error-list">
+                        {% for message in messages %}
+                            <li class="error-list__item error">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             <ul class="ListViewProfile">
                 <li class="ListItemWrapper">
                     <div class="ListItem ListItem--rightIcon ">

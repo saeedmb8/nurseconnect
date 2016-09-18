@@ -1,17 +1,18 @@
 {% load comments i18n wagtailcore_tags wagtailimages_tags %}
 
 
-<form action="{% url 'molo-comments-post' %}#comments-list" method="post">
+<form action="{% url "molo-comments-post" %}" class="Comments-submission" method="POST">
     {% csrf_token %}
+    <label for="textarea" class="Comments-fieldLabel">Add your comment</label>
     {% if form.errors %}
         <h1>{% blocktrans count counter=form.errors|length %}Please correct the error below{% plural %}Please correct
-            the
-            errors below{% endblocktrans %}</h1>
+            the errors below{% endblocktrans %}</h1>
     {% endif %}
 
     {% if form.comment.errors %}{{ form.comment.errors }}{% endif %}
-    <p>{{ form.comment }}</p>
-    <input type="submit" name="submit" value="Comment">
+    <textarea name="comment" id="comment" class="Comments-field" placeholder="Your comment here"></textarea>
+    <input type="submit" class="Button Comments-submitButton" value="Add Comment">
+    <p>{% trans "Want to hide your name on the comment?" %}</p>
     <input type="submit" name="submit_anonymously" value="Add anonymously">
     {{ form.object_pk }}
 

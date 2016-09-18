@@ -117,7 +117,7 @@
 
         {% wagtailuserbar %}
 
-        <main role="main">
+        <main class="ContentBody" role="main">
             {% include "core/header.html" %}
 
             {% breadcrumbs %}
@@ -130,7 +130,6 @@
             {% block footer %}
                 <footer class="Footer" role="contentinfo">
                     {% footer_page %}
-                    <p class="Footer-paragraph">&copy; 2016 {% trans "Copyright National Department of Health" %}</p>
                 </footer>
             {% endblock %}
         </main>
