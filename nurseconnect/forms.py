@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.formfields import PhoneNumberField
 
@@ -13,7 +14,15 @@ INT_PREFIX = "+27"
 
 
 class RegistrationForm(forms.Form):
-    username = PhoneNumberField(required=False)
+    username = PhoneNumberField(
+        required=False,
+        validators=[
+            RegexValidator(
+                ZATEL_REG,
+                "Please enter a valid South African telephone number"
+            )
+        ],
+    )
 
     password = forms.RegexField(
         regex=r"^\w+$",
@@ -94,10 +103,12 @@ class RegistrationForm(forms.Form):
             self[name] for name in filter(
                 lambda x: x.startswith('question_'), self.fields.keys()
             )
-        ]
+            ]
 
     def clean_username(self):
         username = self.cleaned_data["username"]
+        username = username.raw_input
+
         if username and username[0] == "0":
             self.cleaned_data["username"] = \
                 INT_PREFIX + username[1:len(username)]
@@ -126,6 +137,7 @@ class EditProfileForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Name"),
+                "readonly": "true"
             }
         ),
         max_length=30,
@@ -136,7 +148,8 @@ class EditProfileForm(forms.Form):
         label=_("Surname"),
         widget=forms.TextInput(
             attrs={
-                "placeholder": _("Surname")
+                "placeholder": _("Surname"),
+                "readonly": "true"
             }
         ),
         max_length=30
@@ -157,6 +170,22 @@ class EditProfileForm(forms.Form):
                 self.add_error(None, "Username already exists.")
 
         return self.cleaned_data["username"]
+
+    def enable_fields(self):
+        print "Enable fields"
+        self.fields["first_name"].widget.attrs["readonly"] = False
+        self.fields["last_name"].widget.attrs["readonly"] = False
+        self.fields["username"].widget.attrs["readonly"] = False
+
+        return self
+
+    def disable_fields(self):
+        print "Disable fields"
+        self.fields["first_name"].widget.attrs["readonly"] = True
+        self.fields["last_name"].widget.attrs["readonly"] = True
+        self.fields["username"].widget.attrs["readonly"] = True
+
+        return self
 
 
 class ProfilePasswordChangeForm(forms.Form):
@@ -236,9 +265,9 @@ class ForgotPasswordForm(forms.Form):
     def clean_username(self):
         username = self.cleaned_data["username"]
 
-        if username and username[0] == "0":
-            self.cleaned_data["username"] = \
-                INT_PREFIX + username[1:len(username)]
+        # if username and username[0] == "0":
+        #     self.cleaned_data["username"] = \
+        #         INT_PREFIX + username[1:len(username)]
 
         return self.cleaned_data["username"]
 

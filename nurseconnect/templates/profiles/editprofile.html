@@ -15,38 +15,26 @@
                 {% endif %}
             {% endif %}
             {% if messages %}
-                    <ul class="error-list">
-                        {% for message in messages %}
-                            <li class="error-list__item error">{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            <ul class="ListViewProfile">
-                <li class="ListItemWrapper">
-                    <div class="ListItem ListItem--rightIcon ">
-                        {{ settings_form.first_name.label_tag }}
-                        {{ settings_form.first_name }}
-                        {{ settings_form.first_name.errors }}
-                        <p class="profile__last-name">{{ user.first_name | default:"Anonymous" }}</p>
-                    </div>
-                </li>
-                <li class="ListItemWrapper">
-                    <div class="ListItem ListItem--rightIcon ">
-                        {{ settings_form.last_name.label_tag }}
-                        {{ settings_form.last_name }}
-                        {{ settings_form.last_name.errors }}
-                        <p class="profile__last-name">{{ user.last_name | default:"Anonymous" }}</p>
-                    </div>
-                </li>
-                <li class="ListItemWrapper">
-                    <div class="ListItem ListItem--rightIcon ">
-                        {{ settings_form.username.label_tag }}
-                        {{ settings_form.username }}
-                        {{ settings_form.username.errors }}
-                        <p class="profile__last-name">{{ user.username | default:"Anonymous" }}</p>
-                    </div>
-                </li>
-            </ul>
+                <ul class="error-list">
+                    {% for message in messages %}
+                        <li class="error-list__item error">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {{ settings_form.first_name.label_tag }}
+            {{ settings_form.first_name }}
+            {{ settings_form.first_name.errors }}
+            <p class="profile__last-name">{{ user.first_name | default:"Anonymous" }}</p>
+
+            {{ settings_form.last_name.label_tag }}
+            {{ settings_form.last_name }}
+            {{ settings_form.last_name.errors }}
+            <p class="profile__last-name">{{ user.last_name | default:"Anonymous" }}</p>
+
+            {{ settings_form.username.label_tag }}
+            {{ settings_form.username }}
+            {{ settings_form.username.errors }}
+            <p class="profile__last-name">{{ user.username | default:"Anonymous" }}</p>
             <input type="submit" class="PillButton PillButton--orange" value="{% trans "Update Profile" %}">
         </form>
     </div>

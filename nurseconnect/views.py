@@ -113,7 +113,12 @@ class MyProfileView(View):
 
     def get(self, request, *args, **kwargs):
         settings_form = self.settings_form
+
         profile_password_change_form = self.profile_password_change_form
+
+        if kwargs.get("edit"):
+            settings_form.enable_fields()
+
         context = {
             "active": "profile",
             "settings_form": settings_form,
@@ -145,12 +150,13 @@ class MyProfileView(View):
                 if cleaned_data["username"]:
                     request.user.username = cleaned_data["username"]
                 request.user.save()
+                settings_form.disable_fields()
 
                 return render(
                     request,
                     self.template_name,
                     context={
-                        "settings_form": self.settings_form,
+                        "settings_form": settings_form,
                         "profile_password_change_form":
                             self.profile_password_change_form,
                         "success_message":
@@ -276,8 +282,8 @@ class ForgotPasswordView(FormView):
             self.request.site
         )
         kwargs["questions"] = self.security_questions[
-            :profile_settings.num_security_questions
-        ]
+                              :profile_settings.num_security_questions
+                              ]
         return kwargs
 
 

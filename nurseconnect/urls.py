@@ -62,6 +62,13 @@ urlpatterns += patterns(
         name="view_my_profile"
     ),
     url(
+        r"^view/myprofile/(?P<edit>[\w-]+)/$",
+        views.MyProfileView.as_view(
+            template_name="profiles/viewprofile.html"
+        ),
+        name="edit_my_profile"
+    ),
+    url(
         r"^profiles/forgot-password/$",
         views.ForgotPasswordView.as_view(),
         name="forgot_password"

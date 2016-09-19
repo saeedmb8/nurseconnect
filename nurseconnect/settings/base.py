@@ -38,6 +38,8 @@ ALLOWED_HOSTS = ["*"]
 # a trailing slash
 BASE_URL = "http://example.com"
 
+PHONENUMBER_DEFAULT_REGION = 'ZA'
+
 # Application definition
 
 INSTALLED_APPS = [
