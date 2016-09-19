@@ -38,8 +38,6 @@ ALLOWED_HOSTS = ["*"]
 # a trailing slash
 BASE_URL = "http://example.com"
 
-PHONENUMBER_DEFAULT_REGION = 'ZA'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -247,6 +245,9 @@ LOCALE_PATHS = [
     join(PROJECT_ROOT, "locale"),
 ]
 
+# Region for phone number validation
+PHONENUMBER_DEFAULT_REGION = "ZA"
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
@@ -263,8 +264,8 @@ STATICFILES_FINDERS = [
     "compressor.finders.CompressorFinder",
 ]
 
-MEDIA_ROOT = join(PROJECT_ROOT, 'media')
-MEDIA_URL = '/media/'
+MEDIA_ROOT = join(PROJECT_ROOT, "media")
+MEDIA_URL = "/media/"
 
 # Django compressor settings
 # http://django-compressor.readthedocs.org/en/latest/settings/

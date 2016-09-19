@@ -1,35 +1,14 @@
-{% load i18n molo_commenting_tags %}
+{% load i18n molo_commenting_tags nurseconnect_tags %}
 
 
 <dl class="Comments-item">
     <dt class="Comments-byline">
         <a href="#" rel="author" class="Comments-author">{{ node.user_name }}</a>
-        <time class="Comments-dateline" datetime="2016-09-14" pubdate title="September 14, 2016">
-            {% if comment_list.0.values.0.submit_date.month == 1 %}
-                January
-            {% elif comment_list.0.values.0.submit_date.month == 2 %}
-                February
-            {% elif comment_list.0.values.0.submit_date.month == 3 %}
-                March
-            {% elif comment_list.0.values.0.submit_date.month == 4 %}
-                April
-            {% elif comment_list.0.values.0.submit_date.month == 5 %}
-                May
-            {% elif comment_list.0.values.0.submit_date.month == 6 %}
-                June
-            {% elif comment_list.0.values.0.submit_date.month == 7 %}
-                July
-            {% elif comment_list.0.values.0.submit_date.month == 8 %}
-                August
-            {% elif comment_list.0.values.0.submit_date.month == 9 %}
-                September
-            {% elif comment_list.0.values.0.submit_date.month == 10 %}
-                October
-            {% elif comment_list.0.values.0.submit_date.month == 11 %}
-                November
-            {% elif comment_list.0.values.0.submit_date.month == 12 %}
-                December
-            {% endif %}
+        <time class="Comments-dateline"
+              datetime="{{ comment_list.0.values.0.submit_date.year }}-{{ comment_list.0.values.0.submit_date.month }}-{{ comment_list.0.values.0.submit_date.day }}"
+              pubdate
+              title="{% convert_month comment_list.0.values.0.submit_date.month %} {{ comment_list.0.values.0.submit_date.day }}, {{ comment_list.0.values.0.submit_date.year }}">
+            {% convert_month comment_list.0.values.0.submit_date.month %}
             {{ comment_list.0.values.0.submit_date.day }}
             {{ comment_list.0.values.0.submit_date.year }}
         </time>

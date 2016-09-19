@@ -1,3 +1,5 @@
+import calendar
+
 from django.template import Library
 from molo.core.models import SiteLanguage, SiteSettings
 
@@ -75,3 +77,12 @@ def section_listing_menu(context):
         "request": context["request"],
         "locale_code": locale_code,
     }
+
+
+@register.assignment_tag()
+def convert_month(value):
+    if value:
+        return calendar.month_name[value]
+    else:
+        return ""
+

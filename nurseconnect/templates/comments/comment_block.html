@@ -15,7 +15,7 @@
 
         {% if comment_count > 5 %}
             <div class="pagination">
-                <a href="{% url 'more-comments' self.pk %}">{% trans "view more comments" %}</a>
+                <a class="Button" href="{% url "more-comments" self.pk %}">{% trans "view more comments" %}</a>
             </div>
         {% endif %}
 
