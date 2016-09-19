@@ -1,10 +1,14 @@
 .Form {
     $block: unquote("#{&}");
 
+    &--padded {
+        padding: scale(gamma);
+    }
+
     &-fieldGroup {
         @include clearfix;
         display: block;
-        margin: scale(gamma);
+        margin: 0;
         padding: 0;
         border: 0;
 
@@ -19,7 +23,7 @@
         margin-bottom: scale(beta);
         float: left;
         color: $color-blue-pelorous;
-        font-size: scale(delta);
+        font-size: scale(gamma);
         font-weight: 400;
     }
 
@@ -62,8 +66,9 @@
     &-fieldLabel {
         display: block;
         color: $color-blue-regal;
-        text-transform: uppercase;
+        font-size: scale(alpha);
         font-weight: 600;
+        text-transform: uppercase;
     }
 
     &-input,
