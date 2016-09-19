@@ -35,7 +35,8 @@
 
     &-navLink {
         display: block;
-        border-bottom: 1px solid $color-blue-tranquil;
+        border-bottom: 1px solid $color-blue-regal;
+        border-bottom: 1px solid rgba($color-blue-regal, .1);
         color: $color-blue-pelorous;
         text-decoration: none;
 

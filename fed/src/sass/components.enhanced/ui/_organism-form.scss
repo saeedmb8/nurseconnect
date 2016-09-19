@@ -2,18 +2,22 @@
     $block: unquote("#{&}");
 
     &-fieldGroup {
+        @include clearfix;
+        display: block;
+        margin: scale(gamma);
+        padding: 0;
         border: 0;
-        margin: 0;
-        padding: scale(gamma);
 
         & + & {
-            margin-top: scale(gamma);
+            margin-top: scale(eta);
         }
     }
 
     &-groupHeading {
         display: block;
         width: 100%;
+        margin-bottom: scale(beta);
+        float: left;
         color: $color-blue-pelorous;
         font-size: scale(delta);
         font-weight: 400;
@@ -30,10 +34,11 @@
             #{$block}-fieldLabel {
                 &:after {
                     display: inline-block;
-                    content: " *";
+                    margin-left: scale(alpha);
                     color: $color-orange-bittersweet;
                     font-size: 1.25em;
                     font-weight: 600;
+                    content: "*";
                 }
             }
         }
@@ -171,5 +176,9 @@
     &-message {
         display: block;
         margin-top: scale(alpha);
+    }
+
+    &-actions {
+        margin: scale(gamma);
     }
 }
