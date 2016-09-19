@@ -71,4 +71,11 @@
             background-color: darken($color-blue-pelorous, 10%);
         }
     }
+
+    &--inverted {
+        border: 1px solid $color-orange-bittersweet;
+        background-color: $color-white;
+        background-color: transparent;
+        color: $color-orange-bittersweet;
+    }
 }
