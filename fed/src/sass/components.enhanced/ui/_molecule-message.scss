@@ -1,0 +1,17 @@
+.Message {
+    $block: unquote("#{&}");
+
+    font-weight: 300;
+
+    &--inpage {
+        padding: scale(gamma);
+    }
+
+    &-caption {
+        margin: 0;
+
+        & + & {
+            margin-top: scale(beta);
+        }
+    }
+}
