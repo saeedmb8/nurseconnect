@@ -108,7 +108,9 @@ class MyProfileView(View):
     template_name = "profiles/viewprofile.html"
 
     def get(self, request, *args, **kwargs):
-        self.settings_form = forms.EditProfileForm(prefix="settings_form", request=request)
+        self.settings_form = forms.EditProfileForm(
+            prefix="settings_form", request=request
+        )
         self.settings_form.set_initial()
         self.profile_password_change_form = forms.ProfilePasswordChangeForm(
             prefix="profile_password_change_form"
@@ -170,7 +172,8 @@ class MyProfileView(View):
                     self.template_name,
                     context={
                         "settings_form": self.settings_form,
-                        "profile_password_change_form": forms.ProfilePasswordChangeForm(
+                        "profile_password_change_form":
+                            forms.ProfilePasswordChangeForm(
                             prefix="profile_password_change_form"
                         )
                     }
@@ -179,7 +182,9 @@ class MyProfileView(View):
             if self.profile_password_change_form.is_valid():
                 user = self.request.user
                 if user.check_password(
-                    self.profile_password_change_form.cleaned_data["old_password"]
+                    self.profile_password_change_form.cleaned_data[
+                        "old_password"
+                    ]
                 ):
                     user.set_password(
                         self.profile_password_change_form.cleaned_data[
@@ -203,7 +208,8 @@ class MyProfileView(View):
                             prefix="settings_form",
                             request=self.request
                         ),
-                        "profile_password_change_form": self.profile_password_change_form
+                        "profile_password_change_form":
+                            self.profile_password_change_form
                     }
                 )
             return HttpResponseRedirect(reverse("view_my_profile"))
@@ -288,8 +294,8 @@ class ForgotPasswordView(FormView):
             self.request.site
         )
         kwargs["questions"] = self.security_questions[
-                              :profile_settings.num_security_questions
-                              ]
+            :profile_settings.num_security_questions
+            ]
         return kwargs
 
 
