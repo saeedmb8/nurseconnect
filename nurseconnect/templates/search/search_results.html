@@ -3,23 +3,25 @@
 {% block content %}
     {% for page in search_results %}
         {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
-            {% if ancestor.sectionpage.image %}
-                <a href="{% pageurl page %}">
-                    <div class="nav">
-                        <h1 class="ListTitle-name">{{ ancestor.title }}</h1>
+            <article class="ContentList ContentList--bgTertiary">
+                {% if ancestor.sectionpage.image %}
+                    <a href="{% pageurl page %}">
+                        <header class="ContentList-header">
+                            <h2 class="ContentList-categoryLabel">{{ ancestor.title }}</h2>
+                        </header>
                         <h3 class="ListItem-title">{{ page.title }}</h3>
                         <p>{{ page.subtitle }}</p>
-                    </div>
-                </a>
-            {% else %}
-                <a href="{% pageurl page %}">
-                    <div class="nav">
-                        <h1 class="ListTitle-name">{{ parent_section.title }}</h1>
+                    </a>
+                {% else %}
+                    <a href="{% pageurl page %}">
+                        <header class="ContentList-header">
+                            <h2 class="ContentList-categoryLabel">{{ parent_section.title }}</h2>
+                        </header>
                         <h3 class="ListItem-title">{{ page.title }}</h3>
                         <p>{{ page.subtitle }}</p>
-                    </div>
-                </a>
-            {% endif %}
+                    </a>
+                {% endif %}
+            </article>
         {% endwith %}
     {% endfor %}
 

@@ -2,42 +2,40 @@
 {% get_settings %}
 
 {% block content %}
-    <form method="POST" action="{% url "view_my_profile" %}" class="Form">
+    <form method="POST" action="{% url "view_my_profile" %}" class="Form Form--padded">
         <fieldset class="Form-fieldGroup">
             <legend class="Form-groupHeading">Settings</legend>
             <input type="hidden" name="action" value="edit_profile_settings">
             {% csrf_token %}
-
-            {% if settings_form.errors or settings_form.non_field_errors %}
-                {% if settings_form.non_field_errors %}
-                    {% for error in settings_form.non_field_errors %}
-                        <span class="error">{{ error }}</span>
+            {% if settings_form.errors %}
+                <p class="error errorlist">
+                    {% for key, errors in settings_form.errors.iteritems %}
+                        {% for error in errors %}
+                            {% trans error %}<br/>
+                        {% endfor %}
                     {% endfor %}
-                {% endif %}
-            {% endif %}
-            {% if messages %}
-                <ul class="error-list">
-                    {% for message in messages %}
-                        <li class="error-list__item error">{{ message }}</li>
-                    {% endfor %}
-                </ul>
+                </p>
             {% endif %}
             <div class="Form-field">
-                {{ settings_form.first_name.label_tag }}
+                <label for="fname" class="Form-fieldLabel">{{ settings_form.first_name.label }}</label>
                 {{ settings_form.first_name }}
                 {{ settings_form.first_name.errors }}
             </div>
             <div class="Form-field">
-                {{ settings_form.last_name.label_tag }}
+                <label for="lname" class="Form-fieldLabel">{{ settings_form.last_name.label }}</label>
                 {{ settings_form.last_name }}
                 {{ settings_form.last_name.errors }}
             </div>
             <div class="Form-field">
-                {{ settings_form.username.label_tag }}
+                <label for="contactnumber" class="Form-fieldLabel">{{ settings_form.username.label }}</label>
                 {{ settings_form.username }}
                 {{ settings_form.username.errors }}
             </div>
         </fieldset>
-        <input type="submit" class="Button" value="{% trans "Update Profile" %}">
+        {% if edit == "edit-settings" %}
+            <div class="Form-actions">
+                <input type="submit" class="Button" value="{% trans "Update Profile" %}">
+            </div>
+        {% endif %}
     </form>
 {% endblock %}
