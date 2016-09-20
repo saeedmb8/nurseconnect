@@ -10,7 +10,7 @@
               title="{% convert_month comment_list.0.values.0.submit_date.month %} {{ comment_list.0.values.0.submit_date.day }}, {{ comment_list.0.values.0.submit_date.year }}">
             {% convert_month comment_list.0.values.0.submit_date.month %}
             {{ comment_list.0.values.0.submit_date.day }}
-            {{ comment_list.0.values.0.submit_date.year }}
+            {{ comment_list.0.values.0.submit_date.year }} - {{ comment_list.0.values.0.submit_date.hour }}:{{ comment_list.0.values.0.submit_date.minute }}
         </time>
     </dt>
     {% if node.is_removed %}

@@ -10,18 +10,21 @@
             {% for article in articles %}
                 <article class="Article {% if forloop.counter == 1 %} Article--featured {% endif %}">
                     <a href="{% pageurl article %}" class="Article-hitBox">
+
                         {% if article.image %}
                             <img class="Article-image {% if forloop.counter == 1 %} Article-image--prominent {% else %} Article-image--aside {% endif %}">{% image self.image width-300 %}</img>
                         {% endif %}
+
                         <h2 class="Article-headline">{{ article.title }}</h2>
                         <p class="Article-strapline">{{ article.subtitle }}</p>
+
+                        <ul class="Article-actions">
+                            <li class="Article-actionsItem">
+                                {% get_comment_count for article as comment_count %}
+                                Comments: {{ comment_count }}
+                            </li>
+                        </ul>
                     </a>
-                    <ul class="Article-actions">
-                        <li class="Article-actionsItem">
-                            {% get_comment_count for article as comment_count %}
-                            Comments: {{ comment_count }}
-                        </li>
-                    </ul>
                 </article>
             {% endfor %}
         </div>

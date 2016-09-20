@@ -5,13 +5,14 @@
         {% with parent_section=page.get_parent_section ancestor=page.get_parent_section.get_ancestors.last %}
             <article class="ContentList ContentList--bgTertiary">
                 {% if ancestor.sectionpage.image %}
-                    <a href="{% pageurl page %}">
                     <header class="ContentList-header">
                         <h2 class="ContentList-categoryLabel">{{ ancestor.title }}</h2>
                     </header>
                     <div class="ContentList-body">
                         <div class="Article">
-                            <a href="#1" class="Article-hitBox">
+                            <a href="{% pageurl page %}" class="Article-hitBox">
+                                <img class="Article-image Article-image--aside" src="http://www.placehold.it/100x100"
+                                     alt="Image Alt Text">
                                 <h2 class="Article-headline">{{ page.title }}</h2>
                                 <p class="Article-strapline">{{ page.subtitle }}</p>
                             </a>
