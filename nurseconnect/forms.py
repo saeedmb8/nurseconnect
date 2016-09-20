@@ -22,17 +22,27 @@ class RegistrationForm(forms.Form):
                 "Please enter a valid South African telephone number"
             )
         ],
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": _("eg. 0821234567"),
+                "class": "Form-input",
+                "for": "mobilenum"
+            }
+        ),
+        label=_("Mobile Number")
     )
 
     password = forms.RegexField(
         regex=r"^\w+$",
         widget=forms.PasswordInput(
-            attrs=dict(
-                required=True,
-                render_value=False,
-                type="password",
-                placeholder=_("Enter Password")
-            )
+            attrs={
+                "required": True,
+                "render_value": False,
+                "type": "password",
+                "placeholder": _("Enter Password"),
+                "class": "Form-input",
+                "for": "pword"
+            }
         ),
         min_length=4,
         error_messages={
@@ -47,12 +57,14 @@ class RegistrationForm(forms.Form):
     confirm_password = forms.RegexField(
         regex=r"^\w+$",
         widget=forms.PasswordInput(
-            attrs=dict(
-                required=True,
-                render_value=False,
-                type="password",
-                placeholder=_("Confirm Password")
-            )
+            attrs={
+                "required": True,
+                "render_value": False,
+                "type": "password",
+                "placeholder": _("Re-enter password"),
+                "class": "Form-input",
+                "for": "pwordconf"
+            }
         ),
         min_length=4,
         error_messages={
@@ -61,7 +73,7 @@ class RegistrationForm(forms.Form):
                 "combination of 4 or more characters."
             ),
         },
-        label=_("Password")
+        label=_("Confirm password")
     )
 
     terms_and_conditions = forms.BooleanField(
@@ -72,6 +84,15 @@ class RegistrationForm(forms.Form):
                 "in order to complete the registration"
             )
         },
+        widget=forms.RadioSelect(
+            attrs={
+                "class": "Form-choiceInput",
+                "for": "checkbox1",
+                "type": "checkbox",
+                "name": "checkboxes",
+                "id": "checkbox1"
+            }
+        ),
         label=_("Accept the Terms of Use")
     )
 
@@ -88,9 +109,12 @@ class RegistrationForm(forms.Form):
             self.fields["question_%s" % index] = forms.CharField(
                 label=_(str(question)),
                 widget=forms.TextInput(
-                    attrs=dict(
-                        max_length=150,
-                    )
+                    attrs={
+                        "max_length": 150,
+                        "class": "Form-input",
+                        "placeholder": "Enter " + str(question).lower(),
+                        "for": "sq" + str(index)
+                    }
                 )
             )
             self.fields["question_%s" % index].required = (
@@ -107,11 +131,11 @@ class RegistrationForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data["username"]
-        username = username.raw_input
+        # username = username.raw_input
 
-        if username and username[0] == "0":
-            self.cleaned_data["username"] = \
-                INT_PREFIX + username[1:len(username)]
+        # if username and username[0] == "0":
+        #     self.cleaned_data["username"] = \
+        #         INT_PREFIX + username[1:len(username)]
 
         if User.objects.filter(
             username__iexact=self.cleaned_data["username"]
@@ -137,7 +161,8 @@ class EditProfileForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Name"),
-                "readonly": "true"
+                "readonly": "true",
+                "class": "Form-input"
             }
         ),
         max_length=30,
@@ -149,7 +174,8 @@ class EditProfileForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Surname"),
-                "readonly": "true"
+                "readonly": "true",
+                "class": "Form-input"
             }
         ),
         max_length=30
@@ -160,7 +186,8 @@ class EditProfileForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Username"),
-                "readonly": "true"
+                "readonly": "true",
+                "class": "Form-input"
             }
         ),
     )
@@ -214,13 +241,14 @@ class ProfilePasswordChangeForm(forms.Form):
     old_password = forms.RegexField(
         regex=r"^\w+$",
         widget=forms.PasswordInput(
-            attrs=dict(
-                required=True,
-                render_value=False,
-                type="password",
-                placeholder=_("Old Password"),
-                readonly=True
-            )
+            attrs={
+                "required": True,
+                "render_value": False,
+                "type": "password",
+                "placeholder":_("Old Password"),
+                "readonly": True,
+                "class": "Form-input"
+            }
         ),
         min_length=4,
         error_messages={
@@ -235,13 +263,14 @@ class ProfilePasswordChangeForm(forms.Form):
     new_password = forms.RegexField(
         regex=r"^\w+$",
         widget=forms.PasswordInput(
-            attrs=dict(
-                required=True,
-                render_value=False,
-                type="password",
-                placeholder=_("New Password"),
-                readonly=True
-            )
+            attrs={
+                "required": True,
+                "render_value": False,
+                "type": "password",
+                "placeholder": _("New Password"),
+                "readonly": True,
+                "class": "Form-input"
+            }
         ),
         min_length=4,
         error_messages={
@@ -256,13 +285,14 @@ class ProfilePasswordChangeForm(forms.Form):
     confirm_password = forms.RegexField(
         regex=r"^\w+$",
         widget=forms.PasswordInput(
-            attrs=dict(
-                required=True,
-                render_value=False,
-                type="password",
-                placeholder=_("Confirm Password"),
-                readonly=True
-            )
+            attrs={
+                "required": True,
+                "render_value": False,
+                "type": "password",
+                "placeholder": _("Confirm Password"),
+                "readonly": True,
+                "class": "Form-input"
+            }
         ),
         min_length=4,
         error_messages={
@@ -337,12 +367,14 @@ class ResetPasswordForm(forms.Form):
     password = forms.RegexField(
         regex=r"^\w+$",
         widget=forms.PasswordInput(
-            attrs=dict(
-                required=True,
-                render_value=False,
-                type="password",
-                placeholder=_("Enter Password")
-            )
+            attrs={
+                "required": True,
+                "render_value": False,
+                "type": "password",
+                "placeholder": _("Enter Password"),
+                "class": "Form-input"
+            }
+
         ),
         min_length=4,
         error_messages={
@@ -357,12 +389,13 @@ class ResetPasswordForm(forms.Form):
     confirm_password = forms.RegexField(
         regex=r"^\w+$",
         widget=forms.PasswordInput(
-            attrs=dict(
-                required=True,
-                render_value=False,
-                type="password",
-                placeholder=_("Confirm Password")
-            )
+            attrs={
+                "required": True,
+                "render_value": False,
+                "type": "password",
+                "placeholder": _("Confirm Password"),
+                "class": "Form-input"
+            }
         ),
         min_length=4,
         error_messages={
