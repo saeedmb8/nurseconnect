@@ -2,4 +2,8 @@
     $block: unquote("#{&}");
 
     background-color: $color-blue-tranquil;
+
+    &-secondaryNav {
+        padding: scale(alpha);
+    }
 }
