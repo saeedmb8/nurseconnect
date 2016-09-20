@@ -20,14 +20,12 @@
                     {% endif %}
                     <div class="Form-field Form-field--required">
                         <label for="mobilenum" class="Form-fieldLabel">Mobile Number</label>
-                        {{ form.username }}
-{#                        <input type="tel" id="mobilenum" class="Form-input" placeholder="eg. 0821234567">#}
+                        <input name="username" type="tel" id="mobilenum" class="Form-input" placeholder="eg. 0821234567">
                         {{ form.username.errors }}
                     </div>
                     <div class="Form-field Form-field--required">
                         <label for="mobilenum" class="Form-fieldLabel">Password</label>
-                        {{ form.password }}
-{#                        <input type="password" id="pword" class="Form-input" placeholder="Enter password">#}
+                        <input name="password" type="password" id="pword" class="Form-input" placeholder="Enter password">
                         {{ form.password.errors }}
                     </div>
                 </fieldset>
