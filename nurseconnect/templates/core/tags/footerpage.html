@@ -3,22 +3,23 @@
 {% get_settings %}
 
 {% if footers %}
-<footer class="SiteFooter" role="contentinfo">
-    <div class="SiteFooter-actions">
-        <nav class="NavBar NavBar--siteFooter" role="menubar">
-            <ul class="NavBar-navGroup" role="menu">
-                {% for page in footers %}
-                    <li class="NavBar-navItem" role="presentation">
-                        <a href="{% pageurl page %}" class="NavBar-navLink" role="menuitem">{{ page.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </nav>
-    </div>
-    <div class="SiteFooter-brand">
-        <a href="http://www.health.gov.za/" class="Logo Logo--siteFooter">
-            <img src="{% static 'images/health-department-logo.png' %}" alt="Health Department Logo" class="Logo-graphic">
-        </a>
-    </div>
-</footer>
+    <footer class="SiteFooter" role="contentinfo">
+        <div class="SiteFooter-actions">
+            <nav class="NavBar NavBar--siteFooter" role="menubar">
+                <ul class="NavBar-navGroup" role="menu">
+                    {% for page in footers %}
+                        <li class="NavBar-navItem" role="presentation">
+                            <a href="{% pageurl page %}" class="NavBar-navLink" role="menuitem">{{ page.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+        <div class="SiteFooter-brand">
+            <a href="http://www.health.gov.za/" class="Logo Logo--siteFooter">
+                <img src="{% static 'images/health-department-logo.png' %}" alt="Health Department Logo"
+                     class="Logo-graphic">
+            </a>
+        </div>
+    </footer>
 {% endif %}
