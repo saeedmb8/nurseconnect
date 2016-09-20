@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.formfields import PhoneNumberField
 
@@ -16,12 +15,6 @@ INT_PREFIX = "+27"
 class RegistrationForm(forms.Form):
     username = PhoneNumberField(
         required=False,
-        validators=[
-            RegexValidator(
-                ZATEL_REG,
-                "Please enter a valid South African telephone number"
-            )
-        ],
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("eg. 0821234567"),
@@ -84,15 +77,15 @@ class RegistrationForm(forms.Form):
                 "in order to complete the registration"
             )
         },
-        widget=forms.RadioSelect(
-            attrs={
-                "class": "Form-choiceInput",
-                "for": "checkbox1",
-                "type": "checkbox",
-                "name": "checkboxes",
-                "id": "checkbox1"
-            }
-        ),
+        # widget=forms.RadioSelect(
+        #     attrs={
+        #         "class": "Form-choiceInput",
+        #         "for": "checkbox1",
+        #         "type": "checkbox",
+        #         "name": "checkboxes",
+        #         "id": "checkbox1"
+        #     }
+        # ),
         label=_("Accept the Terms of Use")
     )
 
@@ -131,7 +124,7 @@ class RegistrationForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data["username"]
-        # username = username.raw_input
+        username = username.raw_input
 
         # if username and username[0] == "0":
         #     self.cleaned_data["username"] = \
@@ -195,18 +188,22 @@ class EditProfileForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop("request")
         super(EditProfileForm, self).__init__(*args, **kwargs)
+        if self.request.user.first_name:
+            self.fields["first_name"].initial = self.request.user.first_name
+        else:
+            self.fields["first_name"].initial = "Anonymous"
 
-    def check_username(self, request):
-        return request.user.username == self.fields["username"]
+        if self.request.user.last_name:
+            self.fields["last_name"].initial = self.request.user.last_name
+        else:
+            self.fields["last_name"].initial = "Anonymous"
+
+        self.fields["username"].intial = self.request.user.username
 
     def clean_username(self):
         username = self.cleaned_data["username"]
         self.cleaned_data["username"] = username.raw_input
 
-        # if username:
-        #     if username[0] == "0":
-        #         self.cleaned_data["username"] = \
-        #             INT_PREFIX + username[1:len(username)]
         if not self.request.user.username == self.cleaned_data["username"]:
             if User.objects.filter(
                 username__iexact=self.cleaned_data["username"]
@@ -216,9 +213,17 @@ class EditProfileForm(forms.Form):
         return self.cleaned_data["username"]
 
     def set_initial(self):
-        self.fields["first_name"].initial = self.request.user.first_name
-        self.fields["last_name"].initial = self.request.user.last_name
-        self.fields["username"].initial = self.request.user.username
+        if self.request.user.first_name:
+            self.fields["first_name"].initial = self.request.user.first_name
+        else:
+            self.fields["first_name"].initial = "Anonymous"
+
+        if self.request.user.last_name:
+            self.fields["last_name"].initial = self.request.user.last_name
+        else:
+            self.fields["last_name"].initial = "Anonymous"
+
+        self.fields["username"].intial = self.request.user.username
 
         return self
 
@@ -245,7 +250,7 @@ class ProfilePasswordChangeForm(forms.Form):
                 "required": True,
                 "render_value": False,
                 "type": "password",
-                "placeholder":_("Old Password"),
+                "placeholder": _("Old Password"),
                 "readonly": True,
                 "class": "Form-input"
             }

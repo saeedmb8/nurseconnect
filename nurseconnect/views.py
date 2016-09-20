@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.http import QueryDict
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.utils.translation import get_language_from_request
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
@@ -113,14 +113,18 @@ class MyProfileView(View):
         self.profile_password_change_form = forms.ProfilePasswordChangeForm(
             prefix="profile_password_change_form"
         )
-
+        edit = ""
         if kwargs.get("edit") == "edit-settings":
             self.settings_form.enable_fields()
             self.settings_form.set_initial()
+            edit = "edit-settings"
         elif kwargs.get("edit") == "edit-password":
             self.profile_password_change_form.enable_fields()
+            self.settings_form.set_initial()
+            edit = "edit-password"
 
         context = {
+            "edit": edit,
             "active": "profile",
             "settings_form": self.settings_form,
             "profile_password_change_form": self.profile_password_change_form,
@@ -136,13 +140,16 @@ class MyProfileView(View):
 
     def post(self, request):
         action = self.request.POST["action"]
-
+        self.settings_form = forms.EditProfileForm(
+            request.POST,
+            prefix="settings_form",
+            request=request
+        )
+        self.profile_password_change_form = forms.ProfilePasswordChangeForm(
+            request.POST,
+            prefix="profile_password_change_form"
+        )
         if action == "edit_profile_settings":
-            self.settings_form = forms.EditProfileForm(
-                request.POST,
-                prefix="settings_form",
-                request=request
-            )
             if self.settings_form.is_valid():
                 cleaned_data = self.settings_form.clean()
                 if cleaned_data["first_name"]:
@@ -155,25 +162,20 @@ class MyProfileView(View):
                 self.settings_form.set_initial()
                 self.settings_form.disable_fields()
 
+                return HttpResponseRedirect(reverse("view_my_profile"))
+            else:
+                self.settings_form.set_initial()
                 return render(
-                    request,
+                    self.request,
                     self.template_name,
                     context={
                         "settings_form": self.settings_form,
-                        "profile_password_change_form":
-                            forms.ProfilePasswordChangeForm(
-                                prefix="profile_password_change_form"
-                            ),
-                        "success_message":
-                            "You've successfully updated your profile!"
+                        "profile_password_change_form": forms.ProfilePasswordChangeForm(
+                            prefix="profile_password_change_form"
+                        )
                     }
                 )
-
         elif action == "edit_profile_password":
-            self.profile_password_change_form = forms.ProfilePasswordChangeForm(
-                request.POST,
-                prefix="profile_password_change_form"
-            )
             if self.profile_password_change_form.is_valid():
                 user = self.request.user
                 if user.check_password(
@@ -186,27 +188,25 @@ class MyProfileView(View):
                     )
                     user.save()
                     self.profile_password_change_form.disable_fields()
-                    return render(
-                        request,
-                        self.template_name,
-                        context={
-                            "settings_form": self.settings_form,
-                            "profile_password_change_form":
-                                self.profile_password_change_form,
-                            "success_message":
-                                "Successfully updated your password!"
-                        }
-                    )
+                    return HttpResponseRedirect(reverse("view_my_profile"))
+
                 messages.error(
                     self.request,
                     _("The old password is incorrect.")
                 )
-
-        context = {
-            "settings_form": "",
-            "profile_password_change_form": "",
-        }
-        return HttpResponseRedirect(reverse("view_my_profile"), context)
+            else:
+                return render(
+                    self.request,
+                    self.template_name,
+                    context={
+                        "settings_form": forms.EditProfileForm(
+                            prefix="settings_form",
+                            request=self.request
+                        ),
+                        "profile_password_change_form": self.profile_password_change_form
+                    }
+                )
+            return HttpResponseRedirect(reverse("view_my_profile"))
 
 
 class ForgotPasswordView(FormView):
