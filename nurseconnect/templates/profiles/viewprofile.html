@@ -12,6 +12,9 @@
     <a href="{% url "edit_my_profile" "edit-password" %}"
        class="call-to-action__nav-item call-to-action__nav-item--change-password" name="edit">{% trans "Edit" %}</a>
     {% include "profiles/change_password.html" %}
-    <a href="{% url "molo.profiles:auth_logout" %}"
-       class="Button">{% trans "log out" %}</a>
+
+    <div class="Form-actions">
+        <a href="{% url "molo.profiles:auth_logout" %}"
+           class="Button">{% trans "log out" %}</a>
+    </div>
 {% endblock %}
