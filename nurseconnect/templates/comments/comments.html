@@ -2,33 +2,50 @@
 {% load wagtailcore_tags wagtailimages_tags comments molo_commenting_tags i18n mptt_tags %}
 
 {% block content %}
-    <div class="title {{ self.get_parent_section.get_effective_extra_style_hints }} align-left">
-        <h6>{% trans "Comments" %}</h6>
-    </div>
-    <div id="comments-list">
+    <section class="Comments">
+        <h1 class="Comments-label">{% trans "Comments" %}</h1>
+        {% get_molo_comments for self as comment_list %}
         {% for node in comments %}
             {% recursetree node %}
                 {% include "comments/comment.html" %}
                 {{ children }}
             {% endrecursetree %}
         {% endfor %}
-    </div>
 
-    <div class="pagination">
-    <span class="step-links">
-        {% if page.has_previous %}
-            <a href="?p={{ page.previous_page_number }}">&larr;</a>
-        {% endif %}
-        <span class="current">
-            Page {{ page.number }} of {{ page.paginator.num_pages }}
-        </span>
-        {% if page.has_next %}
-            <a href="?p={{ page.next_page_number }}">&rarr;</a>
-        {% endif %}
-    </span>
-        <br>
-        <br>
-        <a href="{% pageurl self %}">{% trans "Back to article" %}</a>
-    </div>
+        <aside class="ContentBody-secondaryNav">
+            <nav class="Pagination" role="navigation">
+                <span class="Pagination-label"
+                      id="pagination-label">Page {{ page.number }} of {{ page.paginator.num_pages }}
+                </span>
+                <ul class="Pagination-bar" role="menubar" aria-labelledby="pagination-label">
 
+                    {% if page.has_previous %}
+                        <li class="Pagination-item Pagination-item--prev" role="presentation">
+                            <a class="Pagination-link" role="menuitem"
+                               href="?p={{ page.previous_page_number }}">Prev</a>
+                        </li>
+                    {% endif %}
+
+                    {% for page_number in page.paginator.page_range %}
+                        {% if forloop.counter <= page.paginator.num_pages and page.paginator.num_pages > 1 %}
+                            <li class="Pagination-item" role="presentation">
+                                <a href="?p={{ forloop.counter }}"
+                                   class="Pagination-link {% if forloop.counter == page.number %}Pagination-link--current{% endif %}"
+                                   role="menuitem" aria-posinset="{{ forloop.counter }}">{{ forloop.counter }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page.has_next %}
+                        <li class="Pagination-item Pagination-item--next" role="presentation">
+                            <a class="Pagination-link" role="menuitem"
+                               href="?p={{ page.next_page_number }}">Next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </aside>
+        <a class="Button" href="{% pageurl self %}">{% trans "Back to article" %}</a>
+    </section>
 {% endblock %}
