@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.http import QueryDict
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.utils.translation import get_language_from_request
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
@@ -36,8 +36,8 @@ class SearchView(TemplateView):
         return context
 
 
-def search(request, results_per_page=10):
-    search_query = request.GET.get("search", None)
+def search(request, results_per_page=7):
+    search_query = request.GET.get("q", None)
     page = request.GET.get("p", 1)
     locale = get_locale_code(get_language_from_request(request))
     if search_query:

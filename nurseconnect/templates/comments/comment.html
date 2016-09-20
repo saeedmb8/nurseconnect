@@ -3,7 +3,7 @@
 
 <dl class="Comments-item">
     <dt class="Comments-byline">
-        <a href="#" rel="author" class="Comments-author">{{ node.user_name }}</a>
+        <a href="#" rel="author" class="Comments-author">{% if not node.first_name %}Anonymous{% else %}{{ node.first_name }}{% endif %}</a>
         <time class="Comments-dateline"
               datetime="{{ comment_list.0.values.0.submit_date.year }}-{{ comment_list.0.values.0.submit_date.month }}-{{ comment_list.0.values.0.submit_date.day }}"
               pubdate

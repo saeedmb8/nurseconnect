@@ -3,6 +3,7 @@
 {% load static core_tags %}
 {% load wagtailcore_tags wagtailimages_tags %}
 {% load comments mptt_tags molo_commenting_tags i18n %}
+{% load nurseconnect_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -56,29 +57,16 @@
     {% if articles %}
         <aside class="ContentBody-secondaryNav">
             <nav class="Pagination" role="navigation">
-                <span class="Pagination-label"
-                      id="pagination-label">Page {{ articles_paginated.number }} of {{ articles_paginated.paginator.num_pages }}
-                </span>
                 <ul class="Pagination-bar" role="menubar" aria-labelledby="pagination-label">
-
                     {% if articles_paginated.has_previous %}
                         <li class="Pagination-item Pagination-item--prev" role="presentation">
                             <a class="Pagination-link" role="menuitem"
                                href="?p={{ articles_paginated.previous_page_number }}">Prev</a>
                         </li>
                     {% endif %}
-
-                    {% for page_number in articles.paginator.page_range %}
-                        {% if forloop.counter <= articles_paginated.paginator.num_pages and articles_paginated.paginator.num_pages > 1 %}
-                            <li class="Pagination-item" role="presentation">
-                                <a href="?p={{ forloop.counter }}"
-                                   class="Pagination-link {% if forloop.counter == articles_paginated.number %}Pagination-link--current{% endif %}"
-                                   role="menuitem" aria-posinset="{{ forloop.counter }}">{{ forloop.counter }}
-                                </a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-
+                    <span class="Pagination-label"
+                          id="pagination-label">Page {{ articles_paginated.number }} of {{ articles_paginated.paginator.num_pages }}
+                    </span>
                     {% if articles_paginated.has_next %}
                         <li class="Pagination-item Pagination-item--next" role="presentation">
                             <a class="Pagination-link" role="menuitem"

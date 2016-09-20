@@ -2,15 +2,15 @@
 {% load i18n %}
 
 {% block content %}
-        {% if search_results %}
-            <div class="HeroTout">
-                <h1 class="HeroTout-headline">Your search results for <strong>{{ search_query }}</strong></h1>
-            </div>
-        {% else %}
-            <div class="HeroTout">
-                <h1 class="HeroTout-headline">What are you looking for?</h1>
-            </div>
-        {% endif %}
+    {% if search_results %}
+        <div class="HeroTout">
+            <h1 class="HeroTout-headline">Your search results for <strong>{{ search_query }}</strong></h1>
+        </div>
+    {% else %}
+        <div class="HeroTout">
+            <h1 class="HeroTout-headline">What are you looking for?</h1>
+        </div>
+    {% endif %}
     {% include "search/search_block.html" %}
     {% if search_results %}
         {% include "search/search_results.html" %}
