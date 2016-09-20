@@ -1,0 +1,29 @@
+.Splash {
+    $block: unquote("#{&}");
+
+    padding: scale(alpha);
+
+    &-header {
+        margin-bottom: scale(eta);
+        text-align: center;
+    }
+
+    &-headline {
+        font-size: scale(delta);
+        font-weight: 400;
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    &-strapline {
+        margin: 0;
+        font-size: scale(gamma);
+        font-weight: 300;
+        text-align: center;
+    }
+
+    &-actions {
+        margin-top: scale(delta);
+        margin-bottom: scale(eta);
+    }
+}
