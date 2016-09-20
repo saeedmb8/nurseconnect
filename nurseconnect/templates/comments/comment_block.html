@@ -22,7 +22,11 @@
         {% if self.allow_commenting %}
             {% render_comment_form for self %}
         {% else %}
-            <p>{% trans "Commenting on this article is currently disabled" %}</p>
+            <div class="Message Message--inpage">
+                <p class="Message-caption">
+                    {% trans "Commenting on this article is currently disabled" %}
+                </p>
+            </div>
         {% endif %}
 
     </div>

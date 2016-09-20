@@ -6,20 +6,30 @@
             <article class="ContentList ContentList--bgTertiary">
                 {% if ancestor.sectionpage.image %}
                     <a href="{% pageurl page %}">
-                        <header class="ContentList-header">
-                            <h2 class="ContentList-categoryLabel">{{ ancestor.title }}</h2>
-                        </header>
-                        <h3 class="ListItem-title">{{ page.title }}</h3>
-                        <p>{{ page.subtitle }}</p>
-                    </a>
+                    <header class="ContentList-header">
+                        <h2 class="ContentList-categoryLabel">{{ ancestor.title }}</h2>
+                    </header>
+                    <div class="ContentList-body">
+                        <div class="Article">
+                            <a href="#1" class="Article-hitBox">
+                                <h2 class="Article-headline">{{ page.title }}</h2>
+                                <p class="Article-strapline">{{ page.subtitle }}</p>
+                            </a>
+                        </div>
+                    </div>
                 {% else %}
-                    <a href="{% pageurl page %}">
-                        <header class="ContentList-header">
-                            <h2 class="ContentList-categoryLabel">{{ parent_section.title }}</h2>
-                        </header>
-                        <h3 class="ListItem-title">{{ page.title }}</h3>
-                        <p>{{ page.subtitle }}</p>
-                    </a>
+                    <header class="ContentList-header">
+                        <h2 class="ContentList-categoryLabel">{{ parent_section.title }}</h2>
+                    </header>
+                    <div class="ContentList-body">
+                        <div class="Article">
+                            <a href="{% pageurl page %}" class="Article-hitBox">
+                                <img class="Article-image Article-image--aside" src="http://www.placehold.it/100x100" alt="Image Alt Text">
+                                <h2 class="Article-headline">{{ page.title }}</h2>
+                                <p class="Article-strapline">{{ page.subtitle }}</p>
+                            </a>
+                        </div>
+                    </div>
                 {% endif %}
             </article>
         {% endwith %}

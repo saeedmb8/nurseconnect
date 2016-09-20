@@ -12,12 +12,16 @@
                 {% for section in sections %}
                     {% if section.title == "Home" %}
                         <a href="{% url "home" %}" class="Menu-navLink" role="menuitem">
-                            <img class="Menu-navIcon">{% image section.image max-80x80 %}</img>
+                            {% if section.image %}
+                                <img class="Menu-navIcon">{% image section.image max-80x80 %}</img>
+                            {% endif %}
                             {{ section.title }}
                         </a>
                     {% else %}
                         <a href="{% pageurl section %}" class="Menu-navLink" role="menuitem">
-                            <img class="Menu-navIcon">{% image section.image max-80x80 %}</img>
+                            {% if section.image %}
+                                <img class="Menu-navIcon">{% image section.image max-80x80 %}</img>
+                            {% endif %}
                             {{ section.title }}
                         </a>
                     {% endif %}

@@ -336,15 +336,17 @@ table {
  * 3. Remove the margin in Firefox and Safari.
  */
 
-button,
-input,
-select,
-textarea {
-	background-color: transparent; /* 1 */
-	border-style: none; /* 1 */
-	color: inherit; /* 1 */
-	font-size: 1em; /* 1 */
-	margin: 0; /* 3 */
+@if $enhanced {
+	button,
+	input,
+	select,
+	textarea {
+		background-color: transparent; /* 1 */
+		border-style: none; /* 1 */
+		color: inherit; /* 1 */
+		font-size: 1em; /* 1 */
+		margin: 0; /* 3 */
+	}
 }
 
 /**
