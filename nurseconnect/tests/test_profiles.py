@@ -6,52 +6,81 @@ from django.test.client import Client
 from molo.core.tests.base import MoloTestCaseMixin
 
 
-class UserProfileValidationTests(MoloTestCaseMixin, TestCase):
+class UserProfileTests(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.client = Client()
         self.mk_main()
 
     def test_user_profile_validation(self):
+        # Username is expected to be a South African number,
+        # normalised to +27 country code
         response = self.client.post(reverse("user_register"), {
             "username": "wrong username",
-            "password": "1234"
+            "password": "1234",
+            "confirm_password": "1234"
         })
-        self.assertContains(response,
-                            "Please enter a valid South "
-                            "African telephone number")
+        self.assertFormError(
+            response, "form", "username",
+            [u"Enter a valid phone number."]
+        )
 
+        # Passwords with non-alphanumeric characters raise errors
         response = self.client.post(reverse("user_register"), {
-            "username": "username",
-            "password": "wrong$$$"
+            "username": "0820000000",
+            "password": "wrong$$$",
         })
-        self.assertContains(response,
-                            "Your password must contain any alphanumeric "
-                            "combination of 4 or more characters.")
+        self.assertFormError(
+            response, "form", "username",
+            None
+        )
+        self.assertFormError(
+            response, "form", "password",
+            [u"Your password must contain any alphanumeric "
+             u"combination of 4 or more characters."]
+        )
 
-        response = self.client.post(reverse("user_register"), {
-            "username": "username",
-            "password": "12"
-        })
-        self.assertContains(response,
-                            "Ensure this value has at least 4 characters"
-                            " (it has 2).")
+        # Phone number starting with zero gives no errors
+        response = self.client.post(
+            reverse("user_register"),
+            {
+                "username": "0820000000",
+                "password": "1234",
+                "confirm_password": "1234",
+                "terms_and_conditions": True,
+            },
+            follow=True
+        )
+        self.assertRedirects(response, reverse("home"))
 
-        self.user = User.objects.create_user(
+        # Phone number starting with +27 gives no errors
+        response = self.client.post(
+            reverse("user_register"),
+            {
+                "username": "+2782111111",
+                "password": "1234",
+                "confirm_password": "1234",
+                "terms_and_conditions": True,
+            },
+            follow=True
+        )
+        self.assertRedirects(response, reverse("home"))
+
+        # User already exists
+        user = User.objects.create_user(
             username="+27791234567",
-            password="1234chris")
+            password="1234"
+        )
+        response = self.client.post(
+            reverse("user_register"),
+            {
+                "username": "+27791234567",
+                "password": "1234",
+            }
+        )
+        self.assertFormError(
+            response, "form", "username",
+            [u"Username already exists."]
+        )
 
-        response = self.client.post(reverse("molo.profiles:auth_login"), {
-            "username": "wrong",
-            "password": "1234chris",
-        })
-        self.assertContains(response,
-                            "Your mobile number and password does not match. "
-                            "Please try again.")
-
-        response = self.client.post(reverse("molo.profiles:auth_login"), {
-            "username": "tester",
-            "password": "1234chris1234chris",
-        })
-        self.assertContains(response,
-                            "Your mobile number and password does not match. "
-                            "Please try again.")
+    def test_login(self):
+        pass

@@ -14,9 +14,9 @@ INT_PREFIX = "+27"
 
 class RegistrationForm(forms.Form):
     username = PhoneNumberField(
-        required=False,
         widget=forms.TextInput(
             attrs={
+                "required": True,
                 "placeholder": _("eg. 0821234567"),
                 "class": "Form-input",
                 "for": "mobilenum"
@@ -38,6 +38,7 @@ class RegistrationForm(forms.Form):
             }
         ),
         min_length=4,
+        max_length=30, # Arbitrarily chosen
         error_messages={
             "invalid": _(
                 "Your password must contain any alphanumeric "
@@ -60,6 +61,7 @@ class RegistrationForm(forms.Form):
             }
         ),
         min_length=4,
+        max_length=30,
         error_messages={
             "invalid": _(
                 "Your password must contain any alphanumeric "
@@ -120,11 +122,12 @@ class RegistrationForm(forms.Form):
             self[name] for name in filter(
                 lambda x: x.startswith('question_'), self.fields.keys()
             )
-            ]
+        ]
 
     def clean_username(self):
         username = self.cleaned_data["username"]
-        username = username.raw_input
+        if username:
+            username = username.raw_input
 
         # if username and username[0] == "0":
         #     self.cleaned_data["username"] = \

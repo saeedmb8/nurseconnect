@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
 from django.http import HttpResponseRedirect
 from django.http import QueryDict
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.utils.translation import get_language_from_request
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
@@ -102,6 +102,32 @@ class RegistrationView(FormView):
         kwargs = super(RegistrationView, self).get_form_kwargs()
         kwargs["questions"] = models.SecurityQuestion.objects.all()
         return kwargs
+
+
+# def two_form_view(request):
+#     context = {}
+#     if request.method == "POST":
+#         question_form = QuestionForm(request.POST)
+#         answer_form = AnswerForm(request.POST)
+#         success = False
+#         if 'q_button' in request.POST and question_form.is_valid()
+#             question_form.save()
+#             success = Treu
+#         if 'a_button' in request.POST and answer_form.is_valid()
+#             answer_form.save()
+#             success = True
+#         if success:
+#             return HttpResponse(reverse('success'))
+#     else:
+#         question_form = QuestionForm(request.POST)
+#         answer_form = AnswerForm(request.POST)
+#
+#     context['answer_form'] = answer_form
+#     context['question_form'] = question_form
+#     return render(request, 'forms.html', context)
+#
+# def success(request):
+#     return render(request, 'success.html', {})
 
 
 class MyProfileView(View):
