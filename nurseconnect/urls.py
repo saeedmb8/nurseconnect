@@ -32,14 +32,14 @@ urlpatterns += patterns(
     url(r"^admin/", include(wagtailadmin_urls)),
     url(r"^documents/", include(wagtaildocs_urls)),
     url(
-        r"search/$",
+        r"^search/$",
         login_required(views.SearchView.as_view(
             template_name="search/search.html"
         )),
         name="search"
     ),
     url(
-        r"search/results/$",
+        r"^search/results/$",
         login_required(views.search),
         name="search_query"
     ),
@@ -62,6 +62,13 @@ urlpatterns += patterns(
         name="view_my_profile"
     ),
     url(
+        r"^view/myprofile/(?P<edit>[\w-]+)/$",
+        login_required(views.MyProfileView.as_view(
+            template_name="profiles/viewprofile.html"
+        )),
+        name="edit_my_profile"
+    ),
+    url(
         r"^profiles/forgot-password/$",
         views.ForgotPasswordView.as_view(),
         name="forgot_password"
@@ -77,6 +84,11 @@ urlpatterns += patterns(
             template_name="profiles/reset_password_success.html"
         ),
         name="reset_password_success"
+    ),
+    url(
+        r"^menu/$",
+        views.MenuView.as_view(),
+        name="menu"
     ),
     url(
         r"^$",
