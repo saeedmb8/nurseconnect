@@ -10,6 +10,7 @@
 
         &--lvl1 {
             font-size: scale(beta);
+            font-weight: 600;
 
             #{$block}-navLink {
                 padding: scale(alpha);
@@ -18,6 +19,7 @@
 
         &--lvl2 {
             font-size: 12px;
+            font-weight: 300;
 
             #{$block}-navLink {
                 padding: scale(alpha) 0;
@@ -43,6 +45,18 @@
         &:active,
         &:focus {
             color: $color-orange-bittersweet;
+        }
+    }
+
+    &-navIcon {
+        display: inline-block;
+        height: scale(beta);
+        margin-right: scale(alpha);
+        vertical-align: middle;
+
+        &--after {
+            margin-right: 0;
+            margin-left: scale(alpha);
         }
     }
 

@@ -31,9 +31,12 @@
 
     &-chevron {
         display: inline-block;
+        margin: 0 4px;
         vertical-align: middle;
-        margin: 0 scale(alpha);
-        font-family: sans-serif;
-        font-weight: 100;
+
+        img {
+            display: block;
+            width: 8px;
+        }
     }
 }

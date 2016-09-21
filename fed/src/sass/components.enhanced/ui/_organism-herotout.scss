@@ -9,7 +9,8 @@
         margin: 0;
         font-size: scale(eta);
         font-weight: 400;
-        line-height: 1.2;
+        letter-spacing: kerning(-75);
+        line-height: 1;
     }
 
     &-actions {

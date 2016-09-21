@@ -50,8 +50,16 @@ body {
 }
 
 @if $enhanced == true {
-    * {
+    *,
+    :after,
+    :before {
         box-sizing: border-box;
+    }
+} @else {
+    *,
+    :after,
+    :before {
+        box-sizing: content-box;
     }
 }
 

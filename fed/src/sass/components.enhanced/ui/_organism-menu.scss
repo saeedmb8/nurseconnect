@@ -10,6 +10,7 @@
 
         &--lvl1 {
             font-size: scale(gamma);
+            font-weight: 600;
 
             #{$block}-navLink {
                 padding: scale(beta) scale(gamma);
@@ -18,6 +19,7 @@
 
         &--lvl2 {
             font-size: scale(beta);
+            font-weight: 300;
 
             #{$block}-navLink {
                 padding: scale(beta) 0;
@@ -35,6 +37,10 @@
 
     &-navLink {
         display: block;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
         border-bottom: 1px solid $color-blue-regal;
         border-bottom: 1px solid rgba($color-blue-regal, .1);
         color: $color-blue-pelorous;
@@ -48,9 +54,21 @@
     }
 
     &-navIcon {
+        @include clearfix;
         display: inline-block;
         max-width: scale(zeta);
         margin-right: scale(gamma);
+        vertical-align: middle;
+
+        &--after {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        &--scaledToText {
+            width: auto;
+            height: 1em;
+        }
     }
 
     &-contentTout {

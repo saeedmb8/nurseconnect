@@ -43,3 +43,7 @@
         @return unquote("#{$scale}px");
     }
 }
+
+@function kerning($value) {
+    @return em($value / 1000);
+}
