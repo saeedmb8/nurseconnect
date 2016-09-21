@@ -174,6 +174,7 @@ class MyProfileView(View):
                 user = self.request.user
                 user.first_name = settings_form.cleaned_data["first_name"]
                 user.last_name = settings_form.cleaned_data["last_name"]
+                import pdb;pdb.set_trace()
                 if settings_form.cleaned_data["username"]:
                     user.username = settings_form.cleaned_data["username"]
                 user.save()
