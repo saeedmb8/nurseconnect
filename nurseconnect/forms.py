@@ -192,17 +192,6 @@ class EditProfileForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop("user")
         super(EditProfileForm, self).__init__(*args, **kwargs)
-        # if self.request.user.first_name:
-        #     self.fields["first_name"].initial = self.request.user.first_name
-        # else:
-        #     self.fields["first_name"].initial = "Anonymous"
-        #
-        # if self.request.user.last_name:
-        #     self.fields["last_name"].initial = self.request.user.last_name
-        # else:
-        #     self.fields["last_name"].initial = "Anonymous"
-        #
-        # self.fields["username"].intial = self.request.user.username
         self.set_initial(user)
 
     def clean_username(self):
@@ -235,13 +224,6 @@ class EditProfileForm(forms.Form):
         self.fields["last_name"].widget.attrs["readonly"] = state
         self.fields["username"].widget.attrs["readonly"] = state
         return self
-
-    # def disable_fields(self):
-    #     self.fields["first_name"].widget.attrs["readonly"] = True
-    #     self.fields["last_name"].widget.attrs["readonly"] = True
-    #     self.fields["username"].widget.attrs["readonly"] = True
-    #
-    #     return self
 
 
 class ProfilePasswordChangeForm(forms.Form):

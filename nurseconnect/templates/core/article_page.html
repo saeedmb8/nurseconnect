@@ -28,7 +28,7 @@
                 </a></span>
                 <p class="Paper-lead">{{ self.subtitle }}</p>
                 {% get_comment_count for self as comment_count %}
-                Comments: {{ comment_count }}
+                <img src="{% static 'images/comments.png' %}" alt="NurseConnect Comments" width=25 height=25 class="Logo-graphic"> <strong>{{ comment_count }}</strong>
             </header>
             <div class="Paper-copy">
                 {% for block in self.body %}

@@ -2,6 +2,7 @@
 
 
 {% if terms %}
-{#    <label for="checkbox1" class="Form-choiceLabel Form-choiceLabel--checkbox"></label>#}
-    <a href="{% pageurl terms %}">{% trans "I accept the terms of use" %}</a> &nbsp;
+    <label for="checkbox1" class="Form-choiceLabel Form-choiceLabel--checkbox">
+        <a href="{% pageurl terms %}">{% trans "I accept the terms of use" %}</a>
+    </label>
 {% endif %}
