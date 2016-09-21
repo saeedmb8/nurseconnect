@@ -56,6 +56,7 @@ def search(request, results_per_page=7):
         search_results = paginator.page(paginator.num_pages)
 
     return render(request, "search/search.html", {
+        "active": "search",
         "searched": True,
         "search_query": search_query,
         "search_results": search_results,
