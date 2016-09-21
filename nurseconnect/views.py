@@ -1,6 +1,5 @@
 import random
 
-from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
@@ -146,12 +145,13 @@ class MyProfileView(View):
             settings_form.change_field_enabled_state(state=False)
             edit = "edit-settings"
         elif kwargs.get("edit") == "edit-password":
-            profile_password_change_form.change_field_enabled_state(state=False)
+            profile_password_change_form.change_field_enabled_state(
+                state=False)
             edit = "edit-password"
 
         context = {
             "edit": edit,
-            "active": "profile", # TODO: questionable - remove later
+            "active": "profile",  # TODO: questionable - remove later
             "settings_form": settings_form,
             "profile_password_change_form": profile_password_change_form,
         }
@@ -292,7 +292,7 @@ class ForgotPasswordView(FormView):
         )
         kwargs["questions"] = self.security_questions[
             :profile_settings.num_security_questions
-            ]
+        ]
         return kwargs
 
 

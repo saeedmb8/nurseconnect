@@ -68,7 +68,7 @@ class UserProfileTests(MoloTestCaseMixin, TestCase):
         self.assertRedirects(response, reverse("home"))
 
         # User already exists
-        user = User.objects.create_user(
+        User.objects.create_user(
             username="+27791234567",
             password="1234"
         )
@@ -152,9 +152,10 @@ class UserProfileTests(MoloTestCaseMixin, TestCase):
             },
             follow=True
         )
-        # self.assertEqual(response.status_code, 200)
-        # self.assertEqual(
-        #     response.context["settings_form"].fields[
-        #         "first_name"].initial,
-        #     "Tester"
-        # )
+        self.assertRedirects(response, reverse("view_my_profile"))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.context["settings_form"].fields[
+                "first_name"].initial,
+            "Tester"
+        )
