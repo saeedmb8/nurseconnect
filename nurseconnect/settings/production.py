@@ -45,9 +45,6 @@ COMPRESS_OFFLINE = True
 
 RAVEN_CONFIG = {
     'dsn': environ.get('RAVEN_DSN'),
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.dirname(__file__)),
 }
 
 # Setup for CAS
