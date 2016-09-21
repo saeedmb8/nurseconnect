@@ -1,6 +1,5 @@
 from .base import *  # noqa
 from os import environ
-import djcelery
 import raven
 
 
@@ -20,12 +19,13 @@ COMPRESS_OFFLINE = True
 # to prevent this from blocking web server threads
 # (requires the django-celery package):
 # http://celery.readthedocs.org/en/latest/configuration.html
-
-
-djcelery.setup_loader()
-
-CELERY_SEND_TASK_ERROR_EMAILS = True
-BROKER_URL = environ.get("BROKEN_URL")
+#
+# import djcelery
+#
+# djcelery.setup_loader()
+#
+# CELERY_SEND_TASK_ERROR_EMAILS = True
+# BROKER_URL = environ.get("BROKEN_URL")
 
 
 # Use Redis as the cache backend for extra performance
