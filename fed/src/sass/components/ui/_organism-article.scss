@@ -56,6 +56,11 @@
     }
 
     &-actions {
+        @include no-list;
         margin-top: scale(alpha);
+
+        &Item {
+            display: inline-block;
+        }
     }
 }

@@ -35,22 +35,28 @@
                     {% if block.block_type == "heading" %}
                         <h2>{{ block.value }}</h2>
                     {% elif block.block_type == "image" %}
-                        <figure>
-                            {% image block.value %}
-                            <figcaption>{{ block.value.title }}</figcaption>
-                        </figure>
+                        {% if block.value %}
+                            <figure>
+                                {% image block.value max-500x150 %}
+                                <figcaption>{{ block.value.title }}</figcaption>
+                            </figure>
+                        {% endif %}
                     {% elif block.block_type == "numbered_list" %}
-                        <ul>
-                            {% for item in block.value %}
-                                <li>{{ item|handle_markdown }}</li>
-                            {% endfor %}
-                        </ul>
+                        {% if block.value %}
+                            <ul>
+                                {% for item in block.value %}
+                                    <li>{{ item|handle_markdown }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     {% elif block.block_type == "list" %}
-                        <ul>
-                            {% for item in block.value %}
-                                <li>{{ item|handle_markdown }}</li>
-                            {% endfor %}
-                        </ul>
+                        {% if block.value %}
+                            <ul>
+                                {% for item in block.value %}
+                                    <li>{{ item|handle_markdown }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     {% else %}
                         {{ block }}
                     {% endif %}
@@ -58,7 +64,7 @@
             </div>
         </article>
         <section class="Comments">
-            <h1 class="Comments-label">{% trans "Comments" %}</h1>
+            <h1 class="Comments-label">{% trans "" %}Comments</h1>
             {% include "comments/comment_block.html" %}
         </section>
     </section>

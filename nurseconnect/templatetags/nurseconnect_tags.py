@@ -85,4 +85,3 @@ def convert_month(value):
         return calendar.month_name[value]
     else:
         return ""
-

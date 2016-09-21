@@ -36,8 +36,8 @@ class SearchView(TemplateView):
         return context
 
 
-def search(request, results_per_page=10):
-    search_query = request.GET.get("search", None)
+def search(request, results_per_page=7):
+    search_query = request.GET.get("q", None)
     page = request.GET.get("p", 1)
     locale = get_locale_code(get_language_from_request(request))
     if search_query:
@@ -190,7 +190,8 @@ class MyProfileView(View):
                     self.template_name,
                     context={
                         "settings_form": self.settings_form,
-                        "profile_password_change_form": forms.ProfilePasswordChangeForm(
+                        "profile_password_change_form":
+                            forms.ProfilePasswordChangeForm(
                             prefix="profile_password_change_form"
                         )
                     }
@@ -199,7 +200,9 @@ class MyProfileView(View):
             if self.profile_password_change_form.is_valid():
                 user = self.request.user
                 if user.check_password(
-                    self.profile_password_change_form.cleaned_data["old_password"]
+                    self.profile_password_change_form.cleaned_data[
+                        "old_password"
+                    ]
                 ):
                     user.set_password(
                         self.profile_password_change_form.cleaned_data[
@@ -223,7 +226,8 @@ class MyProfileView(View):
                             prefix="settings_form",
                             request=self.request
                         ),
-                        "profile_password_change_form": self.profile_password_change_form
+                        "profile_password_change_form":
+                            self.profile_password_change_form
                     }
                 )
             return HttpResponseRedirect(reverse("view_my_profile"))
@@ -308,8 +312,8 @@ class ForgotPasswordView(FormView):
             self.request.site
         )
         kwargs["questions"] = self.security_questions[
-                              :profile_settings.num_security_questions
-                              ]
+            :profile_settings.num_security_questions
+            ]
         return kwargs
 
 

@@ -72,8 +72,6 @@
     }
 
     &-submission {
-        // display: block;
-        // width: 100%;
         margin: 0;
         margin-top: scale(alpha);
         padding: scale(alpha);
@@ -91,10 +89,11 @@
 
     &-field {
         display: block;
+        width: 90%;
         height: 60px;
         margin: 0;
+        padding: scale(beta) 5%;
         border: 1px solid $color-blue-tranquil;
-        border-radius: scale(alpha);
         background-color: $color-white;
         color: $color-blue-regal;
 

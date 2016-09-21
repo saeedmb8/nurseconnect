@@ -328,17 +328,15 @@ class ProfilePasswordChangeForm(forms.Form):
 
 
 class ForgotPasswordForm(forms.Form):
-    username = PhoneNumberField(required=False)
-
-    def clean_username(self):
-        username = self.cleaned_data["username"]
-        username = username.raw_input
-
-        if username and username[0] == "0":
-            self.cleaned_data["username"] = \
-                INT_PREFIX + username[1:len(username)]
-
-        return self.cleaned_data["username"]
+    username = PhoneNumberField(
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": _("Mobile number"),
+                "class": "Form-input"
+            }
+        )
+    )
 
     def __init__(self, *args, **kwargs):
         questions = kwargs.pop("questions")
@@ -348,12 +346,21 @@ class ForgotPasswordForm(forms.Form):
             self.fields["question_%s" % index] = forms.CharField(
                 label=_(str(question)),
                 widget=forms.TextInput(
-                    attrs=dict(
-                        required=True,
-                        max_length=150,
-                    )
+                    attrs={
+                        "max_length": 150,
+                        "class": "Form-input",
+                        "placeholder": "Enter " + str(question).lower(),
+                        "for": "sq" + str(index)
+                    }
                 )
             )
+
+    def security_questions(self):
+        return [
+            self[name] for name in filter(
+                lambda x: x.startswith('question_'), self.fields.keys()
+            )
+        ]
 
 
 class ResetPasswordForm(forms.Form):
