@@ -134,50 +134,44 @@ class MyProfileView(View):
     template_name = "profiles/viewprofile.html"
 
     def get(self, request, *args, **kwargs):
-        self.settings_form = forms.EditProfileForm(prefix="settings_form", request=request)
-        self.settings_form.set_initial()
-        self.profile_password_change_form = forms.ProfilePasswordChangeForm(
+        settings_form = forms.EditProfileForm(
+            prefix="settings_form", user=request.user
+        )
+        # settings_form.set_initial()
+        profile_password_change_form = forms.ProfilePasswordChangeForm(
             prefix="profile_password_change_form"
         )
         edit = ""
         if kwargs.get("edit") == "edit-settings":
-            self.settings_form.enable_fields()
-            self.settings_form.set_initial()
+            settings_form.change_field_enabled_state(state=False)
             edit = "edit-settings"
         elif kwargs.get("edit") == "edit-password":
-            self.profile_password_change_form.enable_fields()
-            self.settings_form.set_initial()
+            profile_password_change_form.change_field_enabled_state(state=False)
             edit = "edit-password"
 
         context = {
             "edit": edit,
-            "active": "profile",
-            "settings_form": self.settings_form,
-            "profile_password_change_form": self.profile_password_change_form,
+            "active": "profile", # TODO: questionable - remove later
+            "settings_form": settings_form,
+            "profile_password_change_form": profile_password_change_form,
         }
         return render(request, self.template_name, context)
 
-    def get_initial(self):
-        initial = super(MyProfileView, self).get_initial()
-        initial.update({"first_name": self.request.user.first_name})
-        initial.update({"last_name": self.request.user.last_name})
-        initial.update({"username": self.request.user.username})
-        return initial
-
-    def post(self, request):
-        action = self.request.POST["action"]
-        self.settings_form = forms.EditProfileForm(
+    def post(self, request, *args, **kwargs):
+        edit = kwargs.get("edit")
+        # action = self.request.POST["action"]
+        settings_form = forms.EditProfileForm(
             request.POST,
             prefix="settings_form",
-            request=request
+            user=request.user
         )
-        self.profile_password_change_form = forms.ProfilePasswordChangeForm(
+        profile_password_change_form = forms.ProfilePasswordChangeForm(
             request.POST,
             prefix="profile_password_change_form"
         )
-        if action == "edit_profile_settings":
-            if self.settings_form.is_valid():
-                cleaned_data = self.settings_form.clean()
+        if edit == "edit-settings":
+            if settings_form.is_valid():
+                user = request.user
                 if cleaned_data["first_name"]:
                     request.user.first_name = cleaned_data["first_name"]
                 if cleaned_data["last_name"]:
@@ -201,7 +195,7 @@ class MyProfileView(View):
                         )
                     }
                 )
-        elif action == "edit_profile_password":
+        elif edit == "edit-password":
             if self.profile_password_change_form.is_valid():
                 user = self.request.user
                 if user.check_password(

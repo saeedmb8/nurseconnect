@@ -5,13 +5,15 @@ from django.test.client import Client
 
 from molo.core.tests.base import MoloTestCaseMixin
 
+from nurseconnect import forms
+
 
 class UserProfileTests(MoloTestCaseMixin, TestCase):
     def setUp(self):
         self.client = Client()
         self.mk_main()
 
-    def test_user_profile_validation(self):
+    def test_register_user_validation(self):
         # Username is expected to be a South African number,
         # normalised to +27 country code
         response = self.client.post(reverse("user_register"), {
@@ -84,3 +86,74 @@ class UserProfileTests(MoloTestCaseMixin, TestCase):
 
     def test_login(self):
         pass
+
+    def test_edit_user_profile(self):
+        # Redirects to login page if user is not logged in
+        response = self.client.get(reverse("view_my_profile"))
+        redirect_url = reverse("auth_login") + "?next=/view/myprofile/"
+        self.assertRedirects(response, redirect_url)
+
+        # EditProfileForm and ProfilePasswordChangeForm should both be rendered
+        User.objects.create_user("0811231234", password="1234")
+        self.client.login(username="0811231234", password="1234")
+
+        response = self.client.get(
+            reverse("view_my_profile"),
+        )
+        self.assertIsInstance(
+            response.context["settings_form"],
+            forms.EditProfileForm
+        )
+        self.assertIsInstance(
+            response.context["profile_password_change_form"],
+            forms.ProfilePasswordChangeForm
+        )
+
+        # Fields in both forms should be read-only
+        self.assertEqual(
+            response.context["settings_form"].fields[
+                "first_name"].widget.attrs["readonly"],
+            True
+        )
+        self.assertEqual(
+            response.context["profile_password_change_form"].fields[
+                "old_password"].widget.attrs["readonly"],
+            True
+        )
+
+    def test_edit_personal_details(self):
+        User.objects.create_user("0811231234", password="1234")
+        self.client.login(username="0811231234", password="1234")
+
+        response = self.client.get(
+            reverse("edit_my_profile", kwargs={"edit": "edit-settings"})
+        )
+
+        # EditProfileForm fields should be editable
+        self.assertEqual(
+            response.context["settings_form"].fields[
+                "first_name"].widget.attrs["readonly"],
+            False
+        )
+
+        # For unspecified first and last names, show "Anonymous"
+        self.assertEqual(
+            response.context["settings_form"].fields[
+                "first_name"].initial,
+            ""
+        )
+
+        # After editing first name, it should now be displayed
+        response = self.client.post(
+            reverse("edit_my_profile", kwargs={"edit": "edit-settings"}),
+            {
+                "first_name": "Tester"
+            },
+            follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.context["settings_form"].fields[
+                "first_name"].initial,
+            "Tester"
+        )

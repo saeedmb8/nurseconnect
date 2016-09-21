@@ -91,23 +91,25 @@ class RegisterFormTestCase(MoloTestCaseMixin, TestCase):
         )
         self.assertEqual(form.is_valid(), False)
 
-    class PasswordRecoveryTestCase(MoloTestCaseMixin, TestCase):
-        def setUp(self):
-            self.mk_main()
-            self.user = User.objects.create_user(
-                username="tester",
-                email="tester@example.com",
-                password="tester")
 
-            self.question = models.SecurityQuestion(question="What is this?")
+class PasswordRecoveryTestCase(MoloTestCaseMixin, TestCase):
+    def setUp(self):
+        self.mk_main()
+        self.user = User.objects.create_user(
+            username="0831231234",
+            email="tester@example.com",
+            password="tester")
 
-        def test_username_and_security_answer(self):
-            form_data = {
-                "username": "tester",
-                "question_0": "20"
-            }
-            form = forms.ForgotPasswordForm(
-                data=form_data,
-                questions=[self.question, ]
-            )
-            self.assertEqual(form.is_valid(), True)
+        self.question = models.SecurityQuestion(question="What is this?")
+        self.question.save()
+
+    def test_username_and_security_answer(self):
+        form_data = {
+            "username": "0831231234",
+            "question_0": "20"
+        }
+        form = forms.ForgotPasswordForm(
+            data=form_data,
+            questions=[self.question, ]
+        )
+        self.assertEqual(form.is_valid(), True)
