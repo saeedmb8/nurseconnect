@@ -14,9 +14,9 @@ INT_PREFIX = "+27"
 
 class RegistrationForm(forms.Form):
     username = PhoneNumberField(
-        required=False,
         widget=forms.TextInput(
             attrs={
+                "required": True,
                 "placeholder": _("eg. 0821234567"),
                 "class": "Form-input",
                 "for": "mobilenum"
@@ -38,6 +38,7 @@ class RegistrationForm(forms.Form):
             }
         ),
         min_length=4,
+        max_length=30, # Arbitrarily chosen
         error_messages={
             "invalid": _(
                 "Your password must contain any alphanumeric "
@@ -60,6 +61,7 @@ class RegistrationForm(forms.Form):
             }
         ),
         min_length=4,
+        max_length=30,
         error_messages={
             "invalid": _(
                 "Your password must contain any alphanumeric "
@@ -124,7 +126,8 @@ class RegistrationForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data["username"]
-        username = username.raw_input
+        if username:
+            username = username.raw_input
 
         # if username and username[0] == "0":
         #     self.cleaned_data["username"] = \
@@ -154,7 +157,7 @@ class EditProfileForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Name"),
-                "readonly": "true",
+                "readonly": True,
                 "class": "Form-input"
             }
         ),
@@ -167,7 +170,7 @@ class EditProfileForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Surname"),
-                "readonly": "true",
+                "readonly": True,
                 "class": "Form-input"
             }
         ),
@@ -176,69 +179,50 @@ class EditProfileForm(forms.Form):
 
     username = PhoneNumberField(
         required=False,
+        label=_("Mobile number"),
         widget=forms.TextInput(
             attrs={
                 "placeholder": _("Username"),
-                "readonly": "true",
+                "readonly": True,
                 "class": "Form-input"
             }
         ),
     )
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop("request")
+        user = kwargs.pop("user")
         super(EditProfileForm, self).__init__(*args, **kwargs)
-        if self.request.user.first_name:
-            self.fields["first_name"].initial = self.request.user.first_name
-        else:
-            self.fields["first_name"].initial = "Anonymous"
-
-        if self.request.user.last_name:
-            self.fields["last_name"].initial = self.request.user.last_name
-        else:
-            self.fields["last_name"].initial = "Anonymous"
-
-        self.fields["username"].intial = self.request.user.username
+        self.set_initial(user)
 
     def clean_username(self):
         username = self.cleaned_data["username"]
-        self.cleaned_data["username"] = username.raw_input
+        if username: # TODO: temporary fix - fix ASAP
+            self.cleaned_data["username"] = username.raw_input
 
-        if not self.request.user.username == self.cleaned_data["username"]:
-            if User.objects.filter(
-                username__iexact=self.cleaned_data["username"]
-            ).exists():
-                self.add_error(None, "Username already exists.")
+        # if not self.request.user.username == self.cleaned_data["username"]:
+        #     if User.objects.filter(
+        #         username__iexact=self.cleaned_data["username"]
+        #     ).exists():
+        #         self.add_error(None, "Username already exists.")
 
-        return self.cleaned_data["username"]
+        # return self.cleaned_data["username"]
+            pass
 
-    def set_initial(self):
-        if self.request.user.first_name:
-            self.fields["first_name"].initial = self.request.user.first_name
-        else:
-            self.fields["first_name"].initial = "Anonymous"
+    def set_initial(self, user):
+        self.fields["first_name"].initial = user.first_name \
+            if user.first_name else ""
 
-        if self.request.user.last_name:
-            self.fields["last_name"].initial = self.request.user.last_name
-        else:
-            self.fields["last_name"].initial = "Anonymous"
+        self.fields["last_name"].initial = user.last_name \
+            if user.last_name else ""
 
-        self.fields["username"].intial = self.request.user.username
+        self.fields["username"].initial = user.username
 
         return self
 
-    def enable_fields(self):
-        self.fields["first_name"].widget.attrs["readonly"] = False
-        self.fields["last_name"].widget.attrs["readonly"] = False
-        self.fields["username"].widget.attrs["readonly"] = False
-
-        return self
-
-    def disable_fields(self):
-        self.fields["first_name"].widget.attrs["readonly"] = True
-        self.fields["last_name"].widget.attrs["readonly"] = True
-        self.fields["username"].widget.attrs["readonly"] = True
-
+    def change_field_enabled_state(self, state=True):
+        self.fields["first_name"].widget.attrs["readonly"] = state
+        self.fields["last_name"].widget.attrs["readonly"] = state
+        self.fields["username"].widget.attrs["readonly"] = state
         return self
 
 
@@ -318,17 +302,11 @@ class ProfilePasswordChangeForm(forms.Form):
         else:
             raise forms.ValidationError(_("New passwords do not match."))
 
-    def enable_fields(self):
-        self.fields["old_password"].widget.attrs["readonly"] = False
-        self.fields["new_password"].widget.attrs["readonly"] = False
-        self.fields["confirm_password"].widget.attrs["readonly"] = False
-
+    def change_field_enabled_state(self, state=False):
+        self.fields["old_password"].widget.attrs["readonly"] = state
+        self.fields["new_password"].widget.attrs["readonly"] = state
+        self.fields["confirm_password"].widget.attrs["readonly"] = state
         return self
-
-    def disable_fields(self):
-        self.fields["old_password"].widget.attrs["readonly"] = True
-        self.fields["new_password"].widget.attrs["readonly"] = True
-        self.fields["confirm_password"].widget.attrs["readonly"] = True
 
 
 class ForgotPasswordForm(forms.Form):

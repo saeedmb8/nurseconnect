@@ -2,4 +2,5 @@ from nurseconnect.admin import YourWordsModelAdminGroup
 
 from wagtailmodeladmin.options import wagtailmodeladmin_register
 
+
 wagtailmodeladmin_register(YourWordsModelAdminGroup)

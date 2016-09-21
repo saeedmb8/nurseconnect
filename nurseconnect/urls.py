@@ -63,9 +63,9 @@ urlpatterns += patterns(
     ),
     url(
         r"^view/myprofile/(?P<edit>[\w-]+)/$",
-        views.MyProfileView.as_view(
+        login_required(views.MyProfileView.as_view(
             template_name="profiles/viewprofile.html"
-        ),
+        )),
         name="edit_my_profile"
     ),
     url(

@@ -32,17 +32,17 @@ class RegistrationViewTest(MoloTestCaseMixin, TestCase):
             ])
 
 
-class EditProfileViewTest(MoloTestCaseMixin, TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.mk_main()
-        self.user = User.objects.create_user(
-            username="+27791234567",
-            password="tester1234")
-
-        self.client.login(username="+27791234567", password="tester1234")
-
-    def test_edit_profile_view_uses_correct_form(self):
-        response = self.client.get(reverse("edit_my_profile"))
-        self.assertTrue(isinstance(response.context["form"],
-                                   forms.EditProfileForm))
+# class EditProfileViewTest(MoloTestCaseMixin, TestCase):
+#     def setUp(self):
+#         self.client = Client()
+#         self.mk_main()
+#         self.user = User.objects.create_user(
+#             username="+27791234567",
+#             password="tester1234")
+#
+#         self.client.login(username="+27791234567", password="tester1234")
+#
+#     def test_edit_profile_view_uses_correct_form(self):
+#         response = self.client.get(reverse("edit_my_profile"))
+#         self.assertTrue(isinstance(response.context["form"],
+#                                    forms.EditProfileForm))
