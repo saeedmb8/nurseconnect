@@ -171,13 +171,15 @@ class MyProfileView(View):
         if edit == "edit-settings":
             settings_form.full_clean()
             if settings_form.is_valid():
-                user = self.request.user
-                user.first_name = settings_form.cleaned_data["first_name"]
-                user.last_name = settings_form.cleaned_data["last_name"]
-                import pdb;pdb.set_trace()
+                self.request.user.first_name = \
+                    settings_form.cleaned_data["first_name"]
+                self.request.user.last_name = \
+                    settings_form.cleaned_data["last_name"]
                 if settings_form.cleaned_data["username"]:
-                    user.username = settings_form.cleaned_data["username"]
-                user.save()
+                    self.request.user.username = \
+                        settings_form.cleaned_data["username"]
+                self.request.user.save()
+                # import pdb; pdb.set_trace()
 
                 return HttpResponseRedirect(reverse("view_my_profile"))
 
