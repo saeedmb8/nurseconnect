@@ -61,7 +61,7 @@ AUTHENTICATION_BACKENDS = [
     "molo.core.backends.MoloCASBackend",
 ]
 
-CAS_SERVER_URL = ""
+CAS_SERVER_URL = environ.get('CAS_SERVER_URL') or ''
 CAS_ADMIN_PREFIX = "/admin/"
 LOGIN_URL = "/accounts/login/"
 CAS_VERSION = "3"
