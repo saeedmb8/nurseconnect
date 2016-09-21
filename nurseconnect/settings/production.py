@@ -1,4 +1,7 @@
 from .base import *  # noqa
+from os import environ
+import djcelery
+import raven
 
 
 # Disable debug mode
@@ -18,12 +21,11 @@ COMPRESS_OFFLINE = True
 # (requires the django-celery package):
 # http://celery.readthedocs.org/en/latest/configuration.html
 
-# import djcelery
-#
-# djcelery.setup_loader()
-#
-# CELERY_SEND_TASK_ERROR_EMAILS = True
-# BROKER_URL = "redis://"
+
+djcelery.setup_loader()
+
+CELERY_SEND_TASK_ERROR_EMAILS = True
+BROKER_URL = environ.get("BROKEN_URL")
 
 
 # Use Redis as the cache backend for extra performance
@@ -40,6 +42,13 @@ COMPRESS_OFFLINE = True
 #         }
 #     }
 # }
+
+RAVEN_CONFIG = {
+    'dsn': environ.get('RAVEN_DSN'),
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+}
 
 # Setup for CAS
 ENABLE_SSO = True
