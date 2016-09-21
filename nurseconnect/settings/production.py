@@ -2,8 +2,6 @@ from .base import *  # noqa
 from os import environ
 import raven # noqa
 
-
-
 # Disable debug mode
 
 DEBUG = False
