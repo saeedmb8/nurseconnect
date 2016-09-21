@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags static core_tags i18n %}
+{% load nurseconnect_tags %}
 
 {% block content %}
     <div class="HeroTout">
@@ -68,20 +69,23 @@
                     <p class="alert-error">* {{ form.terms_or_conditions_approved.errors|join:" "}}</p>
                 {% endif %}
                 <div class="Form-field Form-field--required">
-                    <label for="checkbox1" class="Form-choiceLabel Form-choiceLabel--checkbox">
-                        {% trans "I accept the terms of use." %}
-                    </label>
-                    {#                    <input type="checkbox" name="terms_or_conditions_approved" id="checkbox1"#}
-                    {#                           class="Form-choiceInput">#}
-                    {{ form.terms_or_conditions_approved }}
+                    <ul class="Form-choiceGroup">
+                        <li class="Form-choiceGroupItem">
+                            <input type="checkbox" name="terms_or_conditions_approved" id="checkbox1"
+                                   class="Form-choiceInput">
+                            {% footer_link %}
+                        </li>
+                    </ul>
                 </div>
                 <div class="Form-field Form-field--required">
-                    {#                        <input type="checkbox" name="hide_real_name" id="checkbox1"#}
-                    {#                               class="Form-choiceInput">#}
-                    <label for="checkbox1" class="Form-choiceLabel ">
-                        {% trans "Share my story anonymously" %}
-                    </label>
-                    {{ form.hide_real_name }}
+                    <ul class="Form-choiceGroup">
+                        <li class="Form-choiceGroupItem">
+                            <input type="checkbox" name="hide_real_name" id="checkbox2" class="Form-choiceInput">
+                            <label for="checkbox2" class="Form-choiceLabel Form-choiceLabel--checkbox">
+                                {% trans "Share my story anonymously" %}
+                            </label>
+                        </li>
+                    </ul>
                 </div>
             </fieldset>
 
