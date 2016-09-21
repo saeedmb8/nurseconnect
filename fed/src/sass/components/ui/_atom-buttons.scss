@@ -3,12 +3,20 @@
     width: 100%;
     padding-top: scale(alpha);
     padding-bottom: scale(alpha);
+    border: 0;
     background-color: $color-orange-bittersweet;
     color: $color-white;
     font-weight: 600;
     text-align: center;
     text-decoration: none;
     text-transform: capitalize;
+    appearance: none;
+
+    &[type="submit"] {
+        width: 90%;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
 
     &:hover,
     &:active,

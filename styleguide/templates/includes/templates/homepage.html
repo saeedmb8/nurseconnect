@@ -1,3 +1,8 @@
+{% load wagtailcore_tags compress static wagtailuserbar core_tags i18n %}
+{% load wagtailsettings_tags wagtailimages_tags %}
+{% get_settings %}
+
+
 {% include "includes/organisms/site-head.html" %}
 <main class="ContentBody" role="main">
     {% include "includes/organisms/hero-tout.html" %}
@@ -53,7 +58,10 @@
             <nav class="Menu" role="menubar">
                 <ul class="Menu-navGroup Menu-navGroup--lvl1" role="menu">
                     <li class="Menu-navItem" role="presentation">
-                        <a href="" class="Menu-navLink" role="menuitem">Lorem ipsum</a>
+                        <a href="" class="Menu-navLink" role="menuitem">
+                            Lorem ipsum
+                            <img src="{% static 'icons/png/chevron_right-bluePelorous.png' %}" alt="" class="Menu-navIcon Menu-navIcon--after Menu-navIcon--scaledToText">
+                        </a>
 
                         <ul class="Menu-navGroup Menu-navGroup--lvl2" role="menu">
                             <li class="Menu-navItem" role="presentation">
@@ -75,7 +83,10 @@
                         </ul>
                     </li>
                     <li class="Menu-navItem" role="presentation">
-                        <a href="" class="Menu-navLink" role="menuitem">Lorem ipsum</a>
+                        <a href="" class="Menu-navLink" role="menuitem">
+                            Lorem ipsum
+                            <img src="{% static 'icons/png/chevron_right-bluePelorous.png' %}" alt="" class="Menu-navIcon Menu-navIcon--after Menu-navIcon--scaledToText">
+                        </a>
 
                         <ul class="Menu-navGroup Menu-navGroup--lvl2" role="menu">
                             <li class="Menu-navItem" role="presentation">

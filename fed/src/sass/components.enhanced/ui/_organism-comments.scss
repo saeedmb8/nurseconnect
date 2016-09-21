@@ -94,11 +94,12 @@
 
     &-field {
         display: block;
-        width: 100%;
+        width: 90%;
         height: 6rem;
         margin: 0;
+        padding: scale(gamma) 5%;
         border: 1px solid $color-blue-tranquil;
-        border-radius: scale(alpha);
+        border-radius: 3px;
         background-color: $color-white;
         color: $color-blue-regal;
 
@@ -109,5 +110,6 @@
 
     &-submitButton {
         margin-top: scale(gamma);
+        appearance: none;
     }
 }

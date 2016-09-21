@@ -3,10 +3,16 @@
 
     &--padded {
         padding: scale(gamma);
+
+        #{$block}-actions {
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 
     &-fieldGroup {
         @include clearfix;
+        position: relative;
         display: block;
         margin: 0;
         padding: 0;
@@ -14,6 +20,18 @@
 
         & + & {
             margin-top: scale(eta);
+        }
+    }
+
+    &-groupStateToggle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $color-blue-pelorous;
+        font-weight: 600;
+
+        & + #{$block}-groupHeading {
+            padding-right: scale(gamma);
         }
     }
 
@@ -65,6 +83,7 @@
 
     &-fieldLabel {
         display: block;
+        margin-bottom: .5em;
         color: $color-blue-regal;
         font-size: scale(alpha);
         font-weight: 600;

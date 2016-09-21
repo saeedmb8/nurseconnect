@@ -51,13 +51,12 @@
                     <div class="Form-field Form-field--required">
                         <ul class="Form-choiceGroup">
                             <li class="Form-choiceGroupItem">
+                                <input type="checkbox" name="terms_and_conditions" id="checkbox1" class="Form-choiceInput">
                                 {% footer_link %}
+                                {{ form.terms_and_conditions.errors }}
                             </li>
                         </ul>
                     </div>
-
-                    {{ form.terms_and_conditions }}
-                    {{ form.terms_and_conditions.errors }}
 
                 </fieldset>
                 <div class="Splash-actions">

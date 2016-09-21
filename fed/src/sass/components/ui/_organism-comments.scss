@@ -71,6 +71,10 @@
         }
     }
 
+    &-actions { // Secondary actions for the comments list
+        margin: scale(gamma);
+    }
+
     &-submission {
         margin: 0;
         margin-top: scale(alpha);
